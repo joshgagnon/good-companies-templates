@@ -1,0 +1,12 @@
+{
+  "name": "good-companies-templates",
+  "version": "1.0.0",
+  "description": "Templates and their corresponding JSON Schema's for Good Companies",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshgagnon/good-companies-templates.git"
+  },
+  "private": true,
+  "author": "Paddy Moran",
+  "homepage": "https://github.com/joshgagnon/good-companies-templates"
+}
