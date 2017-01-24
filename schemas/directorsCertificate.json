@@ -1,7 +1,7 @@
 {
     "description": "",
     "title": "Director's Certificate",
-    "formName": "Director's Certificate",
+    "formName": "directors_certificate",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },

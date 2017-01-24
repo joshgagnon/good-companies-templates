@@ -1,7 +1,7 @@
 {
     "description": "",
     "title": "Notice of Meeting",
-    "formName": "Notice of Meeting",
+    "formName": "notice_of_meeting",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },

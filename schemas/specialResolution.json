@@ -1,7 +1,7 @@
 {
     "description": "",
     "title": "Special Resolution of Shareholders",
-    "formName": "Minute - Special Resolution of Shareholders",
+    "formName": "special_resolution_of_shareholders",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },

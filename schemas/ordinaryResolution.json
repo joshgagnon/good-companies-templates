@@ -1,7 +1,7 @@
 {
     "description": "",
     "title": "Ordinary Resolution of Shareholders",
-    "formName": "Minute - Ordinary Resolution of Shareholders",
+    "formName": "ordinary_resolution_of_shareholders",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },

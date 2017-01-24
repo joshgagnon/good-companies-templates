@@ -1,7 +1,7 @@
 {
     "description": "",
     "title": "Entitled Persons' Agreement",
-    "formName": "Entitled Persons' Agreement",
+    "formName": "entitled_persons_agreement",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },
