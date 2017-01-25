@@ -19,7 +19,7 @@
 {% endmacro %}
 
 {% macro notes(notesList) %}
-    {% if notesList %}
+    {% if notesList | length > 0 %}
         <text:p text:style-name="text_normal">It is noted that:</text:p>
 
         <text:list text:style-name="normal_list">
