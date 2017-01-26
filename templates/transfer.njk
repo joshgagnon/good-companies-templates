@@ -163,12 +163,12 @@
             <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
                 {% for holding in transaction.transferors %}
                     <text:p text:style-name="table_contents">
-                        <text:span text:style-name="bold">Signed by</text:span>
+                        Signed by
 
                         {% if holding.behalfOf %}
-                            <text:span text:style-name="bold">{{ holding.behalfOf }}</text:span> on behalf of the
+                            {{ holding.behalfOf }} on behalf of the
                         {% else %}
-                            <text:span text:style-name="bold">{{ holding.name }}</text:span> as
+                            {{ holding.name }} as
                         {% endif %}
 
                         Transferor:
@@ -176,31 +176,23 @@
                     
                     {{ components.table_signature_line() }}
 
-                    <text:p text:style-name="table_contents">
-                        Signature of {% if holding.behalfOf %}{{ holding.behalfOf }}{% else %}{{ holding.name }}{% endif %}
-                    </text:p>
-
                     {{ components.blank_table_line() }}
                 {% endfor %}
 
                 {% for holding in transaction.transferees %}
                     <text:p text:style-name="table_contents">
-                        <text:span text:style-name="bold">Signed</text:span> by 
+                        Signed by 
 
                         {% if holding.behalfOf %}
-                            <text:span text:style-name="bold">{{ holding.behalfOf }}</text:span> on behalf of the
+                            {{ holding.behalfOf }} on behalf of the
                         {% else %}
-                            <text:span text:style-name="bold">{{ holding.name }}</text:span> as
+                            {{ holding.name }} as
                         {% endif %}
 
                         Transferee:
                     </text:p>
 
                     {{ components.table_signature_line() }}
-
-                    <text:p text:style-name="table_contents">
-                        Signature of {% if holding.behalfOf %}{{ holding.behalfOf }}{% else %}{{ holding.name }}{% endif %}
-                    </text:p>
 
                     {% if not loop.last %}
                         {{ components.blank_table_line() }}
