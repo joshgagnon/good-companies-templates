@@ -14,13 +14,13 @@
         I/we, the director/directors of the Company named below, hereby certify as follows:
     </text:p>
 
-    <text:list text:style-name="normal_list">
+    {% call blocks.normal_list() %}
         {% for certification in certifications %} 
             <text:list-item>
                 <text:p text:style-name="text_normal">{{ certification.text }}</text:p>
             </text:list-item>
         {% endfor %}
-    </text:list>
+    {% endcall %}
 
     {{ components.notes(notes) }}
     

@@ -25,7 +25,7 @@
         {% endif %}
     </text:p>
 
-    <text:list text:style-name="normal_list">
+    {% call blocks.normal_list() %}
         {% for resolution in resolutions %}
             {% if resolution.individualResolutionType == 'Custom' %}
                 <text:list-item>
@@ -47,9 +47,9 @@
                 <text:list-item>
                     <text:p text:style-name="text_normal">That {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} be appointed or confirmed as the board’s sole agent for submitting necessary changes or documents to the companies register and the Registrar, and that, unless {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} is unwilling or unable to make any required submission in a timely manner, no other person be authorised to submit such changes or documents on behalf of the board.</text:p>
                 </text:list-item>
-        {% endif %}
+            {% endif %}
         {% endfor %}
-    </text:list>
+    {% endcall %}
 
     <text:p text:style-name="text_normal">
         The above resolution/Each of the above resolutions was approved as a

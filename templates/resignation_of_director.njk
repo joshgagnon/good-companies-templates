@@ -22,7 +22,7 @@
         I confirm that{% if resignationOptions.effective != 'Effective Immediately' %}, as at {{ resignationOptions.effectiveDate }}{% endif %}:
     </text:p>
 
-    <text:list text:style-name="normal_list">
+    {% call blocks.normal_list() %}
         <text:list-item>
             <text:p text:style-name="text_normal">no money is owing to me by the Company, whether by way of fees, salary, expenses, or otherwise;</text:p>
         </text:list-item>
@@ -32,7 +32,7 @@
         <text:list-item>
             <text:p text:style-name="text_normal">notwithstanding my resignation, I will remain liable under the provisions of the Companies Act 1993 that impose liability on directors in relation to acts, omissions, and decisions made while I was a director of the Company.</text:p>
         </text:list-item>
-    </text:list>
+    {% endcall %}
 
     {{ components.notes(notes) }}
     
