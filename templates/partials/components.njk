@@ -25,7 +25,9 @@
         <text:list text:style-name="normal_list">
             {% for note in notesList %}
                 <text:list-item>
-                    <text:p text:style-name="text_normal">{{ note }}</text:p>
+                    <text:p text:style-name="text_normal">
+                        {{ note['text'] }}
+                    </text:p>
                 </text:list-item>
             {% endfor %}
         </text:list>
