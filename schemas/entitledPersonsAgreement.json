@@ -77,6 +77,9 @@
                                         ]
                                     }
                                 },
+                                "default": {
+                                    "power": "Dividends"
+                                },
                                 "required": ["power"]
                             },
                             "minItems": 1
@@ -116,6 +119,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "default": {
+                                    "power": "Dividends"
                                 },
                                 "required": ["power", "details"]
                             },
