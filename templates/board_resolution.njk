@@ -1,6 +1,7 @@
 {% extends 'layouts/default.njk' %}
 
 {% import 'partials/components.njk' as components %}
+{% import 'partials/helpers.njk' as helpers %}
 
 {% block body %}
 
@@ -18,7 +19,7 @@
 
     <text:p text:style-name="text_normal">
         {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
-            This minute records that on {{ resolutionOptions.dateOfBoardMeeting }} the directors of the Company held a board meeting, during which the following resolution(s) was/were passed:
+            This minute records that on {{ resolutionOptions.dateOfBoardMeeting }} the directors of the Company held a board meeting, during which the following {{ helpers.pluralise(resolutions, 'resolution was passed', 'resolutions were passed') }}:
         {% else %}
             The board of the Company hereby makes the following written resolution(s):
         {% endif %}
@@ -26,19 +27,27 @@
 
     <text:list text:style-name="normal_list">
         {% for resolution in resolutions %}
-            <text:list-item>
-                {% if resolution.individualResolutionType == 'Custom' %}
+            {% if resolution.individualResolutionType == 'Custom' %}
+                <text:list-item>
                     <text:p text:style-name="text_normal">{{ resolution.resolutionOptions.text }}</text:p>
-                {% elif resolution.individualResolutionType == 'Change Company Name' %}
+                </text:list-item>
+            {% elif resolution.individualResolutionType == 'Change Company Name' %}
+                <text:list-item>
                     <text:p text:style-name="text_normal">That an application to change the Company’s name to {{ resolution.resolutionOptions.newCompanyName }} be submitted to the Registrar of Companies on {{ resolution.resolutionOptions.effectiveDate }}, and that any director of the Company be approved to submit the application. [Companies Act 1993, s 23(1)(c)]</text:p>
-                {% elif resolution.individualResolutionType == 'Records in Good Companies' %}
+                </text:list-item>
+            {% elif resolution.individualResolutionType == 'Records in Good Companies' %}
+                <text:list-item>
                     <text:p text:style-name="text_normal">That the Company keep the records required under section 189(1) of the Companies Act 1993 electronically, using the service provided by CataLex known as Good Companies.</text:p>
-                {% elif resolution.individualResolutionType == 'Agent for Company Changes' %}
+                </text:list-item>
+            {% elif resolution.individualResolutionType == 'Agent for Company Changes' %}
+                <text:list-item>
                     <text:p text:style-name="text_normal">That {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} be appointed or confirmed as the sole agent responsible for maintaining the share register under section 87(3) of the Companies Act 1993.</text:p>
-                    
+                </text:list-item>
+
+                <text:list-item>
                     <text:p text:style-name="text_normal">That {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} be appointed or confirmed as the board’s sole agent for submitting necessary changes or documents to the companies register and the Registrar, and that, unless {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} is unwilling or unable to make any required submission in a timely manner, no other person be authorised to submit such changes or documents on behalf of the board.</text:p>
-                {% endif %}
-            </text:list-item>
+                </text:list-item>
+        {% endif %}
         {% endfor %}
     </text:list>
 
