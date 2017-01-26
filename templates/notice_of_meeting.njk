@@ -34,7 +34,7 @@
 
     
     {% if noticeOptions.meetingType == 'Board Meeting' %}
-        <text:p text:style-name="text_normal">The following matters will be discussed at the board meeting [Companies Act 1993, sch 3, cl 2(2)]:</text:p>
+        <text:p text:style-name="text_normal">The following matters will be discussed at the board meeting:</text:p>
         
         <text:list text:style-name="normal_list">
             {% for matter in noticeOptions.meetingOptions.matters %}
@@ -44,7 +44,7 @@
             {% endfor %}
         </text:list>
     {% else %}
-        <text:p text:style-name="text_normal">The following items of business will be transacted at the meeting [Companies Act 1993, sch 1, cl 2(2)(a)]:</text:p>
+        <text:p text:style-name="text_normal">The following items of business will be transacted at the meeting:</text:p>
         
         <text:list text:style-name="normal_list">
             {% for item in noticeOptions.meetingOptions.itemsOfBusiness %} 
@@ -55,7 +55,7 @@
         </text:list>
 
         {% if  noticeOptions.meetingOptions.specialResolutions | length >= 1 %}
-            <text:p text:style-name="text_normal">The following special resolutions will be submitted to the meeting [Companies Act 1993, sch 1, cl 2(2)(b)]: </text:p>
+            <text:p text:style-name="text_normal">The following special resolutions will be submitted to the meeting: </text:p>
             
             <text:list text:style-name="normal_list">
                 {% for resolution in noticeOptions.meetingOptions.specialResolutions %}

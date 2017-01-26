@@ -33,7 +33,7 @@
                 </text:list-item>
             {% elif resolution.individualResolutionType == 'Change Company Name' %}
                 <text:list-item>
-                    <text:p text:style-name="text_normal">That an application to change the Company’s name to {{ resolution.resolutionOptions.newCompanyName }} be submitted to the Registrar of Companies on {{ resolution.resolutionOptions.effectiveDate }}, and that any director of the Company be approved to submit the application. [Companies Act 1993, s 23(1)(c)]</text:p>
+                    <text:p text:style-name="text_normal">That an application to change the Company’s name to {{ resolution.resolutionOptions.newCompanyName }} be submitted to the Registrar of Companies on {{ resolution.resolutionOptions.effectiveDate }}, and that any director of the Company be approved to submit the application.</text:p>
                 </text:list-item>
             {% elif resolution.individualResolutionType == 'Records in Good Companies' %}
                 <text:list-item>
@@ -55,9 +55,9 @@
         The above resolution/Each of the above resolutions was approved as a
 
         {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
-            resolution of the Company’s board, by either being agreed to by all directors present or having a majority of the votes cast on it being in favour. [Companies Act 1993, s 160 and cl 5(4) of sch 3]
+            resolution of the Company’s board, by either being agreed to by all directors present or having a majority of the votes cast on it being in favour.
         {% else %}
-            written resolution of all the directors of the Company who, as at the date of this document, were entitled to receive notice of a meeting of the Company’s board. The/Each resolution is as valid and effective as if it had been passed at a meeting of the board duly convened and held. [Companies Act 1993, s 160 and cl 7 of sch 3]
+            written resolution of all the directors of the Company who, as at the date of this document, were entitled to receive notice of a meeting of the Company’s board. The/Each resolution is as valid and effective as if it had been passed at a meeting of the board duly convened and held.
         {% endif %}
     </text:p>
 
