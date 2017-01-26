@@ -34,7 +34,7 @@
                     {% elif resolution.resolutionType == 'Approve Amalgamation' %}
                         That the attached amalgamation proposal be approved. Companies Act 1993, ss 106(1)(d) and 241(2)(a).
                     {% elif resolution.resolutionType == 'Put Company into Liquidation' %}
-                         That the company be put into liquidation by appointing {{ resolution.liquidators | join_and('name') }}. Companies Act 1993, ss 106(1)(c) and 221(5)].
+                         That the company be put into liquidation by appointing {{ resolution.liquidators | join_and('name') }} as liquidator in accordance with section 241(2) of the Companies Act 1993.
                     {% elif resolution.resolutionType == 'Custom' %}
                         {{ resolution.text }}
                     {% endif %}
@@ -59,12 +59,12 @@
         <text:list text:style-name="normal_list">
             <text:list-item>
                 <text:p text:style-name="text_normal">
-                    not less than 75%, or such other percentage as the constitution may require for passing a special resolution, of the shareholders who would be entitled to vote on the resolution at a meeting of the Company’s shareholders;
+                    are not less than 75%, or such other percentage as the constitution may require for passing a special resolution, of the shareholders who would be entitled to vote on the resolution at a meeting of the Company’s shareholders;
                 </text:p>
             </text:list-item>
             <text:list-item>
                 <text:p text:style-name="text_normal">
-                    together hold not less than 75% or, if a higher percentage is required by the constitution, that higher percentage, of the votes entitled to be cast on the resolution. Companies Act 1993, s 122; and
+                    together hold not less than 75% or, if a higher percentage is required by the constitution, that higher percentage, of the votes entitled to be cast on the resolution; and
                 </text:p>
             </text:list-item>
             <text:list-item>
