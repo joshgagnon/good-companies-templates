@@ -22,7 +22,7 @@
     {% if notesList | length > 0 %}
         <text:p text:style-name="text_normal">It is noted that:</text:p>
 
-        <text:list text:style-name="normal_list">
+        <text:list text:style-name="normal_list" text:continue-numbering="false">
             {% for note in notesList %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">

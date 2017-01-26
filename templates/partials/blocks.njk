@@ -1,0 +1,11 @@
+{% macro normal_list() %}
+    <text:list text:style-name="normal_list" text:continue-numbering="false">
+        {{ caller() }}
+    </text:list>
+{% endmacro %}
+
+{% macro legal_list() %}
+    <text:list text:style-name="legal_list" text:continue-numbering="false">
+        {{ caller() }}
+    </text:list>
+{% endmacro %}

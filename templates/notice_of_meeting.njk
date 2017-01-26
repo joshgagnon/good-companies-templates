@@ -1,6 +1,7 @@
 {% extends 'layouts/default.njk' %}
 
 {% import 'partials/components.njk' as components %}
+{% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
 
@@ -36,34 +37,34 @@
     {% if noticeOptions.meetingType == 'Board Meeting' %}
         <text:p text:style-name="text_normal">The following matters will be discussed at the board meeting:</text:p>
         
-        <text:list text:style-name="normal_list">
+        {% call blocks.normal_list() %}
             {% for matter in noticeOptions.meetingOptions.matters %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">{{ matter.text }}</text:p>
                 </text:list-item>
             {% endfor %}
-        </text:list>
+        {% endcall %}
     {% else %}
         <text:p text:style-name="text_normal">The following items of business will be transacted at the meeting:</text:p>
         
-        <text:list text:style-name="normal_list">
+        {% call blocks.normal_list() %}
             {% for item in noticeOptions.meetingOptions.itemsOfBusiness %} 
                 <text:list-item>
                     <text:p text:style-name="text_normal">{{ item.text }}</text:p>
                 </text:list-item>
             {% endfor %}
-        </text:list>
+        {% endcall %}
 
         {% if  noticeOptions.meetingOptions.specialResolutions | length >= 1 %}
             <text:p text:style-name="text_normal">The following special resolutions will be submitted to the meeting: </text:p>
             
-            <text:list text:style-name="normal_list">
+            {% call blocks.normal_list() %}
                 {% for resolution in noticeOptions.meetingOptions.specialResolutions %}
                     <text:list-item>
                         <text:p text:style-name="text_normal">{{ resolution.text }}</text:p>
                     </text:list-item>
                 {% endfor %}
-            </text:list>
+            {% endcall %}
         {% endif %}
 
         {% if (noticeOptions.meetingOptions.specialResolutions | exists('alterConstitutionOrMajorTransaction', 'Yes')) %}
