@@ -68,6 +68,11 @@
                                                 "title": "Name",
                                                 "type": "string"
                                             }
+                                        },
+                                        "x-hints": {
+                                            "form": {
+                                                "addItem": "Add Recipient"
+                                            }
                                         }
                                     },
                                     "minItems": 1
@@ -86,6 +91,11 @@
                                                         "inputComponent": "textarea"
                                                     }
                                                 }
+                                            }
+                                        },
+                                        "x-hints": {
+                                            "form": {
+                                                "addItem": "Add Matter"
                                             }
                                         }
                                     },
@@ -147,6 +157,11 @@
                                     "form": {"inputComponent": "textarea"}
                                 }
                             }
+                        },
+                        "x-hints": {
+                            "form": {
+                                "addItem": "Add Item of Business"
+                            }
                         }
                     },
                     "minItems": 1
@@ -169,6 +184,11 @@
                                         "inputComponent": "textarea"
                                     }
                                 }
+                            }
+                        },
+                        "x-hints": {
+                            "form": {
+                                "addItem": "Add Special Resolution"
                             }
                         },
                         "required": ["alterConstitutionOrMajorTransaction", "text"]

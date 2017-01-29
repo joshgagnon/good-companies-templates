@@ -58,10 +58,13 @@
                         "type": "string",
                         "title": "Description",
                         "x-hints": {
-                            "form": {
-                                "inputComponent": "textarea"
-                            }
+                            "form": {"inputComponent": "textarea"}
                         }
+                    }
+                },
+                "x-hints": {
+                    "form": {
+                        "addItem": "Add Note"
                     }
                 }
             },

@@ -78,6 +78,11 @@
                                         "type": "string",
                                         "title": "Director Name"
                                     }
+                                },
+                                "x-hints": {
+                                    "form": {
+                                        "addItem": "Add Director"
+                                    }
                                 }
                             },
                             "minItems": 1
@@ -106,7 +111,10 @@
                 },
                 "required": ["individualResolutionType"],
                 "x-hints": {
-                    "form": {"selector": "individualResolutionType"}
+                    "form": {
+                        "addItem": "Add Resolution",
+                        "selector": "individualResolutionType"
+                    }
                 },
                 "oneOf": [
                     {

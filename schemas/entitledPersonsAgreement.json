@@ -77,11 +77,16 @@
                                         ]
                                     }
                                 },
-                                "default": {
-                                    "power": "Dividends"
+                                "x-hints": {
+                                    "form": {
+                                        "addItem": "Add Power"
+                                    }
                                 },
                                 "required": ["power"]
                             },
+                            "default": [
+                                {"power": "Dividends"}
+                            ],
                             "minItems": 1
                         }
                     }
@@ -118,6 +123,11 @@
                                                 "inputComponent": "textarea"
                                             }
                                         }
+                                    }
+                                },
+                                "x-hints": {
+                                    "form": {
+                                        "addItem": "Add Power"
                                     }
                                 },
                                 "default": {
