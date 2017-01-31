@@ -32,6 +32,18 @@
                 "name"
             ]
         },
+        "directorsList": {
+            "type": "array",
+            "title": "Directors",
+            "items": {
+                "$ref": "#/definitions/director",
+                "x-hints": {
+                    "form": {
+                        "addItem": "Add Director"
+                    }
+                }
+            }
+        },
         "company": {
             "type": "object",
             "properties": {

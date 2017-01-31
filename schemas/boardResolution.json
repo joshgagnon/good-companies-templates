@@ -69,23 +69,13 @@
                             }
                         },
                         "directors": {
-                            "type": "array",
-                            "title": "Directors",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "title": "Director Name"
-                                    }
-                                },
-                                "x-hints": {
-                                    "form": {
-                                        "addItem": "Add Director"
-                                    }
+                            "$ref": "#/definitions/directorsList",
+                            "minItems": 1,
+                            "x-hints": {
+                                "form": {
+                                    "defaultSource": "company.directors"
                                 }
-                            },
-                            "minItems": 1
+                            }
                         }
                     },
                     "required": ["dateOfResolution", "directors"]
