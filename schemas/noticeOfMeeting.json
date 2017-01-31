@@ -143,7 +143,11 @@
         "meetingOptions": {
             "type": "object",
             "properties": {
-                "shareholders": { "$ref": "#/definitions/shareholders" },
+                "shareholders": {
+                    "$ref": "#/definitions/shareholdersList",
+                    "default": [{}],
+                    "minItems": 1
+                },
                 "itemsOfBusiness": {
                     "type": "array",
                     "title": "Items of Business",

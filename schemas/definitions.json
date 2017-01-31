@@ -44,6 +44,34 @@
                 }
             }
         },
+        "shareholder": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Shareholder Name"
+                }
+            },
+            "x-hints": {
+                "form": {
+                    "selectFromSource": "company.shareholders",
+                    "source": "name"
+                }
+            },
+            "required": ["name"]
+        },
+        "shareholdersList": {
+            "type": "array",
+            "title": "Shareholders",
+            "items": {
+                "$ref": "#/definitions/shareholder",
+                "x-hints": {
+                    "form": {
+                        "addItem": "Add Shareholder"
+                    }
+                }
+            }
+        },
         "company": {
             "type": "object",
             "properties": {
@@ -81,29 +109,6 @@
                 }
             },
             "minItems": 0
-        },
-        "shareholders": {
-            "type": "array",
-            "title": "Shareholders",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "title": "Shareholder Name"
-                    }
-                },
-                "x-hints": {
-                    "form": {
-                        "addItem": "Add Shareholder",
-                        "selectFromSource": "company.shareholders",
-                        "source": "name"
-                    }
-                },
-                "required": ["name"]
-            },
-            "default": [{}],
-            "minItems": 1
         },
         "chairperson": {
             "type": "object",

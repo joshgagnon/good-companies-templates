@@ -26,26 +26,23 @@
                     ]
                 },
                 "entitledParties": {
-                    "type": "array",
+                    "$ref": "#/definitions/shareholdersList",
                     "title": "Parties",
                     "items": {
-                        "type": "object",
                         "properties": {
-                            "name": {
-                                "type": "string",
-                                "title": "Entitled Person's Name"
-                            }
+                            "name": { "title": "Entitled Person's Name" }
                         },
-                         "x-hints": {
-                            "form": {
-                                "addItem": "Add Entitled Party",
-                                "selectFromSource": "company.shareholders",
-                                "source": "name"
-                            }
-                        }
+                        "x-hints": {
+                            "form": { "addItem": "Add Entitled Party" }
+                        },
+                        "required": ["name"]
                     },
-                    "default": [{}],
-                    "minItems": 1
+                    "minItems": 1,
+                    "x-hints": {
+                        "form": {
+                            "defaultSource": "company.shareholders"
+                        }
+                    }
                 }
             },
             "default": {

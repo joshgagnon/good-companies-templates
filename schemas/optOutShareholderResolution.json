@@ -40,7 +40,11 @@
                         "form": { "inputComponent": "date" }
                     }
                 },
-                "shareholders": { "$ref": "#/definitions/shareholders" },
+                "shareholders": {
+                    "$ref": "#/definitions/shareholdersList",
+                    "default": [{}],
+                    "minItems": 1
+                },
                 "isLargeCompany": {
                     "title": "Is the Company Large?",
                     "enum": ["Yes", "No"]
