@@ -28,9 +28,7 @@
                     "source": "name"
                 }
             },
-            "required": [
-                "name"
-            ]
+            "required": ["name"]
         },
         "directorsList": {
             "type": "array",
@@ -77,11 +75,23 @@
             "properties": {
                 "companyName": {
                     "title": "Company Name",
-                    "type": "string"
+                    "type": "string",
+                    "x-hints": {
+                        "form": {
+                            "mapTo": "company.name",
+                            "display": "hidden"
+                        }
+                    }
                 },
                 "companyNumber": {
                     "title": "Company Number",
-                    "type": "string"
+                    "type": "string",
+                    "x-hints": {
+                        "form": {
+                            "mapTo": "company.number",
+                            "display": "hidden"
+                        }
+                    }
                 }
             },
             "required": [
