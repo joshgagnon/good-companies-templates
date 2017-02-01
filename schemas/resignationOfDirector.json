@@ -38,7 +38,16 @@
                 },
                 "companyHasConstitution": {
                     "title": "Company has Constitution",
-                    "enum": ["Company has Constitution", "Company does not have Constitution"]
+                    "enum": ["Company has Constitution", "Company does not have Constitution"],
+                    "x-hints": {
+                        "form": {
+                            "conditionalDefault": {
+                                "conditional": "company.constitutionFiled",
+                                "trueValue": "Company has Constitution",
+                                "falseValue": "Company does not have Constitution"
+                            }
+                        }
+                    }
                 },
                 "effective": {
                     "title": "Effective",

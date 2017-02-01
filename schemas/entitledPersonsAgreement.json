@@ -39,9 +39,7 @@
                     },
                     "minItems": 1,
                     "x-hints": {
-                        "form": {
-                            "defaultSource": "company.shareholders"
-                        }
+                        "form": { "defaultSource": "company.shareholders" }
                     }
                 }
             },
