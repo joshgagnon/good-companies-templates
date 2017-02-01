@@ -5,23 +5,7 @@
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },
-        "company": {
-            "type": "object",
-
-            "properties": {
-                "companyName": {
-                    "title": "Company Name",
-                    "type": "string"
-                },
-                "companyNumber": {
-                    "title": "Company Number",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "companyName", "companyNumber"
-            ]
-        },
+        "company": { "$ref": "#/definitions/company" },
         "resolutionOptions": {
             "type": "object",
             "properties": {
