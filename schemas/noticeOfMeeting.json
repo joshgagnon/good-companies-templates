@@ -144,7 +144,7 @@
         {"link": {"title": "Companies Act 1993", "location": "sch 3, cl 2"}, "text": "Notice of board meeting"}
     ],
     "definitions": {
-        "boardMeetingOptions": {
+        "meetingOptions": {
             "type": "object",
             "properties": {
                 "shareholders": {
