@@ -55,7 +55,7 @@
                         "meetingType": {
                             "enum": ["Board Meeting"]
                         },
-                        "meetingOptions": {
+                        "boardMeetingOptions": {
                             "type": "object",
                             "properties": {
                                 "recipients": {
