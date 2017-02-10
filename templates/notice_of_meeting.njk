@@ -13,7 +13,7 @@
 
     <text:p text:style-name="text_normal">
         {% if noticeOptions.meetingType == 'Board Meeting' %}
-            To: {{  noticeOptions.meetingOptions.recipients | join_and('name') }}
+            To: {{  noticeOptions.boardMeetingOptions.recipients | join_and('name') }}
         {% else %}
             To: {{  noticeOptions.meetingOptions.shareholders | join_and('name') }}
         {% endif %}
@@ -38,7 +38,7 @@
         <text:p text:style-name="text_normal">The following matters will be discussed at the board meeting:</text:p>
         
         {% call blocks.normal_list() %}
-            {% for matter in noticeOptions.meetingOptions.matters %}
+            {% for matter in noticeOptions.boardMeetingOptions.matters %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">{{ matter.text }}</text:p>
                 </text:list-item>

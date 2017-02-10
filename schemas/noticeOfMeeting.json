@@ -59,14 +59,13 @@
                             "type": "object",
                             "properties": {
                                 "recipients": {
-                                    "type": "array",
+                                    "$ref": "#/definitions/directorsList",
                                     "title": "Recipients",
+                                    "minItems": 1,
                                     "items": {
-                                        "type": "object",
                                         "properties": {
                                             "name": {
-                                                "title": "Name",
-                                                "type": "string"
+                                                "title": "Name"
                                             }
                                         },
                                         "x-hints": {
@@ -75,7 +74,12 @@
                                             }
                                         }
                                     },
-                                    "minItems": 1
+                                    "x-hints": {
+                                        "form": {
+                                            "defaultSource": "company.directors",
+                                            "addItem": "Add Recipient"
+                                        }
+                                    }
                                 },
                                 "matters": {
                                     "type": "array",
@@ -140,13 +144,15 @@
         {"link": {"title": "Companies Act 1993", "location": "sch 3, cl 2"}, "text": "Notice of board meeting"}
     ],
     "definitions": {
-        "meetingOptions": {
+        "boardMeetingOptions": {
             "type": "object",
             "properties": {
                 "shareholders": {
                     "$ref": "#/definitions/shareholdersList",
-                    "default": [{}],
-                    "minItems": 1
+                    "minItems": 1,
+                    "x-hints": {
+                        "form": { "defaultSource": "company.shareholders" }
+                    }
                 },
                 "itemsOfBusiness": {
                     "type": "array",
