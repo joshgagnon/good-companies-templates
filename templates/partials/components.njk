@@ -54,35 +54,59 @@
     </text:a>
 {%- endmacro %}
 
-{% macro signature_table(people, name_attribute=null) %}
-    {% for batchedPeople in people | batch(2) %}
+{% macro signature_table(people, name_attribute=null, exclude_non_natural=false) %}
+    {% set peopleGroups = people | groupby('isNaturalPerson') %}
+    {% set naturalPeople = peopleGroups['Is a Natural Person'] %}
+    {% set nonNaturalPeople = peopleGroups['Is not a Natural Person'] %}
+    
+    {% for batchedPeople in naturalPeople | batch(2) %}
         <table:table table:name="Signature Table" table:style-name="signature_table">
 
             <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
 
             <table:table-row table:style-name="signature_table_row">
                 <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                    {% if (name_attribute) %}
-                        <text:p text:style-name="text_normal">Signed by {{ batchedPeople[0][name_attribute] }}</text:p>
-                    {% else %}
-                        <text:p text:style-name="text_normal">Signed by {{ batchedPeople[0] }}</text:p>
-                    {% endif %}
+                    <text:p text:style-name="text_normal">Signed by {{ batchedPeople[0] | get_value(name_attribute) }}</text:p>
 
                     {{ table_signature_line() }}
                 </table:table-cell>
 
                 {% if batchedPeople[1] %}
                     <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {% if (name_attribute) %}
-                            <text:p text:style-name="text_normal">Signed by {{ batchedPeople[1][name_attribute] }}</text:p>
-                        {% else %}
-                            <text:p text:style-name="text_normal">Signed by {{ batchedPeople[1] }}</text:p>
-                        {% endif %}
+                        <text:p text:style-name="text_normal">Signed by {{ batchedPeople[1] | get_value(name_attribute) }}</text:p>
 
                         {{ table_signature_line() }}
                     </table:table-cell>
                 {% endif %}
             </table:table-row>
         </table:table>
+    {% endfor %}
+
+    {% for person in nonNaturalPeople %}
+        {{ blank_table_line() }}
+        <text:p text:style-name="text_normal">Signed on behalf of {{ person | get_value(name_attribute) }}:</text:p>
+
+        {% for batchedPeople in person.signatories | batch(2) %}
+            <table:table table:name="Signature Table" table:style-name="signature_table">
+
+                <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
+
+                <table:table-row table:style-name="signature_table_row">
+                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                        <text:p text:style-name="text_normal">Signed on behalf of {{ person | get_value(name_attribute) }} by {{ batchedPeople[0] | get_value(name_attribute) }}</text:p>
+
+                        {{ table_signature_line() }}
+                    </table:table-cell>
+
+                    {% if batchedPeople[1] %}
+                        <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                            <text:p text:style-name="text_normal">Signed on behalf of {{ person | get_value(name_attribute) }} by {{ batchedPeople[1] | get_value(name_attribute) }}</text:p>
+
+                            {{ table_signature_line() }}
+                        </table:table-cell>
+                    {% endif %}
+                </table:table-row>
+            </table:table>
+        {% endfor %}
     {% endfor %}
 {% endmacro %}
