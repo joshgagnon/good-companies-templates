@@ -122,7 +122,6 @@
         },
         "chairperson": {
             "type": "object",
-
             "properties": {
                 "name": {
                     "title": "Chairperson Name",
@@ -135,9 +134,14 @@
                     "source": "name"
                 }
             },
-            "required": [
-                "name"
-            ]
+            "required": ["name"]
+        },
+        "date": {
+            "title": "Date",
+            "type": "string",
+            "x-hints" : {
+                "form": { "inputComponent": "date" }
+            }
         }
     }
 }
