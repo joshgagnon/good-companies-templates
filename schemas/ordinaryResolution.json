@@ -17,9 +17,7 @@
                     ]
                 }
             },
-            "default": {
-                "resolutionType": "Ordinary Resolution at Shareholder Meeting"
-            },
+            "default": { "resolutionType": "Ordinary Resolution at Shareholder Meeting" },
             "oneOf":[
                 {
                     "properties": {
@@ -29,46 +27,25 @@
                         "chairperson": {
                             "$ref": "#/definitions/chairperson"
                         },
-
                         "dateOfShareholderMeeting": {
-                            "title": "Date of Shareholder Meeting",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                  "inputComponent": "date"
-                                }
-                            }
+                            "$ref": "#/definitions/date",
+                            "title": "Date of Shareholder Meeting"
                         },
-
                         "dateOfMinute": {
-                            "title": "Date of Minute",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                  "inputComponent": "date"
-                                }
-                            }
+                            "$ref": "#/definitions/date",
+                            "title": "Date of Minute"
                         }
                     },
-                    "required": [
-                        "dateOfMinute",
-                        "dateOfShareholderMeeting",
-                        "chairperson"]
+                    "required": ["dateOfMinute", "dateOfShareholderMeeting", "chairperson"]
                 },
-
                 {
                     "properties": {
                         "resolutionType": {
                             "enum": ["Written Resolution in lieu of Shareholder Meeting"]
                         },
                         "dateOfMinute": {
-                            "title": "Date of Written Resolution",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                  "inputComponent": "date"
-                                }
-                            }
+                            "$ref": "#/definitions/date",
+                            "title": "Date of Written Resolution"
                         },
                         "shareholders": {
                             "type": "array",
@@ -79,18 +56,62 @@
                                     "name": {
                                         "type": "string",
                                         "title": "Shareholder name"
+                                    },
+                                    "isNaturalPerson": {
+                                        "title": "Is Natural Person",
+                                        "enum": [
+                                            "Is a Natural Person",
+                                            "Is not a Natural Person"
+                                        ]
                                     }
                                 },
+                                "oneOf": [
+                                    {
+                                        "properties": {
+                                            "isNaturalPerson": {
+                                                "enum": ["Is a Natural Person"]
+                                            },
+                                            "naturalPersonDetails": {}
+                                        }
+                                    },
+                                    {
+                                        "properties": {
+                                            "isNaturalPerson": {
+                                                "enum": ["Is not a Natural Person"]
+                                            },
+                                            "signatories": {
+                                                "type": "array",
+                                                "title": "Signatories",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Signatory Name"
+                                                        }
+                                                    },
+                                                    "x-hints": {
+                                                        "form": { "addItem": "Add Signatory" }
+                                                    },
+                                                    "required": ["name"]
+                                                },
+                                                "default": [{}],
+                                                "minItems": 1
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": ["name", "isNaturalPerson"],
                                 "x-hints": {
                                     "form": {
                                         "selectFromSource": "company.shareholders",
                                         "source": "name",
-                                        "addItem": "Add Shareholder"
+                                        "addItem": "Add Shareholder",
+                                        "selector": "isNaturalPerson"
                                     }
-                                },
-                                "required": ["name"]
+                                }
                             },
-                            "default": [{}],
+                            "default": [{ "isNaturalPerson": "Is a Natural Person" }],
                             "minItems": 1
                         }
                     },
@@ -142,13 +163,8 @@
                                 "required": ["name"]
                             },
                             "date": {
-                                "title": "Appointment Date",
-                                "type": "string",
-                                "x-hints" : {
-                                    "form": {
-                                      "inputComponent": "date"
-                                    }
-                                }
+                                "$ref": "#/definitions/date",
+                                "title": "Appointment Date"
                             }
                         },
                         "required": ["director", "date"]
@@ -158,7 +174,6 @@
                             "resolutionType": {
                                 "enum": ["Appoint Directors"]
                             },
-
                             "directors": {
                                 "type": "array",
                                 "title": "Directors",
@@ -188,13 +203,8 @@
                             },
 
                             "date": {
-                                "title": "Appointment Date",
-                                "type": "string",
-                                "x-hints" : {
-                                    "form": {
-                                      "inputComponent": "date"
-                                    }
-                                }
+                                "$ref": "#/definitions/date",
+                                "title": "Appointment Date"
                             }
                         },
                         "required": ["directors", "date"]
@@ -222,13 +232,8 @@
                             },
 
                             "date": {
-                                "title": "Removal Date",
-                                "type": "string",
-                                "x-hints" : {
-                                    "form": {
-                                      "inputComponent": "date"
-                                    }
-                                }
+                                "$ref": "#/definitions/date",
+                                "title": "Removal Date"
                             }
                         },
                         "required": ["director", "date"]

@@ -80,7 +80,7 @@
 
         {{ components.signature_line() }}
     {% else %}
-        {{ components.signature_table(directors, 'name') }}
+        {{ components.signature_table(resolutionOptions.shareholders, 'name') }}
     {% endif %}
 
 {% endblock %}
