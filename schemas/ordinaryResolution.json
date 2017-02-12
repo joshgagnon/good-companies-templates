@@ -57,27 +57,27 @@
                                         "type": "string",
                                         "title": "Shareholder name"
                                     },
-                                    "isNaturalPerson": {
-                                        "title": "Is Natural Person",
+                                    "signingMethod": {
+                                        "title": "Signing Method",
                                         "enum": [
-                                            "Is a Natural Person",
-                                            "Is not a Natural Person"
+                                            "Signing personally",
+                                            "Signed for by authorised signatory/signatories"
                                         ]
                                     }
                                 },
                                 "oneOf": [
                                     {
                                         "properties": {
-                                            "isNaturalPerson": {
-                                                "enum": ["Is a Natural Person"]
+                                            "signingMethod": {
+                                                "enum": ["Signing personally"]
                                             },
                                             "naturalPersonDetails": {}
                                         }
                                     },
                                     {
                                         "properties": {
-                                            "isNaturalPerson": {
-                                                "enum": ["Is not a Natural Person"]
+                                            "signingMethod": {
+                                                "enum": ["Signed for by authorised signatory/signatories"]
                                             },
                                             "signatories": {
                                                 "type": "array",
@@ -101,17 +101,17 @@
                                         }
                                     }
                                 ],
-                                "required": ["name", "isNaturalPerson"],
+                                "required": ["name", "signingMethod"],
                                 "x-hints": {
                                     "form": {
                                         "selectFromSource": "company.shareholders",
                                         "source": "name",
                                         "addItem": "Add Shareholder",
-                                        "selector": "isNaturalPerson"
+                                        "selector": "signingMethod"
                                     }
                                 }
                             },
-                            "default": [{ "isNaturalPerson": "Is a Natural Person" }],
+                            "default": [{ "signingMethod": "Signing personally" }],
                             "minItems": 1
                         }
                     },
