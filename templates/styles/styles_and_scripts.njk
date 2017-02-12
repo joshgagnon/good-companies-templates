@@ -113,8 +113,14 @@
         <style:table-row-properties fo:keep-together="always"/>
     </style:style>
     <style:style style:family="table-cell" style:name="signature_table_cell">
-        <style:table-cell-properties fo:border="none" fo:padding="0cm"/>
+        <style:table-cell-properties fo:border="none" fo:padding-left="0cm" fo:padding-right="1.5cm" fo:padding-top="0.25cm" fo:padding-bottom="0.25cm" />
     </style:style>
+
+    {# This is different to a normal signature line, for some unknown reasons :) (Because it's in a table) #}
+    <style:style style:family="paragraph" style:name="table_signature_line" style:parent-style-name="horizontal_line">
+        <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
+    </style:style>
+
 
     <style:style style:family="table" style:name="layout_table">
         <style:table-properties style:width="17cm" table:align="margins"/>
@@ -124,11 +130,6 @@
     </style:style>
     <style:style style:family="table-cell" style:name="layout_table_cell">
         <style:table-cell-properties fo:border="0.05pt solid #000000" fo:padding="0.25cm" fo:padding-top="0.35cm" />
-    </style:style>
-
-    {# This is different to a normal signature line, for some unknown reasons :) (Because it's in a table) #}
-    <style:style style:family="paragraph" style:name="table_signature_line" style:parent-style-name="horizontal_line">
-        <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="2.5cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
     </style:style>
 
 
