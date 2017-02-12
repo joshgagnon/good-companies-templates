@@ -142,6 +142,66 @@
             "x-hints" : {
                 "form": { "inputComponent": "date" }
             }
+        },
+        "signingWithOptionalSignatories": {
+            "type": "array",
+            "title": "Signing Entities",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "signingMethod": {
+                        "title": "Signing Method",
+                        "enum": [
+                            "Signing personally",
+                            "Signed for by authorised signatory/signatories"
+                        ]
+                    }
+                },
+                "oneOf": [
+                    {
+                        "properties": {
+                            "signingMethod": { "enum": ["Signing personally"] }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "signingMethod": { "enum": ["Signed for by authorised signatory/signatories"] },
+                            "signatories": {
+                                "type": "array",
+                                "title": "Signatories",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "title": "Signatory Name"
+                                        }
+                                    },
+                                    "x-hints": {
+                                        "form": { "addItem": "Add Signatory" }
+                                    },
+                                    "required": ["name"]
+                                },
+                                "default": [{}],
+                                "minItems": 1
+                            }
+                        }
+                    }
+                ],
+                "required": ["name", "signingMethod"],
+                "x-hints": {
+                    "form": {
+                        "addItem": "Add Signing Entity",
+                        "selector": "signingMethod"
+                    }
+                }
+            },
+            "default": [{ "signingMethod": "Signing personally" }],
+            "minItems": 0
         }
     }
 }

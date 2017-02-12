@@ -48,70 +48,20 @@
                             "title": "Date of Written Resolution"
                         },
                         "shareholders": {
-                            "type": "array",
+                            "$ref": "#/definitions/signingWithOptionalSignatories",
                             "title": "Shareholders",
                             "items": {
-                                "type": "object",
                                 "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "title": "Shareholder name"
-                                    },
-                                    "signingMethod": {
-                                        "title": "Signing Method",
-                                        "enum": [
-                                            "Signing personally",
-                                            "Signed for by authorised signatory/signatories"
-                                        ]
-                                    }
+                                    "name": { "title": "Shareholder name" }
                                 },
-                                "oneOf": [
-                                    {
-                                        "properties": {
-                                            "signingMethod": {
-                                                "enum": ["Signing personally"]
-                                            },
-                                            "naturalPersonDetails": {}
-                                        }
-                                    },
-                                    {
-                                        "properties": {
-                                            "signingMethod": {
-                                                "enum": ["Signed for by authorised signatory/signatories"]
-                                            },
-                                            "signatories": {
-                                                "type": "array",
-                                                "title": "Signatories",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string",
-                                                            "title": "Signatory Name"
-                                                        }
-                                                    },
-                                                    "x-hints": {
-                                                        "form": { "addItem": "Add Signatory" }
-                                                    },
-                                                    "required": ["name"]
-                                                },
-                                                "default": [{}],
-                                                "minItems": 1
-                                            }
-                                        }
-                                    }
-                                ],
-                                "required": ["name", "signingMethod"],
                                 "x-hints": {
                                     "form": {
                                         "selectFromSource": "company.shareholders",
                                         "source": "name",
-                                        "addItem": "Add Shareholder",
-                                        "selector": "signingMethod"
+                                        "addItem": "Add Shareholder"
                                     }
                                 }
                             },
-                            "default": [{ "signingMethod": "Signing personally" }],
                             "minItems": 1
                         }
                     },
