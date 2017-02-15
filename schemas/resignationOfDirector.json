@@ -30,7 +30,7 @@
                     },
                     "x-hints": {
                         "form": {
-                            "selectFromSource": "company.directors",
+                            "sourceLocation": "company.directors",
                             "source": "name"
                         }
                     },

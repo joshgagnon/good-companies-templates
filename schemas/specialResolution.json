@@ -84,7 +84,7 @@
                                 "x-hints": {
                                     "form": {
                                         "addItem": "Add Shareholder",
-                                        "selectFromSource": "company.shareholders",
+                                        "sourceLocation": "company.shareholders",
                                         "source": "name"
                                     }
                                 },
