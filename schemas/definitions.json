@@ -24,7 +24,7 @@
             },
             "x-hints": {
                 "form": {
-                    "selectFromSource": "company.directors",
+                    "sourceLocation": "company.directors",
                     "source": "name"
                 }
             },
@@ -52,7 +52,7 @@
             },
             "x-hints": {
                 "form": {
-                    "selectFromSource": "company.shareholders",
+                    "sourceLocation": "company.shareholders",
                     "source": "name"
                 }
             },
@@ -130,7 +130,7 @@
             },
             "x-hints": {
                 "form": {
-                    "selectFromSource": "company.directors",
+                    "sourceLocation": "company.directors",
                     "source": "name"
                 }
             },
@@ -143,15 +143,20 @@
                 "form": { "inputComponent": "date" }
             }
         },
-        "signingWithOptionalSignatories": {
+        "signingByShareholdings": {
             "type": "array",
-            "title": "Signing Entities",
+            "title": "Signing Allocations",
             "items": {
                 "type": "object",
                 "properties": {
                     "name": {
                         "type": "string",
-                        "title": "Name"
+                        "title": "Allocation"
+                    },
+                    "holders": {
+                        "x-hints": {
+                            "form": { "display": "hidden" }
+                        }
                     },
                     "signingMethod": {
                         "title": "Signing Method",
@@ -182,26 +187,41 @@
                                         }
                                     },
                                     "x-hints": {
-                                        "form": { "addItem": "Add Signatory" }
+                                        "form": {
+                                            "addItem": "Add Signatory",
+                                            "sourceLocation": "../../holders",
+                                            "source": [
+                                                { "field": "name", "property": "name" }
+                                            ]
+                                        }
                                     },
                                     "required": ["name"]
                                 },
-                                "default": [{}],
                                 "minItems": 1
                             }
                         }
                     }
                 ],
-                "required": ["name", "signingMethod"],
+                "required": ["name", "signatories", "signingMethod"],
                 "x-hints": {
                     "form": {
-                        "addItem": "Add Signing Entity",
+                        "sourceLocation": "company.holdingsAndHolders",
+                        "source": [
+                            { "field": "name", "property": "name" },
+                            { "field": "holders", "property": "holders" }
+                        ],
+                        "addItem": "Add Signing Allocation",
                         "selector": "signingMethod"
                     }
                 }
             },
-            "default": [{ "signingMethod": "Signing personally" }],
-            "minItems": 0
+            "default": [{
+                "signingMethod": "Signing personally",
+                "signatories": [{
+                    "name": ""
+                }]
+            }],
+            "minItems": 1
         }
     }
 }

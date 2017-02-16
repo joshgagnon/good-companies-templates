@@ -54,10 +54,10 @@
     </text:a>
 {%- endmacro %}
 
-{% macro signature_table(people, name_attribute=null, exclude_non_natural=false) %}
+{% macro signature_table(people, name_attribute=null) %}
     {% set peopleGroups = people | groupby('signingMethod') %}
     {% set signingPersonally = peopleGroups['Signing personally'] %}
-    {% set signedBySignatories = peopleGroups['Signed for by authorised signatory/signatories'] %}
+    {% set shareholdings = peopleGroups['Signed for by authorised signatory/signatories'] %}
     
     {% for batchedPeople in signingPersonally | batch(2) %}
         <table:table table:name="Signature Table" table:style-name="signature_table">
@@ -82,27 +82,26 @@
         </table:table>
     {% endfor %}
 
-    {% for person in signedBySignatories %}
+    {% for shareholding in shareholdings %}
         {{ blank_table_line() }}
-
-        <text:p text:style-name="text_normal">Signed on behalf of <text:span text:style-name="bold">{{ person | get_value(name_attribute) }}</text:span> by:</text:p>
-        {% for batchedPeople in person.signatories | batch(2) %}
+        <text:p text:style-name="text_normal">Signed on behalf of <text:span text:style-name="bold">{{ shareholding.name }}</text:span> by:</text:p>
+        
+        {% for batchedSignatories in shareholding.signatories | batch(2) %}
             <table:table table:name="Signature Table" table:style-name="signature_table">
-
                 <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
 
                 <table:table-row table:style-name="signature_table_row">
                     <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
                         {{ table_signature_line() }}
 
-                        <text:p text:style-name="text_normal">Signature of {{ batchedPeople[0] | get_value(name_attribute) }}</text:p>
+                        <text:p text:style-name="text_normal">Signature of {{ batchedSignatories[0] | get_value(name_attribute) }}</text:p>
                     </table:table-cell>
 
-                    {% if batchedPeople[1] %}
+                    {% if batchedSignatories[1] %}
                         <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
                             {{ table_signature_line() }}
 
-                            <text:p text:style-name="text_normal">Signature of {{ batchedPeople[1] | get_value(name_attribute) }}</text:p>
+                            <text:p text:style-name="text_normal">Signature of {{ batchedSignatories[1] | get_value(name_attribute) }}</text:p>
                         </table:table-cell>
                     {% endif %}
                 </table:table-row>

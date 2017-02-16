@@ -47,23 +47,7 @@
                             "$ref": "#/definitions/date",
                             "title": "Date of Written Resolution"
                         },
-                        "shareholders": {
-                            "$ref": "#/definitions/signingWithOptionalSignatories",
-                            "title": "Shareholders",
-                            "items": {
-                                "properties": {
-                                    "name": { "title": "Shareholder name" }
-                                },
-                                "x-hints": {
-                                    "form": {
-                                        "selectFromSource": "company.shareholders",
-                                        "source": "name",
-                                        "addItem": "Add Shareholder"
-                                    }
-                                }
-                            },
-                            "minItems": 1
-                        }
+                        "signatures": { "$ref": "#/definitions/signingByShareholdings" }
                     },
                     "required": ["dateOfMinute"]
                 }
@@ -174,7 +158,7 @@
                                 },
                                 "x-hints": {
                                     "form": {
-                                        "selectFromSource": "company.directors",
+                                        "sourceLocation": "company.directors",
                                         "source": "name"
                                     }
                                 },
