@@ -43,7 +43,7 @@
 
     {% if resolutionOptions.resolutionType == 'Ordinary Resolution at Shareholder Meeting' %}
         <text:p text:style-name="text_normal">
-            Each of the above {{ helpers.pluralise(resolutions, 'resolution was', 'resolutions was') }} approved as an ordinary resolution of the Company’s shareholders by a simple majority of the votes of those shareholders entitled to vote and voting on the question.
+            {{ helpers.pluralise(resolutions, 'The above resolution was', 'Each of the above resolutions was') }} approved as an ordinary resolution of the Company’s shareholders by a simple majority of the votes of those shareholders entitled to vote and voting on the question.
         </text:p>
     {% else %}
         <text:p text:style-name="text_normal">
