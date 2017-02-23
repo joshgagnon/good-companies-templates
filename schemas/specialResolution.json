@@ -70,29 +70,7 @@
                                 }
                             }
                         },
-                        "shareholders": {
-                            "type": "array",
-                            "title": "Shareholders",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "title": "Shareholder name"
-                                    }
-                                },
-                                "x-hints": {
-                                    "form": {
-                                        "addItem": "Add Shareholder",
-                                        "sourceLocation": "company.shareholders",
-                                        "source": "name"
-                                    }
-                                },
-                                "required": ["name"]
-                            },
-                            "default": [{}],
-                            "minItems": 1
-                        }
+                        "signatures": { "$ref": "#/definitions/signingByShareholdings" }
                     },
                     "required": ["dateOfMinute"]
                 }
