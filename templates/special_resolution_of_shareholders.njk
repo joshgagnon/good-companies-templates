@@ -21,7 +21,7 @@
     </text:p>
 
     {% call blocks.normal_list() %}
-        {% for resolution in resolutions %} 
+        {% for resolution in resolutions %}
             <text:list-item>
                 <text:p text:style-name="text_normal">
                     {% if resolution.resolutionType == 'Adopt Constitution' %}
@@ -46,7 +46,7 @@
 
     {% if resolutionOptions.resolutionType == 'Special Resolution at Shareholder Meeting' %}
         <text:p text:style-name="text_normal">
-            {{ helpers.pluralise(resolutions, 'The above resolution was', 'Each of the above resolutions were') }} approved as a special resolution of the Company’s shareholders by a majority of 75% or, if a higher majority is required by the constitution, that higher majority, of the votes of those shareholders entitled to vote and voting on the question.
+            {{ helpers.pluralise(resolutions, 'The above resolution was', 'Each of the above resolutions was') }} approved as a special resolution of the Company’s shareholders by a majority of 75% or, if a higher majority is required by the constitution, that higher majority, of the votes of those shareholders entitled to vote and voting on the question.
         </text:p>
 
         <text:p text:style-name="text_normal">

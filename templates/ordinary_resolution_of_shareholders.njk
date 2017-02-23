@@ -16,12 +16,12 @@
         {% if resolutionOptions.resolutionType == 'Special Resolution at Shareholder Meeting' %}
             This minute records that on {{ dateOfShareholderMeeting }} the shareholders of the Company held a meeting, during which the following {{ helpers.pluralise(resolutions, 'resolution was', 'resolutions were') }} passed:
         {% else %}
-            The shareholders of the Company named below hereby resolve in accordance with section 122 of the Companies Act 1993: 
-        {% endif %} 
+            The shareholders of the Company named below hereby resolve in accordance with section 122 of the Companies Act 1993:
+        {% endif %}
     </text:p>
 
     {% call blocks.normal_list() %}
-        {% for resolution in resolutions %} 
+        {% for resolution in resolutions %}
             <text:list-item>
                 <text:p text:style-name="text_normal">
                     {% if resolution.resolutionType == 'Appoint Director' %}
@@ -43,7 +43,7 @@
 
     {% if resolutionOptions.resolutionType == 'Special Resolution at Shareholder Meeting' %}
         <text:p text:style-name="text_normal">
-            Each of the above {{ helpers.pluralise(resolutions, 'resolution was', 'resolutions were') }} approved as an ordinary resolution of the Company’s shareholders by a simple majority of the votes of those shareholders entitled to vote and voting on the question.
+            Each of the above {{ helpers.pluralise(resolutions, 'resolution was', 'resolutions was') }} approved as an ordinary resolution of the Company’s shareholders by a simple majority of the votes of those shareholders entitled to vote and voting on the question.
         </text:p>
     {% else %}
         <text:p text:style-name="text_normal">
@@ -75,7 +75,7 @@
         <text:p text:style-name="text_normal">
             This minute is certified as true and correct by {{ resolutionOptions.chairperson.name }}, who chaired the shareholders’ meeting.
         </text:p>
-        
+
         <text:p text:style-name="text_normal">Signed by {{ resolutionOptions.chairperson.name }} as chairperson:</text:p>
 
         {{ components.signature_line() }}

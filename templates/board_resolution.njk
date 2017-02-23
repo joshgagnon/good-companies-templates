@@ -53,8 +53,7 @@
     {% endcall %}
 
     <text:p text:style-name="text_normal">
-        The above resolution/Each of the above resolutions was approved as a
-
+        {{ helpers.pluralise(resolutions, 'The above resolution was', 'Each of the above resolutions was') }} approved as a
         {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
             resolution of the Company’s board, by either being agreed to by all directors present or having a majority of the votes cast on it being in favour.
         {% else %}
