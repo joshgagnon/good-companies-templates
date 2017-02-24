@@ -49,16 +49,16 @@
         text:style-name="internet_link"
         xlink:href="{{ link }}"
         xlink:type="simple">
-    
+
         {{- text -}}
     </text:a>
 {%- endmacro %}
 
 {% macro signature_table(people, name_attribute=null) %}
     {% set peopleGroups = people | groupby('signingMethod') %}
-    {% set signingPersonally = peopleGroups['Signing personally'] %}
-    {% set shareholdings = peopleGroups['Signed for by authorised signatory/signatories'] %}
-    
+    {% set signingPersonally = peopleGroups['Signing personally'] or [] %}
+    {% set shareholdings = peopleGroups['Signed for by authorised signatory/signatories']  or [] %}
+
     {% for batchedPeople in signingPersonally | batch(2) %}
         <table:table table:name="Signature Table" table:style-name="signature_table">
 
@@ -85,7 +85,7 @@
     {% for shareholding in shareholdings %}
         {{ blank_table_line() }}
         <text:p text:style-name="text_normal">Signed on behalf of <text:span text:style-name="bold">{{ shareholding.name }}</text:span> by:</text:p>
-        
+
         {% for batchedSignatories in shareholding.signatories | batch(2) %}
             <table:table table:name="Signature Table" table:style-name="signature_table">
                 <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
