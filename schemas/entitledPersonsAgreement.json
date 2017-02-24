@@ -26,20 +26,10 @@
                     ]
                 },
                 "entitledParties": {
-                    "$ref": "#/definitions/shareholdersList",
+                    "$ref": "#/definitions/signingByShareholdings",
                     "title": "Parties",
-                    "items": {
-                        "properties": {
-                            "name": { "title": "Entitled Person's Name" }
-                        },
-                        "x-hints": {
-                            "form": { "addItem": "Add Entitled Party" }
-                        },
-                        "required": ["name"]
-                    },
-                    "minItems": 1,
                     "x-hints": {
-                        "form": { "defaultSource": "company.shareholders" }
+                        "form": { "defaultSource": "company.holdingsAndHolders" }
                     }
                 }
             },
