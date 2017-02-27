@@ -9,6 +9,23 @@
         "transaction": {
             "type": "object",
             "properties": {
+                "referenceToAgreement": {
+                    "title": "Reference to agreement (if any)",
+                    "type": "string"
+                },
+                "effectiveDateString": {
+                    "title": "Date",
+                    "type": "string",
+                    "x-hints" : {
+                        "form": {
+                          "inputComponent": "date"
+                        }
+                    }
+                },
+                "consideration": {
+                    "title": "Consideration",
+                    "type": "string"
+                },
                 "transferors": {
                     "type": "array",
                     "title": "Transferors",
@@ -79,36 +96,33 @@
                     "minItems": 1,
                     "default": [{}]
                 },
-                "referenceToAgreement": {
-                    "title": "Reference to agreement (if any)",
-                    "type": "string"
-                },
-                "effectiveDateString": {
-                    "title": "Date",
-                    "type": "string",
-                    "x-hints" : {
-                        "form": {
-                          "inputComponent": "date"
+                "parcels": {
+                    "type": "array",
+                    "title": "Share Parcels",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "shareClass": {
+                                "type": "string",
+                                "title": "Share Class"
+                            },
+                            "amount": {
+                                "type": "number",
+                                "title": "Number of Shares"
+                            }
+                        },
+                        "x-hints": {
+                            "form": {
+                                "addItem": "Add Share Parcel"
+                            }
                         }
-                    }
-                },
-                "shareClass": {
-                    "title": "Share Class",
-                    "type": "string"
-                },
-                "amount": {
-                    "title": "Number of Shares",
-                    "type": "number",
-                    "minimum": 1,
-                    "maximum": 1000000000
-                },
-                "consideration": {
-                    "title": "Consideration",
-                    "type": "string"
+                    },
+                    "minItems": 1,
+                    "default": [{}]
                 }
             },
             "required": [
-                "effectiveDateString", "shareClass", "amount"
+                "effectiveDateString", "shareClass", "amount", "parcels"
             ]
         }
     },

@@ -40,12 +40,20 @@
         -->
         <table:table-row>
             <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
-                <text:p text:style-name="table_contents">Number to be Transferred</text:p>
+                <text:p text:style-name="table_contents">Shares to be Transferred</text:p>
             </table:table-cell>
             <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
-                <text:p text:style-name="table_contents">
-                    {{ transaction.amount }}
-                </text:p>
+                {% for parcel in transaction.parcels %}
+                    <text:p text:style-name="table_contents">
+                        {{ parcel.amount }} {{ parcel.shareClass }}
+
+                        {% if parcel.amount == 1 %}
+                            Share
+                        {% else %}
+                            Shares
+                        {% endif %}
+                    </text:p>
+                {% endfor %}
             </table:table-cell>
         </table:table-row>
 
