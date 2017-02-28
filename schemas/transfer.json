@@ -115,7 +115,8 @@
                             "form": {
                                 "addItem": "Add Share Parcel"
                             }
-                        }
+                        },
+                        "required": ["shareClass", "amount"]
                     },
                     "minItems": 1,
                     "default": [{}]
