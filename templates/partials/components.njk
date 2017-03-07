@@ -56,8 +56,14 @@
 
 {% macro signature_table(people, name_attribute=null) %}
     {% set peopleGroups = people | groupby('signingMethod') %}
-    {% set signingPersonally = peopleGroups['Signing personally'] or [] %}
-    {% set shareholdings = peopleGroups['Signed for by authorised signatory/signatories']  or [] %}
+    
+    {% if peopleGroups['undefined'] %}
+        {% set signingPersonally = peopleGroups['undefined'] or [] %}
+        {% set shareholdings =  [] %}
+    {% else %}
+        {% set signingPersonally = peopleGroups['Signing personally'] or [] %}
+        {% set shareholdings = peopleGroups['Signed for by authorised signatory/signatories'] or [] %}
+    {% endif %}
 
     {% for batchedPeople in signingPersonally | batch(2) %}
         <table:table table:name="Signature Table" table:style-name="signature_table">
