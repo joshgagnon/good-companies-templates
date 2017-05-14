@@ -120,26 +120,6 @@
                     },
                     "minItems": 1,
                     "default": [{}]
-                },
-                "witnesses": {
-                    "type": "array",
-                    "title": "Witnesses",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "title": "Name"
-                            }
-
-                        },
-                        "x-hints": {
-                            "form": {
-                                "addItem": "Add Witness"
-                            }
-                        },
-                        "required": ["name"]
-                    }
                 }
             },
             "required": [
