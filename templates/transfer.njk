@@ -11,7 +11,7 @@
     <table:table table:name="Layout Table" table:style-name="layout_table">
         <table:table-column table:style-name="layout_table_column" />
         <table:table-column table:style-name="layout_table_column" />
-        
+
         <table:table-row>
             <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
                 <text:p text:style-name="table_contents">Entity Details</text:p>
@@ -181,7 +181,7 @@
 
                         Transferor:
                     </text:p>
-                    
+
                     {{ components.table_signature_line() }}
 
                     {{ components.blank_table_line() }}
@@ -189,7 +189,7 @@
 
                 {% for holding in transaction.transferees %}
                     <text:p text:style-name="table_contents">
-                        Signed by 
+                        Signed by
 
                         {% if holding.behalfOf %}
                             {{ holding.behalfOf }} on behalf of the
@@ -208,6 +208,30 @@
                 {% endfor %}
             </table:table-cell>
         </table:table-row>
+
+        <!--
+        **  Witnesses
+        -->
+        {% if transaction.witnesses.length %}
+        <table:table-row>
+            <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
+                <text:p text:style-name="table_contents">Witnessed By</text:p>
+            </table:table-cell>
+
+            <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
+                {% for witness in transaction.witnesses %}
+                    <text:p text:style-name="table_contents">
+                        {{ witness.name }}
+                    </text:p>
+
+                    {{ components.table_signature_line() }}
+
+                    {{ components.blank_table_line() }}
+                {% endfor %}
+            </table:table-cell>
+        </table:table-row>
+        {% endif %}
     </table:table>
+
 
 {% endblock %}
