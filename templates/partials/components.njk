@@ -103,9 +103,9 @@
                 <text:span text:style-name="bold">{{ signatory.capacity.of }}</text:span>
             {% endif %}
         {% else %}
-            oh behalf of {{ signatory.capacity.parties | join_and('name') }}
+            oh behalf of {{ signatory.signingMethod.parties | join_and('name') }}
             
-            {% if signatory.signingMethod == 'on behalf of with capacity' %}
+            {% if signatory.signingMethod.capacityType != 'No Capacity' %}
                 as {{ signatory.signingMethod.capacityType }}
             {% endif %}
         {% endif %}
