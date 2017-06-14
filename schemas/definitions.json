@@ -288,11 +288,10 @@
                                 "properties": {
                                     "signingMethod": {
                                         "title": "Signing Method",
-                                        "enum": ["personally", "on behalf of", "on behalf of with capacity"],
+                                        "enum": ["personally", "on behalf of"],
                                         "enumNames": [
                                             "Signing personally",
-                                            "Signing on behalf of",
-                                            "Signing on behalf of, with capacity"
+                                            "Signing on behalf of"
                                         ]
                                     }
                                 },
@@ -306,32 +305,6 @@
                                     {
                                         "properties": {
                                             "signingMethod": { "enum": ["on behalf of"] },
-                                            "parties": {
-                                                "type": "array",
-                                                "title": "Parties",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string",
-                                                            "title": "Signatory Name"
-                                                        }
-                                                    },
-                                                    "required": ["name"],
-                                                    "x-hints": {
-                                                        "form": {
-                                                            "addItem": "Add Party"
-                                                        }
-                                                    }
-                                                },
-                                                "minItems": 1,
-                                                "default": [{}]
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "properties": {
-                                            "signingMethod": { "enum": ["on behalf of with capacity"] },
                                             "capacityTypes": { "$ref": "#/definitions/capacityTypes" },
                                             "parties": {
                                                 "type": "array",
