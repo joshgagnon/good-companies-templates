@@ -86,20 +86,28 @@
     <text:p text:style-name="text_normal">
         Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
 
-        {% if signatory.capacity.capacityType != 'No Capacity' %}
-            as
+        {% if signatory.signingMethod == 'personally' %}
+            {% if signatory.capacity.capacityType != 'No Capacity' %}
+                as
 
-            <text:span text:style-name="bold">
-                {% if signatory.capacity.capacityType == '[Custom]' %}
-                    {{ signatory.capacity.customCapacity }}
-                {% else %}
-                    {{ signatory.capacity.capacityType }}
-                {% endif %}
-            </text:span>
+                <text:span text:style-name="bold">
+                    {% if signatory.capacity.capacityType == '[Custom]' %}
+                        {{ signatory.capacity.customCapacity }}
+                    {% else %}
+                        {{ signatory.capacity.capacityType }}
+                    {% endif %}
+                </text:span>
 
-            of
+                of
 
-            <text:span text:style-name="bold">{{ signatory.capacity.of }}</text:span>
+                <text:span text:style-name="bold">{{ signatory.capacity.of }}</text:span>
+            {% endif %}
+        {% else %}
+            oh behalf of {{ signatory.capacity.parties | join_and('name') }}
+            
+            {% if signatory.signingMethod == 'on behalf of with capacity' %}
+                as {{ signatory.signingMethod.capacityType }}
+            {% endif %}
         {% endif %}
     </text:p>
 {% endmacro %}
