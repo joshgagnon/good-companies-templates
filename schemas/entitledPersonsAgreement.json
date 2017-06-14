@@ -33,14 +33,14 @@
                             "items": {
                                  "x-hints": {
                                      "form": {
-                                        "sourceLocation":  "company.holdingsAndHolders",
+                                        "sourceLocation":  "company.shareholders",
                                         "source": "name"
                                     }
                                 }
                             },
                             "x-hints": {
                                 "form": {
-                                    "defaultSource": "company.holdingsAndHolders"
+                                    "defaultSource": "company.shareholdingVotingList"
                                 }
                             }
                         }
