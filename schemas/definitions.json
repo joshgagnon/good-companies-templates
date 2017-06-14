@@ -306,7 +306,7 @@
                                     {
                                         "properties": {
                                             "signingMethod": { "enum": ["on behalf of"] },
-                                            "signatories": {
+                                            "parties": {
                                                 "type": "array",
                                                 "title": "Parties",
                                                 "items": {
@@ -333,7 +333,7 @@
                                         "properties": {
                                             "signingMethod": { "enum": ["on behalf of with capacity"] },
                                             "capacityTypes": { "$ref": "#/definitions/capacityTypes" },
-                                            "signatories": {
+                                            "parties": {
                                                 "type": "array",
                                                 "title": "Parties",
                                                 "items": {
