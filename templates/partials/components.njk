@@ -54,64 +54,144 @@
     </text:a>
 {%- endmacro %}
 
-{% macro signature_table(people, name_attribute=null) %}
-    {% set peopleGroups = people | groupby('signingMethod') %}
-    
-    {% if peopleGroups['undefined'] %}
-        {% set signingPersonally = peopleGroups['undefined'] or [] %}
-        {% set shareholdings =  [] %}
-    {% else %}
-        {% set signingPersonally = peopleGroups['Signing personally'] or [] %}
-        {% set shareholdings = peopleGroups['Signed for by authorised signatory/signatories'] or [] %}
+
+
+{% macro witness_block() %}
+    {{ table_signature_line() }}
+    <text:p text:style-name="text_normal">Signature of witness</text:p>
+
+    {{ table_signature_line() }}
+    <text:p text:style-name="text_normal">Full name of witness</text:p>
+
+    {{ table_signature_line() }}
+    <text:p text:style-name="text_normal">Occupation of witness</text:p>
+
+    {{ table_signature_line() }}
+    <text:p text:style-name="text_normal">Address of witness</text:p>
+{% endmacro %}
+
+{% macro signature_block(signatory, dated) %}
+    {{ table_signature_line() }}
+    <text:p text:style-name="text_normal">
+        Signature of {{ signatory.name }}
+    </text:p>
+
+    {% if dated %}
+        {{ table_signature_line() }}
+        <text:p text:style-name="text_normal">Date Signed</text:p>
+    {% endif %}
+{% endmacro %}
+
+{% macro signature_block_heading(signatory) %}
+    <text:p text:style-name="text_normal">
+        Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
+
+        {% if signatory.capacity.capacityType != 'No Capacity' %}
+            as
+
+            <text:span text:style-name="bold">
+                {% if signatory.capacity.capacityType == '[Custom]' %}
+                    {{ signatory.capacity.customCapacity }}
+                {% else %}
+                    {{ signatory.capacity.capacityType }}
+                {% endif %}
+            </text:span>
+
+            of
+
+            <text:span text:style-name="bold">{{ signatory.capacity.of }}</text:span>
+        {% endif %}
+    </text:p>
+{% endmacro %}
+
+{% macro signature_table(data, name_attribute=null) %}
+    {% set signaturesIndividuallyDated = (data.signingDate.signingOnSameDay == 'no') %}
+    {% set requiresWitnessing = (data.requiresWitnessing == 'yes') %}
+
+    <text:h text:style-name="heading_3">
+        {% if requiresWitnessing %}
+            EXECUTED AND DELIVERED AS A DEED
+        {% else %}
+            SIGNATURES
+        {% endif %}
+    </text:h>
+
+    {% if not signaturesIndividuallyDated %}
+        <text:h text:style-name="heading_3">Signing Date {{ data.signingDate.date }}</text:h>
     {% endif %}
 
-    {% for batchedPeople in signingPersonally | batch(2) %}
+    {% if requiresWitnessing %}
+        {#
+         # Signature table with witnessing
+         #}
+
         <table:table table:name="Signature Table" table:style-name="signature_table">
-
             <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
-
-            <table:table-row table:style-name="signature_table_row">
-                <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                    <text:p text:style-name="text_normal">Signed by <text:span text:style-name="bold">{{ batchedPeople[0] | get_value(name_attribute) }}</text:span></text:p>
-
-                    {{ table_signature_line() }}
-                </table:table-cell>
-
-                {% if batchedPeople[1] %}
-                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        <text:p text:style-name="text_normal">Signed by <text:span text:style-name="bold">{{ batchedPeople[1] | get_value(name_attribute) }}</text:span></text:p>
-
-                        {{ table_signature_line() }}
-                    </table:table-cell>
-                {% endif %}
-            </table:table-row>
-        </table:table>
-    {% endfor %}
-
-    {% for shareholding in shareholdings %}
-        {{ blank_table_line() }}
-        <text:p text:style-name="text_normal">Signed on behalf of <text:span text:style-name="bold">{{ shareholding.name }}</text:span> by:</text:p>
-
-        {% for batchedSignatories in shareholding.signatories | batch(2) %}
-            <table:table table:name="Signature Table" table:style-name="signature_table">
-                <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
-
+            
+            {% for signatory in data.signatories %}
+                {# Display the capacity in it's own row, so the signature lines line up #}
                 <table:table-row table:style-name="signature_table_row">
                     <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ table_signature_line() }}
-
-                        <text:p text:style-name="text_normal">Signature of {{ batchedSignatories[0] | get_value(name_attribute) }}</text:p>
+                        {{ signature_block_heading(signatory) }}
                     </table:table-cell>
-
-                    {% if batchedSignatories[1] %}
-                        <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                            {{ table_signature_line() }}
-
-                            <text:p text:style-name="text_normal">Signature of {{ batchedSignatories[1] | get_value(name_attribute) }}</text:p>
-                        </table:table-cell>
-                    {% endif %}
                 </table:table-row>
-            </table:table>
-        {% endfor %}
-    {% endfor %}
+
+                {# Print the signature and the witness block beside it #}
+                <table:table-row table:style-name="signature_table_row">
+                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                        {{ signature_block(signatory, signaturesIndividuallyDated) }}
+                    </table:table-cell>
+                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                        {{ witness_block() }}
+                    </table:table-cell>
+                </table:table-row>
+            {% endfor %}
+        </table:table>
+    {% else %}
+        {#
+         # Signature table without witnessing
+         #}
+
+        <table:table table:name="Signature Table Container" table:style-name="signature_table">
+            <table:table-column table:number-columns-repeated="1" table:style-name="signature_table_column"/>
+            
+            {% for batchedSignatories in data.signatories | batch(2) %}
+                {% set signatoryOne = batchedSignatories[0] %}
+                {% set signatoryTwo = batchedSignatories[1] %}
+                
+                <table:table-row table:style-name="signature_table_row">
+                    <table:table-cell office:value-type="string" table:style-name="signature_table_container_cell">
+                        <table:table table:name="Signature Table" table:style-name="signature_table">
+                            <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
+                                {# Display the capacities in their own row, so the signature lines line up #}
+                                <table:table-row table:style-name="signature_table_row">
+                                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                        {{ signature_block_heading(signatoryOne) }}
+                                    </table:table-cell>
+                                    
+                                    {% if signatoryTwo %}
+                                        <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                            {{ signature_block_heading(signatoryTwo) }}
+                                        </table:table-cell>
+                                    {% endif %}
+                                </table:table-row>
+
+                                {# Display the signatures #}
+                                <table:table-row table:style-name="signature_table_row">
+                                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                        {{ signature_block(signatoryOne, signaturesIndividuallyDated) }}
+                                    </table:table-cell>
+
+                                    {% if signatoryTwo %}
+                                        <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                            {{ signature_block(signatoryTwo, signaturesIndividuallyDated) }}
+                                        </table:table-cell>
+                                    {% endif %}
+                                </table:table-row>
+                        </table:table>
+                    </table:table-cell>
+                </table:table-row>
+            {% endfor %}
+        </table:table>
+    {% endif %}
 {% endmacro %}

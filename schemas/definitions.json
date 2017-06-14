@@ -143,85 +143,244 @@
                 "form": { "inputComponent": "date" }
             }
         },
-        "signingByShareholdings": {
-            "type": "array",
-            "title": "Signing Allocations",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "title": "Allocation"
+
+
+
+
+
+
+
+        "capacityTypes": {
+            "title": "Capacity",
+            "enum": [
+                "No Capacity",
+                "Authorised Signatory",
+                "Attorney",
+                "Personal Representative",
+                "Assignee",
+                "Director",
+                "Voting Shareholder",
+                "Trustee",
+                "[Custom]"
+            ]
+        },
+        "capacity": {
+            "type": "object",
+            "properties": {
+                "capacityType": { "$ref": "#/definitions/capacityTypes" }
+            },
+            "oneOf": [
+                { "properties": { "capacityType": { "enum": ["No Capacity"] } } },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Authorised Signatory"] },
+                        "of": { "type": "string", "title": "As Authorised Signatory of" }
                     },
-                    "holders": {
-                        "x-hints": {
-                            "form": { "display": "hidden" }
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Attorney"] },
+                        "of": { "type": "string", "title": "As Attorney of" }
+                    },
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Personal Representative"] },
+                        "of": { "type": "string", "title": "As Personal Representative of" }
+                    },
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Assignee"] },
+                        "of": { "type": "string", "title": "As Assignee of" }
+                    },
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Director"] },
+                        "of": { "type": "string", "title": "As Director of" }
+                    },
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Voting Shareholder"] },
+                        "of": { "type": "string", "title": "As Voting Shareholder of" }
+                    },
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["Trustee"] },
+                        "of": { "type": "string", "title": "As Trustee of" }
+                    },
+                    "required": ["capacityType", "of"]
+                },
+                {
+                    "properties": {
+                        "capacityType": { "enum": ["[Custom]"] },
+                        "customCapacity": { "type": "string", "title": "Custom Capacity" }
+                    },
+                    "required": ["capacityType", "customCapacity"]
+                }
+            ],
+            "required": ["capacityType"],
+            "x-hints": {
+                "form": { "selector": "capacityType" }
+            }
+        },
+        "signingByShareholdings": {
+            "type": "object",
+            "title": "Signatures",
+            "properties": {
+                "requiresWitnessing": {
+                    "title": "All Signatories must have witnesses",
+                    "enum": ["yes", "no"],
+                    "enumNames": ["Yes", "No"],
+                    "default": "yes"
+                },
+                "signingDate": {
+                    "type": "object",
+                    "properties": {
+                        "signingOnSameDay": {
+                            "title": "Signing on Same Day",
+                            "enum": ["yes", "no"],
+                            "enumNames": [
+                                "Signing on Same Day",
+                                "Signing on Different Days"
+                            ],
+                            "default": "yes"
                         }
                     },
-                    "signingMethod": {
-                        "title": "Signing Method",
-                        "enum": [
-                            "Signing personally",
-                            "Signed for by authorised signatory/signatories"
-                        ]
+                    "oneOf": [
+                        {
+                            "properties": {
+                                "signingOnSameDay": { "enum": ["yes"] },
+                                "date": {
+                                    "$ref": "#/definitions/date",
+                                    "title": "Appointment Date"
+                                }
+                            }
+                        },
+                        { "properties": { "signingOnSameDay": { "enum": ["no"] } } }
+                    ],
+                    "required": ["signingOnSameDay"],
+                    "x-hints": {
+                        "form": { "selector": "signingOnSameDay" }
                     }
                 },
-                "oneOf": [
-                    {
+                "signatories": {
+                    "title": "Signatories",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
                         "properties": {
-                            "signingMethod": { "enum": ["Signing personally"] }
-                        }
-                    },
-                    {
-                        "properties": {
-                            "signingMethod": { "enum": ["Signed for by authorised signatory/signatories"] },
-                            "signatories": {
-                                "type": "array",
-                                "title": "Signatories",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "name": {
-                                            "type": "string",
-                                            "title": "Signatory Name"
-                                        }
-                                    },
-                                    "x-hints": {
-                                        "form": {
-                                            "addItem": "Add Signatory",
-                                            "sourceLocation": "../../holders",
-                                            "source": [
-                                                { "field": "name", "property": "name" }
-                                            ]
-                                        }
-                                    },
-                                    "required": ["name"]
+                            "name": {
+                                "type": "string",
+                                "title": "Signatory"
+                            },
+                            "signingMethod": {
+                                "type": "object",
+                                "properties": {
+                                    "signingMethod": {
+                                        "title": "Signing Method",
+                                        "enum": ["personally", "on behalf of", "on behalf of with capacity"],
+                                        "enumNames": [
+                                            "Signing personally",
+                                            "Signing on behalf of",
+                                            "Signing on behalf of, with capacity"
+                                        ]
+                                    }
                                 },
-                                "minItems": 1
+                                "oneOf": [
+                                    {
+                                        "properties": {
+                                            "signingMethod": { "enum": ["personally"] },
+                                            "capacity": { "$ref": "#/definitions/capacity" }
+                                        }
+                                    },
+                                    {
+                                        "properties": {
+                                            "signingMethod": { "enum": ["on behalf of"] },
+                                            "signatories": {
+                                                "type": "array",
+                                                "title": "Parties",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Signatory Name"
+                                                        }
+                                                    },
+                                                    "required": ["name"],
+                                                    "x-hints": {
+                                                        "form": {
+                                                            "addItem": "Add Party"
+                                                        }
+                                                    }
+                                                },
+                                                "minItems": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "properties": {
+                                            "signingMethod": { "enum": ["on behalf of with capacity"] },
+                                            "capacity": { "$ref": "#/definitions/capacityTypes" },
+                                            "signatories": {
+                                                "type": "array",
+                                                "title": "Parties",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Signatory Name"
+                                                        }
+                                                    },
+                                                    "required": ["name"],
+                                                    "x-hints": {
+                                                        "form": {
+                                                            "addItem": "Add Party"
+                                                        }
+                                                    }
+                                                },
+                                                "minItems": 1
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": ["capacityType"],
+                                "x-hints": {
+                                    "form": {"selector": "signingMethod" }
+                                }
+                            }
+                        },
+                        "required": ["name", "party", "capacity"],
+                        "x-hints": {
+                            "form": {
+                                "addItem": "Add Signatory"
                             }
                         }
-                    }
-                ],
-                "required": ["name", "signatories", "signingMethod"],
-                "x-hints": {
-                    "form": {
-                        "sourceLocation": "company.holdingsAndHolders",
-                        "source": [
-                            { "field": "name", "property": "name" },
-                            { "field": "holders", "property": "holders" }
-                        ],
-                        "addItem": "Add Signing Allocation",
-                        "selector": "signingMethod"
-                    }
+                    },
+                    "minItems": 1,
+                    "default": { }
                 }
             },
-            "default": [{
-                "signingMethod": "Signing personally",
-                "signatories": [{
-                    "name": ""
-                }]
-            }],
-            "minItems": 1
+            "required": ["requiresWitnessing", "signingToday"],
+            "default": {
+                "requiresWitnessing": "yes",
+                "signingToday": "yes",
+                "signingOnSameDay": {
+                    "signingOnSameDay": "yes"
+                },
+                "signatories": []
+            }
         }
     }
 }
