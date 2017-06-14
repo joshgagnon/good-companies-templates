@@ -30,8 +30,18 @@
                     "title": "Parties",
                     "properties": {
                         "signatories": {
+                            "items": {
+                                 "x-hints": {
+                                     "form": {
+                                        "sourceLocation":  "company.holdingsAndHolders",
+                                        "source": "name"
+                                    }
+                                }
+                            },
                             "x-hints": {
-                                "form": { "defaultSource": "company.holdingsAndHolders" }
+                                "form": {
+                                    "defaultSource": "company.holdingsAndHolders"
+                                }
                             }
                         }
                     }
