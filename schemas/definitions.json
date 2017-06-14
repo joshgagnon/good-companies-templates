@@ -361,6 +361,9 @@
                                 }
                             }
                         },
+                        "default": {
+                            "signingMethod": {"signingMethod": "personally"}
+                        },
                         "required": ["name", "party", "capacity"],
                         "x-hints": {
                             "form": {
@@ -370,7 +373,7 @@
                     },
                     "minItems": 1,
                     "default": [{
-                        "signingMethod": "personally"
+                        "signingMethod": {"signingMethod": "personally"}
                     }]
                 }
             },
