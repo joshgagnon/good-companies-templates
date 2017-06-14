@@ -28,8 +28,12 @@
                 "entitledParties": {
                     "$ref": "#/definitions/signingByShareholdings",
                     "title": "Parties",
-                    "x-hints": {
-                        "form": { "defaultSource": "company.holdingsAndHolders" }
+                    "properties": {
+                        "signatories": {
+                            "x-hints": {
+                                "form": { "defaultSource": "company.holdingsAndHolders" }
+                            }
+                        }
                     }
                 }
             },
