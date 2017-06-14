@@ -223,9 +223,10 @@
                 {
                     "properties": {
                         "capacityType": { "enum": ["[Custom]"] },
-                        "customCapacity": { "type": "string", "title": "Custom Capacity" }
+                        "customCapacity": { "type": "string", "title": "Custom Capacity" },
+                        "of": { "type": "string", "title": "As [Custom Capacity] of" }
                     },
-                    "required": ["capacityType", "customCapacity"]
+                    "required": ["capacityType", "customCapacity", "of"]
                 }
             ],
             "required": ["capacityType"],
@@ -233,15 +234,51 @@
                 "form": { "selector": "capacityType" }
             }
         },
+
+        "signingMethodOptions": {
+            "personally": {
+                "properties": {
+                    "signingMethod": { "enum": ["personally"] },
+                    "capacity": { "$ref": "#/definitions/capacity" }
+                }
+            },
+            "onBehalfOf": {
+                "properties": {
+                    "signingMethod": { "enum": ["on behalf of"] },
+                    "capacityType": { "$ref": "#/definitions/capacityTypes" },
+                    "parties": {
+                        "type": "array",
+                        "title": "Signing on Behalf of",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Party Name"
+                                }
+                            },
+                            "required": ["name"],
+                            "x-hints": {
+                                "form": {
+                                    "addItem": "Add Party",
+                                    "controls": "inline"
+                                }
+                            }
+                        },
+                        "minItems": 1
+                    }
+                }
+            }
+        },
+
         "signingByShareholdings": {
             "type": "object",
             "title": "Signatures",
             "properties": {
                 "requiresWitnessing": {
                     "title": "All Signatories must have witnesses",
-                    "enum": ["yes", "no"],
-                    "enumNames": ["Yes", "No"],
-                    "default": "yes"
+                    "enum": ["no", "yes"],
+                    "enumNames": ["No", "Yes"]
                 },
                 "signingDate": {
                     "type": "object",
@@ -296,39 +333,8 @@
                                     }
                                 },
                                 "oneOf": [
-                                    {
-                                        "properties": {
-                                            "signingMethod": { "enum": ["personally"] },
-                                            "capacity": { "$ref": "#/definitions/capacity" }
-                                        }
-                                    },
-                                    {
-                                        "properties": {
-                                            "signingMethod": { "enum": ["on behalf of"] },
-                                            "capacityType": { "$ref": "#/definitions/capacityTypes" },
-                                            "parties": {
-                                                "type": "array",
-                                                "title": "Signing on Behalf of",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string",
-                                                            "title": "Party Name"
-                                                        }
-                                                    },
-                                                    "required": ["name"],
-                                                    "x-hints": {
-                                                        "form": {
-                                                            "addItem": "Add Party",
-                                                            "controls": "inline"
-                                                        }
-                                                    }
-                                                },
-                                                "minItems": 1
-                                            }
-                                        }
-                                    }
+                                    {"$ref": "#/definitions/signingMethodOptions/personally"},
+                                    {"$ref": "#/definitions/signingMethodOptions/onBehalfOf"}
                                 ],
                                 "x-hints": {
                                     "form": {"selector": "signingMethod" }
@@ -353,7 +359,7 @@
             },
             "required": ["requiresWitnessing", "signingToday"],
             "default": {
-                "requiresWitnessing": "yes",
+                "requiresWitnessing": "no",
                 "signingToday": "yes",
                 "signingOnSameDay": {
                     "signingOnSameDay": "yes"
