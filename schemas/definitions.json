@@ -308,7 +308,7 @@
                                             "capacityType": { "$ref": "#/definitions/capacityTypes" },
                                             "parties": {
                                                 "type": "array",
-                                                "title": "Parties",
+                                                "title": "Signing on Behalf of",
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
@@ -320,7 +320,8 @@
                                                     "required": ["name"],
                                                     "x-hints": {
                                                         "form": {
-                                                            "addItem": "Add Party"
+                                                            "addItem": "Add Party",
+                                                            "controls": "inline"
                                                         }
                                                     }
                                                 },
