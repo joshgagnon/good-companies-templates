@@ -305,7 +305,7 @@
                                     {
                                         "properties": {
                                             "signingMethod": { "enum": ["on behalf of"] },
-                                            "capacityTypes": { "$ref": "#/definitions/capacityTypes" },
+                                            "capacityType": { "$ref": "#/definitions/capacityTypes" },
                                             "parties": {
                                                 "type": "array",
                                                 "title": "Parties",
@@ -314,7 +314,7 @@
                                                     "properties": {
                                                         "name": {
                                                             "type": "string",
-                                                            "title": "Signatory Name"
+                                                            "title": "Party Name"
                                                         }
                                                     },
                                                     "required": ["name"],
@@ -334,6 +334,9 @@
                                 }
                             }
                         },
+                        "default": {
+                            "signingMethod": {"signingMethod": "personally"}
+                        },
                         "required": ["name", "party", "capacity"],
                         "x-hints": {
                             "form": {
@@ -343,7 +346,7 @@
                     },
                     "minItems": 1,
                     "default": [{
-                        "signingMethod": "personally"
+                        "signingMethod": {"signingMethod": "personally"}
                     }]
                 }
             },
