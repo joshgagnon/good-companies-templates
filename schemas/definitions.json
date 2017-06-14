@@ -356,7 +356,6 @@
                                         }
                                     }
                                 ],
-                                "required": ["capacityType"],
                                 "x-hints": {
                                     "form": {"selector": "signingMethod" }
                                 }
