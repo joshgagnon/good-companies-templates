@@ -134,7 +134,7 @@
                                 },
                                 "required": ["power", "details"]
                             },
-                            "default": [{ "power": "Dividends" }],
+                            "default": [{}],
                             "minItems": 1
                         }
                     }
