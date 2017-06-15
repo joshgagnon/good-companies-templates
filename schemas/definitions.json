@@ -300,9 +300,10 @@
                                 "signingOnSameDay": { "enum": ["yes"] },
                                 "date": {
                                     "$ref": "#/definitions/date",
-                                    "title": "Appointment Date"
+                                    "title": "Signing Date"
                                 }
-                            }
+                            },
+                            "required": ["date"]
                         },
                         { "properties": { "signingOnSameDay": { "enum": ["no"] } } }
                     ],
