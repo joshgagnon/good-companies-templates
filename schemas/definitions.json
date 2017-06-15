@@ -353,7 +353,12 @@
                     },
                     "minItems": 1,
                     "default": [{
-                        "signingMethod": {"signingMethod": "personally"}
+                        "signingMethod": {
+                            "signingMethod": "personally",
+                            "capacity": {
+                                "capacityType": "No Capacity"
+                            }
+                        }
                     }]
                 }
             },
@@ -361,9 +366,7 @@
             "default": {
                 "requiresWitnessing": "no",
                 "signingToday": "yes",
-                "signingOnSameDay": {
-                    "signingOnSameDay": "yes"
-                }
+                "signingOnSameDay": { "signingOnSameDay": "yes" }
             }
         }
     }
