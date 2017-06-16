@@ -48,6 +48,10 @@
                 <text:list-item>
                     <text:p text:style-name="text_normal">That {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} be appointed or confirmed as the board’s sole agent for submitting necessary changes or documents to the companies register and the Registrar, and that, unless {{ resolution.resolutionOptions.nameOfAuthorisedAgent }} is unwilling or unable to make any required submission in a timely manner, no other person be authorised to submit such changes or documents on behalf of the board.</text:p>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == 'Change Registered Office' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That the Company change its registered office to {{ resolution.resolutionOptions.newAddress }} with effect from {{ resolution.resolutionOptions.effectiveDate | timestamp_to_date }}, and that notice of the change be given to the Registrar of Companies in the prescribed form no later than {{ resolution.resolutionOptions.dateOfNotice | timestamp_to_date }}.</text:p>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}

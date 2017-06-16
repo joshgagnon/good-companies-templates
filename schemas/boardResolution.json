@@ -95,7 +95,8 @@
                             "Custom",
                             "Change Company Name",
                             "Records in Good Companies",
-                            "Agent for Company Changes"
+                            "Agent for Company Changes",
+                            "Change Registered Office"
                         ]
                     }
                 },
@@ -109,9 +110,7 @@
                 "oneOf": [
                     {
                         "properties": {
-                            "individualResolutionType": {
-                                "enum": ["Custom"]
-                            },
+                            "individualResolutionType": { "enum": ["Custom"] },
                             "resolutionOptions": {
                                 "type": "object",
                                 "properties": {
@@ -129,9 +128,7 @@
                     },
                     {
                         "properties": {
-                            "individualResolutionType": {
-                                "enum": ["Change Company Name"]
-                            },
+                            "individualResolutionType": { "enum": ["Change Company Name"] },
                             "resolutionOptions": {
                                 "type": "object",
                                 "properties": {
@@ -153,16 +150,12 @@
                     },
                     {
                         "properties": {
-                            "individualResolutionType": {
-                                "enum": ["Records in Good Companies"]
-                            }
+                            "individualResolutionType": { "enum": ["Records in Good Companies"] }
                         }
                     },
                     {
                         "properties": {
-                            "individualResolutionType": {
-                                "enum": ["Agent for Company Changes"]
-                            },
+                            "individualResolutionType": { "enum": ["Agent for Company Changes"] },
                             "resolutionOptions": {
                                 "type": "object",
                                 "properties": {
@@ -172,6 +165,29 @@
                                     }
                                 },
                                 "required": ["nameOfAuthorisedAgent"]
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Change Registered Office"] },
+                            "resolutionOptions": {
+                                "type": "object",
+                                "properties": {
+                                    "newAddress": {
+                                        "type": "string",
+                                        "title": "New Address"
+                                    },
+                                    "effectiveDate": {
+                                        "$ref": "#/definitions/date",
+                                        "title": "Effective Date"
+                                    },
+                                    "dateOfNotice": {
+                                        "$ref": "#/definitions/date",
+                                        "title": "Date of Notice to Registrar"
+                                    }
+                                },
+                                "required": ["newAddress", "effectiveDate", "dateOfNotice"]
                             }
                         }
                     }
