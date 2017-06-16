@@ -249,6 +249,7 @@
                     "capacityType": { "$ref": "#/definitions/capacityTypes" },
                     "parties": {
                         "type": "array",
+                        "validationTitle": "Parties",
                         "items": {
                             "type": "object",
                             "properties": {
