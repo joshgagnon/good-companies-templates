@@ -52,6 +52,14 @@
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the Company change its registered office to {{ resolution.resolutionOptions.newAddress }} with effect from {{ resolution.resolutionOptions.effectiveDate | timestamp_to_date }}, and that notice of the change be given to the Registrar of Companies in the prescribed form no later than {{ resolution.resolutionOptions.dateOfNotice | timestamp_to_date }}.</text:p>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == 'Change Address for Service' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That the Company change its address for service to {{ resolution.resolutionOptions.newAddress }} with effect from {{ resolution.resolutionOptions.effectiveDate | timestamp_to_date }}, and that notice of the change be given to the Registrar of Companies in the prescribed form no later than {{ resolution.resolutionOptions.dateOfNotice | timestamp_to_date }}.</text:p>
+                </text:list-item>
+            {% elif resolution.individualResolutionType == 'Change Address of Company Records' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That the Company not keep the records referred to in paragraphs (a) to  of subsection 189(1) of the Companies Act 1993 at its registered office and instead keep those records at {{ resolution.resolutionOptions.newAddress }} with effect from {{ resolution.resolutionOptions.effectiveDate | timestamp_to_date }} Notice of the new place of the Company's records must be given to the Registrar of Companies by {{ resolution.resolutionOptions.dateOfNotice | timestamp_to_date }}..</text:p>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}

@@ -96,7 +96,9 @@
                             "Change Company Name",
                             "Records in Good Companies",
                             "Agent for Company Changes",
-                            "Change Registered Office"
+                            "Change Registered Office",
+                            "Change Address for Service",
+                            "Change Address of Company Records"
                         ]
                     }
                 },
@@ -169,26 +171,21 @@
                         }
                     },
                     {
+                        "$ref": "#/definitions/changeOfAddress",
                         "properties": {
-                            "individualResolutionType": { "enum": ["Change Registered Office"] },
-                            "resolutionOptions": {
-                                "type": "object",
-                                "properties": {
-                                    "newAddress": {
-                                        "type": "string",
-                                        "title": "New Address"
-                                    },
-                                    "effectiveDate": {
-                                        "$ref": "#/definitions/date",
-                                        "title": "Effective Date"
-                                    },
-                                    "dateOfNotice": {
-                                        "$ref": "#/definitions/date",
-                                        "title": "Date of Notice to Registrar"
-                                    }
-                                },
-                                "required": ["newAddress", "effectiveDate", "dateOfNotice"]
-                            }
+                            "individualResolutionType": { "enum": ["Change Registered Office"] }
+                        }
+                    },
+                    {
+                        "$ref": "#/definitions/changeOfAddress",
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Change Address for Service"] }
+                        }
+                    },
+                    {
+                        "$ref": "#/definitions/changeOfAddress",
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Change Address of Company Records"] }
                         }
                     }
                 ]
@@ -212,5 +209,31 @@
         {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 5"}, "text": "Voting at board meeting"},
         {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 6"}, "text": "Minutes of board meetings"},
         {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 7"}, "text": "Written Resolution in lieu of board meeting"}
-    ]
+    ],
+    "definitions": {
+        "changeOfAddress": {
+            "type": "object",
+            "properties": {
+                "resolutionOptions": {
+                    "type": "object",
+                    "properties": {
+                        "newAddress": {
+                            "type": "string",
+                            "title": "New Address"
+                        },
+                        "effectiveDate": {
+                            "$ref": "#/definitions/date",
+                            "title": "Effective Date"
+                        },
+                        "dateOfNotice": {
+                            "$ref": "#/definitions/date",
+                            "title": "Date of Notice to Registrar"
+                        }
+                    },
+                    "required": ["newAddress", "effectiveDate", "dateOfNotice"]
+                }
+            }
+        },
+        "required": ["resolutionOptions"]
+    }
 }
