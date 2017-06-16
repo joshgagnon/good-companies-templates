@@ -374,6 +374,7 @@
                     "default": [{
                         "signingMethod": {
                             "signingMethod": "personally",
+                            "parties": [{}],
                             "capacity": {
                                 "capacityType": "No Capacity"
                             }
