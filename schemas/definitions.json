@@ -164,89 +164,105 @@
                 "[Custom]"
             ]
         },
-        "capacity": {
-            "type": "object",
-            "properties": {
-                "capacityType": { "$ref": "#/definitions/capacityTypes" }
-            },
-            "oneOf": [
-                { "properties": { "capacityType": { "enum": ["No Capacity"] } } },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Authorised Signatory"] },
-                        "of": { "type": "string", "title": "As Authorised Signatory of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Attorney"] },
-                        "of": { "type": "string", "title": "As Attorney of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Personal Representative"] },
-                        "of": { "type": "string", "title": "As Personal Representative of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Assignee"] },
-                        "of": { "type": "string", "title": "As Assignee of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Director"] },
-                        "of": { "type": "string", "title": "As Director of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Voting Shareholder"] },
-                        "of": { "type": "string", "title": "As Voting Shareholder of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["Trustee"] },
-                        "of": { "type": "string", "title": "As Trustee of" }
-                    },
-                    "required": ["capacityType", "of"]
-                },
-                {
-                    "properties": {
-                        "capacityType": { "enum": ["[Custom]"] },
-                        "customCapacity": { "type": "string", "title": "Custom Capacity" },
-                        "of": { "type": "string", "title": "As [Custom Capacity] of" }
-                    },
-                    "required": ["capacityType", "customCapacity", "of"]
-                }
-            ],
-            "default": {"capacityType": "No Capacity"},
-            "required": ["capacityType"],
-            "x-hints": {
-                "form": { "selector": "capacityType" }
-            }
-        },
 
         "signingMethodOptions": {
             "personally": {
                 "properties": {
                     "signingMethod": { "enum": ["personally"] },
-                    "capacity": { "$ref": "#/definitions/capacity" }
+                    "capacity": {
+                        "type": "object",
+                        "properties": {
+                            "capacityType": { "$ref": "#/definitions/capacityTypes" }
+                        },
+                        "oneOf": [
+                            { "properties": { "capacityType": { "enum": ["No Capacity"] } } },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Authorised Signatory"] },
+                                    "of": { "type": "string", "title": "As Authorised Signatory of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Attorney"] },
+                                    "of": { "type": "string", "title": "As Attorney of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Personal Representative"] },
+                                    "of": { "type": "string", "title": "As Personal Representative of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Assignee"] },
+                                    "of": { "type": "string", "title": "As Assignee of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Director"] },
+                                    "of": { "type": "string", "title": "As Director of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Voting Shareholder"] },
+                                    "of": { "type": "string", "title": "As Voting Shareholder of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["Trustee"] },
+                                    "of": { "type": "string", "title": "As Trustee of" }
+                                },
+                                "required": ["capacityType", "of"]
+                            },
+                            {
+                                "properties": {
+                                    "capacityType": { "enum": ["[Custom]"] },
+                                    "customCapacity": { "type": "string", "title": "Custom Capacity" },
+                                    "of": { "type": "string", "title": "As [Custom Capacity] of" }
+                                },
+                                "required": ["capacityType", "customCapacity", "of"]
+                            }
+                        ],
+                        "default": {"capacityType": "No Capacity"},
+                        "required": ["capacityType"],
+                        "x-hints": {
+                            "form": { "selector": "capacityType" }
+                        }
+                    }
                 }
             },
             "onBehalfOf": {
                 "properties": {
                     "signingMethod": { "enum": ["on behalf of"] },
-                    "capacityType": { "$ref": "#/definitions/capacityTypes" },
+                    "capacity": {
+                        "type": "object",
+                        "properties": {
+                            "capacityType": { "$ref": "#/definitions/capacityTypes" }
+                        },
+                        "oneOf": [{
+                            "properties": {
+                                "capacityType": { "enum": ["[Custom]"] },
+                                "customCapacity": { "type": "string", "title": "Custom Capacity" }
+                            },
+                            "required": ["capacityType", "customCapacity"]
+                        }],
+                        "default": {"capacityType": "No Capacity"},
+                        "required": ["capacityType"],
+                        "x-hints": {
+                            "form": { "selector": "capacityType" }
+                        }
+                    },
                     "parties": {
                         "type": "array",
                         "validationTitle": "Parties",
@@ -269,8 +285,7 @@
                         },
                         "minItems": 1
                     }
-                },
-                "required": ["capacityType"]
+                }
             }
         },
 
