@@ -56,6 +56,16 @@
 
 
 
+{% macro bold_join_and(items, name_attribute) %}
+    {% for item in items %}
+        {% if loop.last %}
+            and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
+        {% else %}
+            <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
 {% macro witness_block() %}
     {{ table_signature_line() }}
     <text:p text:style-name="text_normal">Signature of witness</text:p>
@@ -89,24 +99,24 @@
         {% if signatory.signingMethod.signingMethod == 'personally' %}
             {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
                 as
-
-                {#<text:span text:style-name="bold">#}
+                
+                <text:span text:style-name="bold">
                     {% if signatory.signingMethod.capacity.capacityType == '[Custom]' %}
                         {{ signatory.signingMethod.capacity.customCapacity }}
                     {% else %}
                         {{ signatory.signingMethod.capacity.capacityType }}
                     {% endif %}
-                {#</text:span>#}
+                </text:span>
 
                 of
 
                 <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.of }}</text:span>
             {% endif %}
         {% else %}
-            on behalf of {{ signatory.signingMethod.parties | join_and('name') }}
+            on behalf of {{ bold_join_and(signatory.signingMethod.parties, 'name') }}
             
             {% if signatory.signingMethod.capacityType != 'No Capacity' %}
-                as {{ signatory.signingMethod.capacityType }}
+                as <text:span text:style-name="bold">{{ signatory.signingMethod.capacityType }}</text:span>
             {% endif %}
         {% endif %}
     </text:p>
@@ -125,7 +135,7 @@
     </text:h>
 
     {% if not signaturesIndividuallyDated %}
-        <text:h text:style-name="heading_3">Signing Date {{ data.signingDate.date }}</text:h>
+        <text:h text:style-name="heading_3">Signing Date: {{ data.signingDate.date }}</text:h>
     {% endif %}
 
     {% if requiresWitnessing %}
