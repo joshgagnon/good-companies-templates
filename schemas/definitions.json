@@ -245,6 +245,28 @@
             "onBehalfOf": {
                 "properties": {
                     "signingMethod": { "enum": ["on behalf of"] },
+                    "parties": {
+                        "type": "array",
+                        "validationTitle": "Parties",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Party",
+                                    "enumeratedTitle": "Party Name #{0}"
+                                }
+                            },
+                            "required": ["name"],
+                            "x-hints": {
+                                "form": {
+                                    "addItem": "Add Party",
+                                    "controls": "inline"
+                                }
+                            }
+                        },
+                        "minItems": 1
+                    },
                     "capacity": {
                         "type": "object",
                         "properties": {
@@ -262,28 +284,6 @@
                         "x-hints": {
                             "form": { "selector": "capacityType" }
                         }
-                    },
-                    "parties": {
-                        "type": "array",
-                        "validationTitle": "Parties",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "title": "Behalf of Party",
-                                    "enumeratedTitle": "Behalf of Party #{0}"
-                                }
-                            },
-                            "required": ["name"],
-                            "x-hints": {
-                                "form": {
-                                    "addItem": "Add Party",
-                                    "controls": "inline"
-                                }
-                            }
-                        },
-                        "minItems": 1
                     }
                 }
             }
