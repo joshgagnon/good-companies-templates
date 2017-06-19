@@ -219,15 +219,20 @@
                     "properties": {
                         "newAddress": {
                             "type": "string",
-                            "title": "New Address"
-                        },
-                        "effectiveDate": {
-                            "$ref": "#/definitions/date",
-                            "title": "Effective Date"
+                            "title": "New Address",
+                            "x-hints" : {
+                                "form": {
+                                    "inputComponent": "address"
+                                }
+                            }
                         },
                         "dateOfNotice": {
                             "$ref": "#/definitions/date",
                             "title": "Date of Notice to Registrar"
+                        },
+                        "effectiveDate": {
+                            "$ref": "#/definitions/date",
+                            "title": "Effective Date"
                         }
                     },
                     "required": ["newAddress", "effectiveDate", "dateOfNotice"]
