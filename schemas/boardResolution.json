@@ -183,9 +183,30 @@
                         }
                     },
                     {
-                        "$ref": "#/definitions/changeOfAddress",
                         "properties": {
-                            "individualResolutionType": { "enum": ["Change Address of Company Records"] }
+                            "individualResolutionType": { "enum": ["Change Address of Company Records"] },
+                            "newAddress": {
+                                "type": "string",
+                                "title": "New Address",
+                                "x-hints" : {
+                                    "form": {
+                                        "inputComponent": "address"
+                                    }
+                                }
+                            },
+                            "effectiveDate": {
+                                "$ref": "#/definitions/date",
+                                "title": "Effective Date",
+                                "format": "date",
+                                "formatDate": "D MMMM YYYY"
+                            },
+                            "minNotice": {
+                                "type": "string",
+                                "title": "Last Date of Notice to Registrar",
+                                 "x-hints" : {
+                                    "form": {"inputComponent": "workingDayNotice", "workingDayNotice": {"days": 10, "source": "effectiveDate"}}
+                                }
+                            }
                         }
                     }
                 ]
@@ -221,15 +242,33 @@
                     "properties": {
                         "newAddress": {
                             "type": "string",
-                            "title": "New Address"
-                        },
-                        "effectiveDate": {
-                            "$ref": "#/definitions/date",
-                            "title": "Effective Date"
+                            "title": "New Address",
+                            "x-hints" : {
+                                "form": {
+                                    "inputComponent": "address"
+                                }
+                            }
                         },
                         "dateOfNotice": {
                             "$ref": "#/definitions/date",
                             "title": "Date of Notice to Registrar"
+                        },
+                        "minNotice": {
+                            "type": "string",
+                            "title": "Earliest Change Date",
+                             "x-hints" : {
+                                "form": {"inputComponent": "workingDayNotice", "workingDayNotice": {"days": 5, "source": "dateOfNotice"}}
+                            }
+                        },
+                        "effectiveDate": {
+                            "$ref": "#/definitions/date",
+                            "title": "Effective Date",
+                            "formatMinimum": {"$data": "minNotice"},
+                            "format": "date",
+                            "formatDate": "D MMMM YYYY",
+                            "errorMessage": {
+                                "formatMinimum": "Must be 5 at least working days after the Date of Notice"
+                            }
                         }
                     },
                     "required": ["newAddress", "effectiveDate", "dateOfNotice"]
