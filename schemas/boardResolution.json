@@ -208,7 +208,9 @@
         {"link": {"title": "Companies Act 1993", "location": "s 160"}, "text": "Proceedings of the board"},
         {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 5"}, "text": "Voting at board meeting"},
         {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 6"}, "text": "Minutes of board meetings"},
-        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 7"}, "text": "Written Resolution in lieu of board meeting"}
+        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 7"}, "text": "Written Resolution in lieu of board meeting"},
+        {"link": {"title": "Companies Act 1993", "location": "s 186, 188, 192"}, "text": "Address requirements"},
+        {"link": {"title": "Companies Act 1993", "location": "s 187, 193"}, "text": "Change of address"}
     ],
     "definitions": {
         "changeOfAddress": {
