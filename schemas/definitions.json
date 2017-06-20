@@ -166,9 +166,9 @@
         },
 
         "signingMethodOptions": {
-            "personally": {
+            "themselfOnly": {
                 "properties": {
-                    "signingMethod": { "enum": ["personally"] },
+                    "signingMethod": { "enum": ["themself only"] },
                     "capacity": {
                         "type": "object",
                         "properties": {
@@ -242,9 +242,21 @@
                     }
                 }
             },
-            "onBehalfOf": {
+            "themselfAndOthers": {
+                "$ref": "#/definitions/signingMethodOptions/includingOthers",
                 "properties": {
-                    "signingMethod": { "enum": ["on behalf of"] },
+                    "signingMethod": { "enum": ["themself and others"] }
+                }
+            },
+            "othersOnly": {
+                "$ref": "#/definitions/signingMethodOptions/includingOthers",
+                "properties": {
+                    "signingMethod": { "enum": ["others only"] }
+                }
+            },
+            "includingOthers": {
+                "type": "object",
+                "properties": {
                     "parties": {
                         "type": "array",
                         "validationTitle": "Parties",
@@ -254,7 +266,7 @@
                                 "name": {
                                     "type": "string",
                                     "title": "Party",
-                                    "enumeratedTitle": "Party Name #{0}"
+                                    "enumeratedTitle": "Other Party #{0}"
                                 }
                             },
                             "required": ["name"],
@@ -343,17 +355,19 @@
                                 "type": "object",
                                 "properties": {
                                     "signingMethod": {
-                                        "title": "Signing Personally",
-                                        "enum": ["personally", "on behalf of"],
+                                        "title": "Signing For",
+                                        "enum": ["themself only", "themself and others", "others only"],
                                         "enumNames": [
-                                            "Yes - Signing personally",
-                                            "No - Signing on behalf of"
+                                            "Signing for themself only",
+                                            "Signing for themself and others",
+                                            "Signing on behalf of others only"
                                         ]
                                     }
                                 },
                                 "oneOf": [
-                                    {"$ref": "#/definitions/signingMethodOptions/personally"},
-                                    {"$ref": "#/definitions/signingMethodOptions/onBehalfOf"}
+                                    {"$ref": "#/definitions/signingMethodOptions/themselfOnly"},
+                                    {"$ref": "#/definitions/signingMethodOptions/themselfAndOthers"},
+                                    {"$ref": "#/definitions/signingMethodOptions/othersOnly"}
                                 ],
                                 "x-hints": {
                                     "form": {"selector": "signingMethod" }

@@ -56,14 +56,36 @@
 
 
 
-{% macro bold_join_and(items, name_attribute) %}
-    {% for item in items %}
-        {% if loop.last %}
-            and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
+{% macro bold_join_and(items, name_attribute, prepend=null) %}
+    {% if prepend != null %}
+        {% if items | length == 1 %}
+            <text:span text:style-name="bold">{{ prepend }}</text:span> and <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span>
         {% else %}
-            <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
+            <text:span text:style-name="bold">{{ prepend }}</text:span>,
+
+            {% for item in items %}
+                {% if loop.last %}
+                    and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
+                {% else %}
+                    <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
+                {% endif %}
+            {% endfor %}
         {% endif %}
-    {% endfor %}
+    {% else %}
+        {% if items | length == 1 %}
+            <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span>
+        {% elif items | length == 2 %}
+            <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span> and <text:span text:style-name="bold">{{ items[1] | get_value(name_attribute) }}</text:span>
+        {% else %}
+            {% for item in items %}
+                {% if loop.last %}
+                    and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
+                {% else %}
+                    <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
 {% endmacro %}
 
 {% macro witness_block() %}
@@ -96,7 +118,7 @@
     <text:p text:style-name="text_normal">
         Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
 
-        {% if signatory.signingMethod.signingMethod == 'personally' %}
+        {% if signatory.signingMethod.signingMethod == 'themself only' %}
             {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
                 as
                 
@@ -113,10 +135,16 @@
                 <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.of }}</text:span>
             {% endif %}
         {% else %}
-            on behalf of {{ bold_join_and(signatory.signingMethod.parties, 'name') }}
+            on behalf of
             
-            {% if signatory.signingMethod.capacityType != 'No Capacity' %}
-                as <text:span text:style-name="bold">{{ signatory.signingMethod.capacityType }}</text:span>
+            {% if signatory.signingMethod.signingMethod == 'themself and others' %}
+                {{ bold_join_and(signatory.signingMethod.parties, 'name', signatory.name) }}
+            {% else %}
+                {{ bold_join_and(signatory.signingMethod.parties, 'name') }}
+            {% endif %}
+            
+            {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
+                as <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.capacityType }}</text:span>
             {% endif %}
         {% endif %}
     </text:p>
