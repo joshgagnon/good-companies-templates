@@ -93,12 +93,12 @@
                         "enumeratedTitle": "Resolution {0}",
                         "enum": [
                             "Custom",
-                            "Change Company Name",
-                            "Records in Good Companies",
                             "Agent for Company Changes",
-                            "Change Registered Office",
                             "Change Address for Service",
-                            "Change Address of Company Records"
+                            "Change Address of Company Records",
+                            "Change Company Name",
+                            "Change Registered Office",
+                            "Records in Good Companies"
                         ]
                     }
                 },
