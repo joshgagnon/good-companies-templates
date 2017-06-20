@@ -375,7 +375,7 @@
                             }
                         },
                         "default": {
-                            "signingMethod": {"signingMethod": "personally"}
+                            "signingMethod": {"signingMethod": "themself only"}
                         },
                         "required": ["name", "party", "capacity", "signingMethod"],
                         "x-hints": {
@@ -387,7 +387,7 @@
                     "minItems": 1,
                     "default": [{
                         "signingMethod": {
-                            "signingMethod": "personally",
+                            "signingMethod": "themself only",
                             "parties": [{}],
                             "capacity": {
                                 "capacityType": "No Capacity"
