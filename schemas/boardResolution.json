@@ -230,9 +230,22 @@
                             "$ref": "#/definitions/date",
                             "title": "Date of Notice to Registrar"
                         },
+                        "minNotice": {
+                            "type": "string",
+                            "title": "Earliest Change Date",
+                             "x-hints" : {
+                                "form": {"inputComponent": "workingDayNotice", "workingDayNotice": {"days": 5, "source": "dateOfNotice"}}
+                            }
+                        },
                         "effectiveDate": {
                             "$ref": "#/definitions/date",
-                            "title": "Effective Date"
+                            "title": "Effective Date",
+                            "formatMinimum": {"$data": "minNotice"},
+                            "format": "date",
+                            "formatDate": "D MMMM YYYY",
+                            "errorMessage": {
+                                "formatMinimum": "Must be 5 at least working days after the Date of Notice"
+                            }
                         }
                     },
                     "required": ["newAddress", "effectiveDate", "dateOfNotice"]
