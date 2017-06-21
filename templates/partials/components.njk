@@ -184,81 +184,86 @@
         <text:h text:style-name="heading_3">Signing Date: {{ data.signingDate.date }}</text:h>
     {% endif %}
 
-    {% if requiresWitnessing %}
-        {#
-         # Signature table with witnessing
-         #}
-        {#<table:table table:name="Signature Table" table:style-name="signature_table">
-            <table:table-row table:style-name="signature_table_row">
-                <table:table-cell office:value-type="string" table:style-name="signature_table_cell" table:number-columns-spanned="2">#}
 
-        <table:table table:name="Signature Table" table:style-name="signature_table">
-            <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
-            
+    <table:table table:name="Signature Table Container" table:style-name="signature_table_container_table">
+        <table:table-column table:number-columns-repeated="1" table:style-name="signature_table_container_table_column"/>
+
+        {% if requiresWitnessing %}
+            {#
+            # Signature table with witnessing
+            #}
             {% for signatory in data.signatories %}
-                {# Display the capacity in it's own row, so the signature lines line up #}
-                <table:table-row table:style-name="signature_table_row">
-                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ signature_block_heading(signatory, witnessed=true) }}
-                    </table:table-cell>
-                </table:table-row>
-
-                {# Print the signature and the witness block beside it #}
-                <table:table-row table:style-name="signature_table_row">
-                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ witness_block() }}
-                    </table:table-cell>
-                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ signature_block(signatory, signaturesIndividuallyDated) }}
-                    </table:table-cell>
-                </table:table-row>
-            {% endfor %}
-        </table:table>
-    {% else %}
-        {#
-         # Signature table without witnessing
-         #}
-
-        <table:table table:name="Signature Table Container" table:style-name="signature_table">
-            <table:table-column table:number-columns-repeated="1" table:style-name="signature_table_column"/>
-            
-            {% for batchedSignatories in data.signatories | batch(2) %}
-                {% set signatoryOne = batchedSignatories[0] %}
-                {% set signatoryTwo = batchedSignatories[1] %}
-                
-                <table:table-row table:style-name="signature_table_row">
-                    <table:table-cell office:value-type="string" table:style-name="signature_table_container_cell">
+                <table:table-row table:style-name="signature_table_container_table_row">
+                    <table:table-cell office:value-type="string" table:style-name="signature_table_container_table_cell">
                         <table:table table:name="Signature Table" table:style-name="signature_table">
                             <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
-                                {# Display the capacities in their own row, so the signature lines line up #}
-                                <table:table-row table:style-name="signature_table_row">
-                                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                                        {{ signature_block_heading(signatoryOne) }}
-                                    </table:table-cell>
-                                    
-                                    {% if signatoryTwo %}
-                                        <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                                            {{ signature_block_heading(signatoryTwo) }}
-                                        </table:table-cell>
-                                    {% endif %}
-                                </table:table-row>
+                            
+                            {# Display the capacity in it's own row, so the signature lines line up #}
+                            <table:table-row table:style-name="signature_table_row">
+                                <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                    {{ signature_block_heading(signatory, witnessed=true) }}
+                                </table:table-cell>
+                            </table:table-row>
 
-                                {# Display the signatures #}
-                                <table:table-row table:style-name="signature_table_row">
-                                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                                        {{ signature_block(signatoryOne, signaturesIndividuallyDated) }}
-                                    </table:table-cell>
+                            {# Print the signature and the witness block beside it #}
+                            <table:table-row table:style-name="signature_table_row">
+                                <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                    {{ witness_block() }}
+                                </table:table-cell>
+                                <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                    {{ signature_block(signatory, signaturesIndividuallyDated) }}
+                                </table:table-cell>
+                            </table:table-row>
 
-                                    {% if signatoryTwo %}
-                                        <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                                            {{ signature_block(signatoryTwo, signaturesIndividuallyDated) }}
-                                        </table:table-cell>
-                                    {% endif %}
-                                </table:table-row>
+
                         </table:table>
                     </table:table-cell>
                 </table:table-row>
             {% endfor %}
-        </table:table>
-    {% endif %}
+        {% else %}
+            {#
+            # Signature table without witnessing
+            #}
+            {% for batchedSignatories in data.signatories | batch(2) %}
+                {% set signatoryOne = batchedSignatories[0] %}
+                {% set signatoryTwo = batchedSignatories[1] %}
+                
+                <table:table-row table:style-name="signature_table_container_table_row">
+                    <table:table-cell office:value-type="string" table:style-name="signature_table_container_table_cell">
+                        <table:table table:name="Signature Table" table:style-name="signature_table">
+                            <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
+                
+                            {# Display the capacities in their own row, so the signature lines line up #}
+                            <table:table-row table:style-name="signature_table_row">
+                                <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                    {{ signature_block_heading(signatoryOne) }}
+                                </table:table-cell>
+                                
+                                {% if signatoryTwo %}
+                                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                        {{ signature_block_heading(signatoryTwo) }}
+                                    </table:table-cell>
+                                {% endif %}
+                            </table:table-row>
+
+                            {# Display the signatures #}
+                            <table:table-row table:style-name="signature_table_row">
+                                <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                    {{ signature_block(signatoryOne, signaturesIndividuallyDated) }}
+                                </table:table-cell>
+
+                                {% if signatoryTwo %}
+                                    <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
+                                        {{ signature_block(signatoryTwo, signaturesIndividuallyDated) }}
+                                    </table:table-cell>
+                                {% endif %}
+                            </table:table-row>
+
+                            
+                        </table:table>
+                    </table:table-cell>
+                </table:table-row>
+            {% endfor %}
+        {% endif %}
+    </table:table>
 {% endmacro %}
