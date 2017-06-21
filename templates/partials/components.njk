@@ -59,33 +59,33 @@
     {% if prepend != null %}
         {% if items | length == 1 %}
             <text:span text:style-name="bold">{{ prepend }}</text:span> and <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span>
-        {% else %}
+        {%- else %}
             <text:span text:style-name="bold">{{ prepend }}</text:span>,
 
             {% for item in items %}
                 {% if loop.last %}
                     and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
-                {% else %}
+                {%- else %}
                     <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% else %}
+                {% endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- else -%}
         {% if items | length == 1 %}
             <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span>
-        {% elif items | length == 2 %}
+        {%- elif items | length == 2 %}
             <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span> and <text:span text:style-name="bold">{{ items[1] | get_value(name_attribute) }}</text:span>
-        {% else %}
+        {%- else %}
             {% for item in items %}
                 {% if loop.last %}
                     and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
-                {% else %}
+                {%- else %}
                     <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endif %}
-{% endmacro %}
+                {% endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- endif -%}
+{%- endmacro %}
 
 {% macro witness_block() %}
     {{ table_signature_line() }}
@@ -113,13 +113,22 @@
     {% endif %}
 {% endmacro %}
 
-{% macro signature_block_heading(signatory) %}
+{% macro signature_block_heading(signatory, witnessed=false) %}
     <text:p text:style-name="text_normal">
-        Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
-
         {% if signatory.signingMethod.signingMethod == 'themself only' %}
-            {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
-                as
+            {#
+             #  Signing on behalf of others only
+             #}
+            {% if signatory.signingMethod.capacity.capacityType == 'No Capacity' %}
+                {#
+                 #  Signing for themself only with no capacity
+                 #}
+                Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>:
+            {% else %}
+                {#
+                 #  Signing for themself only wiuth a capacity
+                 #}
+                Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> as
                 
                 <text:span text:style-name="bold">
                     {% if signatory.signingMethod.capacity.capacityType == '[Custom]' %}
@@ -131,19 +140,29 @@
 
                 of
 
-                <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.of }}</text:span>
+                <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.of }}</text:span>:
             {% endif %}
         {% else %}
-            on behalf of
+            {#
+             #  Signing on behalf of themself and others or other only
+             #}
+
+            Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> on behalf of
             
             {% if signatory.signingMethod.signingMethod == 'themself and others' %}
-                {{ bold_join_and(signatory.signingMethod.parties, 'name', signatory.name) }}
+                {{ bold_join_and(signatory.signingMethod.parties, 'name', signatory.name) }},
             {% else %}
-                {{ bold_join_and(signatory.signingMethod.parties, 'name') }}
+                {{ bold_join_and(signatory.signingMethod.parties, 'name') }},
             {% endif %}
             
             {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
                 as <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.capacityType }}</text:span>
+            {% endif %}
+
+            {% if witnessed %}
+                in the presence of:
+            {%- else %}
+                :
             {% endif %}
         {% endif %}
     </text:p>
@@ -169,6 +188,9 @@
         {#
          # Signature table with witnessing
          #}
+        {#<table:table table:name="Signature Table" table:style-name="signature_table">
+            <table:table-row table:style-name="signature_table_row">
+                <table:table-cell office:value-type="string" table:style-name="signature_table_cell" table:number-columns-spanned="2">#}
 
         <table:table table:name="Signature Table" table:style-name="signature_table">
             <table:table-column table:number-columns-repeated="2" table:style-name="signature_table_column"/>
@@ -177,17 +199,17 @@
                 {# Display the capacity in it's own row, so the signature lines line up #}
                 <table:table-row table:style-name="signature_table_row">
                     <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ signature_block_heading(signatory) }}
+                        {{ signature_block_heading(signatory, witnessed=true) }}
                     </table:table-cell>
                 </table:table-row>
 
                 {# Print the signature and the witness block beside it #}
                 <table:table-row table:style-name="signature_table_row">
                     <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ signature_block(signatory, signaturesIndividuallyDated) }}
+                        {{ witness_block() }}
                     </table:table-cell>
                     <table:table-cell office:value-type="string" table:style-name="signature_table_cell">
-                        {{ witness_block() }}
+                        {{ signature_block(signatory, signaturesIndividuallyDated) }}
                     </table:table-cell>
                 </table:table-row>
             {% endfor %}
