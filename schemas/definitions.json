@@ -381,6 +381,7 @@
                         },
                         "required": ["name", "party", "capacity", "signingMethod"],
                         "x-hints": {
+                            "$ref": "#/definitions/signingPartiesXHints",
                             "form": {
                                 "addItem": "Add Signatory"
                             }
