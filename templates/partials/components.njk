@@ -149,21 +149,21 @@
 
             Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> on behalf of
             
-            {% if signatory.signingMethod.signingMethod == 'themself and others' %}
-                {{ bold_join_and(signatory.signingMethod.parties, 'name', signatory.name) }},
-            {% else %}
-                {{ bold_join_and(signatory.signingMethod.parties, 'name') }},
-            {% endif %}
+            {%- if signatory.signingMethod.signingMethod == 'themself and others' -%}
+                {{ bold_join_and(signatory.signingMethod.parties, 'name', signatory.name) }}
+            {%- else -%}
+                {{ bold_join_and(signatory.signingMethod.parties, 'name') }}
+            {%- endif -%}
             
-            {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
-                as <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.capacityType }}</text:span>
-            {% endif %}
+            {%- if signatory.signingMethod.capacity.capacityType != 'No Capacity' -%}
+                , as <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.capacityType }}</text:span>
+            {%- endif -%}
 
-            {% if witnessed %}
-                in the presence of:
-            {%- else %}
-                :
-            {% endif %}
+            {%- if witnessed %}
+                in the presence of
+            {%- endif -%}
+
+            :
         {% endif %}
     </text:p>
 {% endmacro %}
