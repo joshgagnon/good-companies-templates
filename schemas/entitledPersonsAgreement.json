@@ -27,16 +27,7 @@
                 },
                 "entitledParties": {
                     "$ref": "#/definitions/signingByShareholdings",
-                    "title": "Parties",
-                    "properties": {
-                        "signatories": {
-                            "x-hints": {
-                                "form": {
-                                    "defaultSource": "company.shareholdingVotingList"
-                                }
-                            }
-                        }
-                    }
+                    "title": "Parties"
                 }
             },
             "default": {
@@ -155,13 +146,7 @@
         {"link": {"title": "Companies Act 1993", "location": "s 108"}, "text": "Company to satisfy solvency test for certain actions"}
     ],
 
-
     "definitions": {
-        "signingPartiesXHints": {
-            "form": {
-                "sourceLocation": "company.shareholders",
-                "source": "name"
-            }
-        }
+        "signingPartiesXHints": { "$ref": "#/definitions/shareholdersSourceLocationXHints" }
     }
 }

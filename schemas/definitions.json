@@ -302,7 +302,7 @@
             }
         },
 
-        "signingByShareholdings": {
+        "signatures": {
             "type": "object",
             "title": "Signatures",
             "properties": {
@@ -406,6 +406,27 @@
                 "signingOnSameDay": { "signingOnSameDay": "yes" }
             }
         },
-        "signingPartiesXHints": { }
+
+        "signingByShareholdings": {
+            "$ref": "#/definitions/signatures",
+            "properties": {
+                "signatories": {
+                    "x-hints": {
+                        "form": {
+                            "defaultSource": "company.shareholdingVotingList"
+                        }
+                    }
+                }
+            }
+        },
+
+        "signingPartiesXHints": { },
+        
+        "shareholdersSourceLocationXHints": {
+            "form": {
+                "sourceLocation": "company.shareholders",
+                "source": "name"
+            }
+        }
     }
 }

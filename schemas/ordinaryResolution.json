@@ -47,19 +47,7 @@
                             "$ref": "#/definitions/date",
                             "title": "Date of Written Resolution"
                         },
-                        "signatures": {
-                            "$ref": "#/definitions/signingByShareholdings",
-                            "title": "Signatures",
-                            "properties": {
-                                "signatories": {
-                                    "x-hints": {
-                                        "form": {
-                                            "defaultSource": "company.shareholdingVotingList"
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "signatures": { "$ref": "#/definitions/signingByShareholdings" }
                     },
                     "required": ["dateOfMinute"]
                 }
@@ -233,13 +221,7 @@
         {"link": {"title": "Companies Act 1993", "location": "s 122"}, "text": "Written shareholder resolutions"}
     ],
 
-
     "definitions": {
-        "signingPartiesXHints": {
-            "form": {
-                "sourceLocation": "company.shareholders",
-                "source": "name"
-            }
-        }
+        "signingPartiesXHints": { "$ref": "#/definitions/shareholdersSourceLocationXHints" }
     }
 }
