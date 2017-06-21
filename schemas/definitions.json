@@ -271,6 +271,7 @@
                             },
                             "required": ["name"],
                             "x-hints": {
+                                "$ref": "#/definitions/signingPartiesXHints",
                                 "form": {
                                     "addItem": "Add Party",
                                     "controls": "inline"
@@ -371,7 +372,8 @@
                                 ],
                                 "x-hints": {
                                     "form": {"selector": "signingMethod" }
-                                }
+                                },
+                                "required": ["signingMethod"]
                             }
                         },
                         "default": {
@@ -402,6 +404,7 @@
                 "signingToday": "yes",
                 "signingOnSameDay": { "signingOnSameDay": "yes" }
             }
-        }
+        },
+        "signingPartiesXHints": { }
     }
 }

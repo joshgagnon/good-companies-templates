@@ -161,5 +161,15 @@
         {"link": {"title": "Companies Act 1993", "location": "s 107(5)(a)"}, "text": "Particular exercise of power"},
         {"link": {"title": "Companies Act 1993", "location": "s 107(5)(b), (6), (7), (8)"}, "text": "Exercises of power generally"},
         {"link": {"title": "Companies Act 1993", "location": "s 108"}, "text": "Company to satisfy solvency test for certain actions"}
-    ]
+    ],
+
+
+    "definitions": {
+        "signingPartiesXHints": {
+            "form": {
+                "sourceLocation": "company.shareholders",
+                "source": "name"
+            }
+        }
+    }
 }
