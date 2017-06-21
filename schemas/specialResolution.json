@@ -77,7 +77,7 @@
                                 "signatories": {
                                     "x-hints": {
                                         "form": {
-                                            "defaultSource": "company.directorSignatureList"
+                                            "defaultSource": "company.shareholdingVotingList"
                                         }
                                     }
                                 }
@@ -263,7 +263,7 @@
     "definitions": {
         "signingPartiesXHints": {
             "form": {
-                "sourceLocation": "company.directors",
+                "sourceLocation": "company.shareholders",
                 "source": "name"
             }
         }
