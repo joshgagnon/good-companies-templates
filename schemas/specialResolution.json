@@ -70,7 +70,19 @@
                                 }
                             }
                         },
-                        "signatures": { "$ref": "#/definitions/signingByShareholdings" }
+                        "signatures": {
+                            "$ref": "#/definitions/signingByShareholdings",
+                            "title": "Signatures",
+                            "properties": {
+                                "signatories": {
+                                    "x-hints": {
+                                        "form": {
+                                            "defaultSource": "company.directorSignatureList"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "required": ["dateOfMinute"]
                 }
@@ -245,5 +257,15 @@
         {"link": {"title": "Companies Act 1993", "location": "s 104"}, "text": "Exercising shareholder powers"},
         {"link": {"title": "Companies Act 1993", "location": "s 120, 121, 124"}, "text": "Shareholder meetings"},
         {"link": {"title": "Companies Act 1993", "location": "s 122"}, "text": "Written shareholder resolutions"}
-    ]
+    ],
+
+
+    "definitions": {
+        "signingPartiesXHints": {
+            "form": {
+                "sourceLocation": "company.directors",
+                "source": "name"
+            }
+        }
+    }
 }

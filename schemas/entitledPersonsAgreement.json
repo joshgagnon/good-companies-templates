@@ -30,14 +30,6 @@
                     "title": "Parties",
                     "properties": {
                         "signatories": {
-                            "items": {
-                                 "x-hints": {
-                                     "form": {
-                                        "sourceLocation":  "company.shareholders",
-                                        "source": "name"
-                                    }
-                                }
-                            },
                             "x-hints": {
                                 "form": {
                                     "defaultSource": "company.shareholdingVotingList"
