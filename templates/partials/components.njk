@@ -98,7 +98,7 @@
                  #  Signing for themself only wiuth a capacity
                  #}
                 Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> as
-                
+
                 <text:span text:style-name="bold">
                     {% if signatory.signingMethod.capacity.capacityType == '[Custom]' %}
                         {{ signatory.signingMethod.capacity.customCapacity }}
@@ -118,14 +118,16 @@
 
             Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> on behalf of
 
-            {% set parties = signatory.signingMethod.parties %}
+            {% set otherParties = signatory.signingMethod.parties %}
             
             {%- if signatory.signingMethod.signingMethod == 'themself and others' %}
-                {% set parties = parties | prepend(signatory) %}
+                {% set otherParties = parties | prepend(signatory) %}
             {%- endif -%}
+
+            {{ otherParties | join_and('name') }}
             
             {%- if signatory.signingMethod.capacity.capacityType != 'No Capacity' -%}
-                {{ signatory.signingMethod.parties | join_and('name') }}, as {{ signatory.signingMethod.capacity.capacityType }}
+                , as {{ signatory.signingMethod.capacity.capacityType }}
             {%- endif -%}
 
             {%- if witnessed %}
