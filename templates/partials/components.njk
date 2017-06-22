@@ -172,16 +172,22 @@
     {% set signaturesIndividuallyDated = (data.signingDate.signingOnSameDay == 'no') %}
     {% set requiresWitnessing = (data.requiresWitnessing == 'yes') %}
 
-    <text:h text:style-name="heading_3">
-        {% if requiresWitnessing %}
-            EXECUTED AND DELIVERED AS A DEED
-        {% else %}
-            SIGNATURES
-        {% endif %}
-    </text:h>
+    <text:p text:style-name="text_normal">
+        <text:span text:style-name="bold">
+            {% if requiresWitnessing %}
+                EXECUTED AND DELIVERED AS A DEED
+            {% else %}
+                SIGNATURES
+            {% endif %}
+        </text:span>
+    </text:p>
 
     {% if not signaturesIndividuallyDated %}
-        <text:h text:style-name="heading_3">Signing Date: {{ data.signingDate.date }}</text:h>
+        <text:p text:style-name="text_normal">
+            <text:span text:style-name="bold">
+                Signing Date: {{ data.signingDate.date }}
+            </text:span>
+        </text:p>
     {% endif %}
 
 
