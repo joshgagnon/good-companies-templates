@@ -92,24 +92,22 @@
                 {#
                  #  Signing for themself only with no capacity
                  #}
-                Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>:
+                Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
             {% else %}
                 {#
                  #  Signing for themself only wiuth a capacity
                  #}
                 Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> as
-
-                <text:span text:style-name="bold">
-                    {% if signatory.signingMethod.capacity.capacityType == '[Custom]' %}
-                        {{ signatory.signingMethod.capacity.customCapacity }}
-                    {% else %}
-                        {{ signatory.signingMethod.capacity.capacityType }}
-                    {% endif %}
-                </text:span>
+                
+                {% if signatory.signingMethod.capacity.capacityType == '[Custom]' %}
+                    {{ signatory.signingMethod.capacity.customCapacity }}
+                {% else %}
+                    {{ signatory.signingMethod.capacity.capacityType }}
+                {% endif %}
 
                 of
 
-                {{ signatory.signingMethod.capacity.of }}:
+                {{ signatory.signingMethod.capacity.of }}
             {% endif %}
         {% else %}
             {#
@@ -121,7 +119,7 @@
             {% set otherParties = signatory.signingMethod.parties %}
             
             {%- if signatory.signingMethod.signingMethod == 'themself and others' %}
-                {% set otherParties = parties | prepend(signatory) %}
+                {% set otherParties = otherParties | prepend(signatory) %}
             {%- endif -%}
 
             {{ otherParties | join_and('name') }}
@@ -129,13 +127,13 @@
             {%- if signatory.signingMethod.capacity.capacityType != 'No Capacity' -%}
                 , as {{ signatory.signingMethod.capacity.capacityType }}
             {%- endif -%}
-
-            {%- if witnessed %}
-                in the presence of
-            {%- endif -%}
-
-            :
         {% endif %}
+                
+        {%- if witnessed %}
+            in the presence of
+        {%- endif -%}
+
+        :
     </text:p>
 {% endmacro %}
 
