@@ -149,10 +149,10 @@
 
             Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> on behalf of
             
-            {%- if signatory.signingMethod.signingMethod == 'themself and others' -%}
-                {{ bold_join_and(signatory.signingMethod.parties, 'name', signatory.name) }}
-            {%- else -%}
-                {{ bold_join_and(signatory.signingMethod.parties, 'name') }}
+            {%- if signatory.signingMethod.signingMethod == 'themself and others' %}
+                {{ signatory.signingMethod.parties | prepend(signatory) | join_and('name') }}
+            {%- else %}
+                {{ signatory.signingMethod.parties | join_and('name') }}
             {%- endif -%}
             
             {%- if signatory.signingMethod.capacity.capacityType != 'No Capacity' -%}
