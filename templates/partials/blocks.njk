@@ -9,3 +9,9 @@
         {{ caller() }}
     </text:list>
 {% endmacro %}
+
+{% block paragraph() %}
+    <text:p text:style-name="text_normal">
+        {{ caller() | replace_newlines('<text:line-break/>') }}
+    </text:p>
+{% endblock %}
