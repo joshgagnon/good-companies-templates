@@ -140,7 +140,7 @@
 
                 of
 
-                <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.of }}</text:span>:
+                {{ signatory.signingMethod.capacity.of }}:
             {% endif %}
         {% else %}
             {#
@@ -156,7 +156,7 @@
             {%- endif -%}
             
             {%- if signatory.signingMethod.capacity.capacityType != 'No Capacity' -%}
-                , as <text:span text:style-name="bold">{{ signatory.signingMethod.capacity.capacityType }}</text:span>
+                , as {{ signatory.signingMethod.capacity.capacityType }}
             {%- endif -%}
 
             {%- if witnessed %}
