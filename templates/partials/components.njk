@@ -55,37 +55,6 @@
 
 
 
-{% macro bold_join_and(items, name_attribute, prepend=null) %}
-    {% if prepend != null %}
-        {% if items | length == 1 %}
-            <text:span text:style-name="bold">{{ prepend }}</text:span> and <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span>
-        {%- else %}
-            <text:span text:style-name="bold">{{ prepend }}</text:span>,
-
-            {% for item in items %}
-                {% if loop.last %}
-                    and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
-                {%- else %}
-                    <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
-                {% endif -%}
-            {%- endfor -%}
-        {%- endif -%}
-    {%- else -%}
-        {% if items | length == 1 %}
-            <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span>
-        {%- elif items | length == 2 %}
-            <text:span text:style-name="bold">{{ items[0] | get_value(name_attribute) }}</text:span> and <text:span text:style-name="bold">{{ items[1] | get_value(name_attribute) }}</text:span>
-        {%- else %}
-            {% for item in items %}
-                {% if loop.last %}
-                    and <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>
-                {%- else %}
-                    <text:span text:style-name="bold">{{ item | get_value(name_attribute) }}</text:span>,
-                {% endif -%}
-            {%- endfor -%}
-        {%- endif -%}
-    {%- endif -%}
-{%- endmacro %}
 
 {% macro witness_block() %}
     {{ table_signature_line() }}
