@@ -84,20 +84,15 @@
 
 {% macro signature_block_heading(signatory, witnessed=false) %}
     <text:p text:style-name="text_normal">
+        Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
+        
         {% if signatory.signingMethod.signingMethod == 'themself only' %}
-            {#
-             #  Signing on behalf of others only
-             #}
-            {% if signatory.signingMethod.capacity.capacityType == 'No Capacity' %}
-                {#
-                 #  Signing for themself only with no capacity
-                 #}
-                Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
-            {% else %}
+            {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
                 {#
                  #  Signing for themself only wiuth a capacity
                  #}
-                Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> as
+                
+                as
                 
                 {% if signatory.signingMethod.capacity.capacityType == '[Custom]' %}
                     {{ signatory.signingMethod.capacity.customCapacity }}
@@ -114,7 +109,7 @@
              #  Signing on behalf of themself and others or other only
              #}
 
-            Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span> on behalf of
+            on behalf of
 
             {% set otherParties = signatory.signingMethod.parties %}
             
