@@ -36,10 +36,7 @@
                     },
                     "required": ["name"]
                 },
-                "requiresWitnessing": {
-                    "title": "Signature requires witnessing",
-                    "enum": ["No", "Yes"]
-                },
+                "requiresWitnessing": { "$ref": "#/definitions/requiresWitnessing" },
                 "companyHasConstitution": {
                     "title": "Company has Constitution",
                     "enum": ["Company has Constitution", "Company does not have Constitution"],
@@ -61,8 +58,7 @@
             "required": ["dateOfResignation", "resigningDirector", "requiresWitnessing", "companyHasConstitution", "effective"],
             "default": {
                 "effective": "Effective Immediately",
-                "companyHasConstitution": "Company has Constitution",
-                "requiresWitnessing": "No"
+                "companyHasConstitution": "Company has Constitution"
             },
             "x-hints": {
                 "form": {"selector": "effective"}
