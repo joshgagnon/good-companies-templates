@@ -74,8 +74,6 @@
 
     {{ components.notes(notes) }}
 
-    <text:p text:style-name="text_normal">This notice is given by {{ noticeOptions.personGivingNotice }}</text:p>
-
-    {{ components.signature_line() }}
+    {{ components.basic_signature_table([{"name": noticeOptions.personGivingNotice}], (noticeOptions.requiresWitnessing == 'Yes'), false) }}
 
 {% endblock %}

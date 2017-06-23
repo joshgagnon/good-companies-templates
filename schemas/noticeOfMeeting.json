@@ -33,6 +33,7 @@
                     "title": "Person Giving Notice",
                     "type": "string"
                 },
+                "requiresWitnessing": { "$ref": "#/definitions/requiresWitnessing" },
                 "meetingType": {
                     "title": "Meeting Type",
                     "enum": [
@@ -42,7 +43,7 @@
                     ]
                 }
             },
-            "required": ["dateOfNotice", "meetingDateTime", "locationOfMeeting", "personGivingNotice", "meetingType"],
+            "required": ["dateOfNotice", "meetingDateTime", "locationOfMeeting", "personGivingNotice", "requiresWitnessing", "meetingType"],
             "default": {"meetingType": "Board Meeting"},
             "x-hints": {
                 "form": {

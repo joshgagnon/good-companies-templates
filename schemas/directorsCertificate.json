@@ -18,11 +18,7 @@
                         }
                     }
                 },
-                "requiresWitnessing": {
-                    "title": "Requires Witnessing",
-                    "enum": ["No", "Yes"],
-                    "default": "No"
-                }
+                "requiresWitnessing": { "$ref": "#/definitions/requiresWitnessing" }
             },
             "required": ["dateOfCertificate", "requiresWitnessing"]
         },
