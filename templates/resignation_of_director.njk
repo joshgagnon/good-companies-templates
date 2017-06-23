@@ -36,10 +36,13 @@
     {% endcall %}
 
     {{ components.notes(notes) }}
-    
-    <text:p text:style-name="text_normal">Signed by {{ resignationOptions.resigningDirector.name }}</text:p>
 
-    {{ components.signature_line() }}
+    {% if resignationOptions.requiresWitnessing == 'Yes' %}
+        {{ components.witnessed_signatory_table(resignationOptions.resigningDirector, true) }}
+    {% else %}
+        {{ components.signature_block_heading(resignationOptions.resigningDirector, false) }}
+        {{ components.signature_line() }}
+    {% endif %}
 
 {% endblock %}
 

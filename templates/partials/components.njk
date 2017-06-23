@@ -86,7 +86,7 @@
     <text:p text:style-name="text_normal">
         Signed by <text:span text:style-name="bold">{{ signatory.name }}</text:span>
         
-        {% if signatory.signingMethod.signingMethod == 'themself only' %}
+        {%- if signatory.signingMethod.signingMethod == 'themself only' -%}
             {% if signatory.signingMethod.capacity.capacityType != 'No Capacity' %}
                 {#
                  #  Signing for themself only wiuth a capacity
@@ -103,8 +103,8 @@
                 of
 
                 {{ signatory.signingMethod.capacity.of }}
-            {% endif %}
-        {% else %}
+            {%- endif -%}
+        {% elif signatory.signingMethod != undefined %}
             {#
              #  Signing on behalf of themself and others or other only
              #}
