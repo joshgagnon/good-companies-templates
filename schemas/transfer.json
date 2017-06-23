@@ -46,7 +46,7 @@
                             },
                             "behalfOf": {
                                 "type": "string",
-                                "title": "Signatory (if required)"
+                                "title": "Signatory"
                             }
                         },
                         "required": ["name", "address"],
@@ -81,7 +81,7 @@
                             },
                             "behalfOf": {
                                 "type": "string",
-                                "title": "Signatory (if required)"
+                                "title": "Signatory"
                             }
                         },
                         "x-hints": {
