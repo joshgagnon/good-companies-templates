@@ -6,7 +6,7 @@
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
-        "resolutionOptions": {
+        "certificateOptions": {
             "type": "object",
             "properties": {
                 "dateOfCertificate": {
