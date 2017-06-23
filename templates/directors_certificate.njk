@@ -25,6 +25,6 @@
 
     {{ components.notes(notes) }}
     
-    {{ components.signature_table(directors, 'name') }}
+    {{ components.basic_signature_table(directors, (resolutionOptions.requiresWitnessing == 'yes'), false) }}
 
 {% endblock %}

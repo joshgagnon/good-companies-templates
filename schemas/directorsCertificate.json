@@ -17,28 +17,17 @@
                             "inputComponent": "date"
                         }
                     }
+                },
+                "requiresWitnessing": {
+                    "title": "Requires Witnessing",
+                    "enum": ["No", "Yes"],
+                    "default": "No"
                 }
             },
-            "required": ["dateOfCertificate"]
+            "required": ["dateOfCertificate", "requiresWitnessing"]
         },
         "directors": {
-            "type": "array",
-            "title": "Directors",
-            "items": {
-                "title": "Director",
-                "type": "object",
-                "properties": {
-                    "director": {
-                        "$ref": "#/definitions/director"
-                    }
-                },
-                "x-hints": {
-                    "form": {
-                        "addItem": "Add Director"
-                    }
-                }
-            },
-            "default": [{}],
+            "$ref": "#/definitions/directorsList",
             "minItems": 1
         },
         "certifications": {
