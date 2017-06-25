@@ -47,9 +47,13 @@
                             "behalfOf": {
                                 "type": "string",
                                 "title": "Signatory"
+                            },
+                            "signing": {
+                                "$ref": "#/definitions/signatures",
+                                "title": "Transferors' Signatures"
                             }
                         },
-                        "required": ["name", "address"],
+                        "required": ["name", "address", "signing"],
                         "x-hints": {
                             "form": {
                                 "sourceLocation": "company.shareholders",
@@ -82,16 +86,31 @@
                             "behalfOf": {
                                 "type": "string",
                                 "title": "Signatory"
+                            },
+                            "requiresSigning": {
+                                "title": "Transferees Require Signatures",
+                                "enum": ["No", "Yes"],
+                                "default": "No"
                             }
                         },
                         "x-hints": {
                             "form": {
                                 "sourceLocation": "company.shareholders",
                                 "source": "name",
-                                "addItem": "Add Shareholder"
+                                "addItem": "Add Shareholder",
+                                "selector": "requiresSigning"
                             }
                         },
-                        "required": ["name", "address"]
+                        "required": ["name", "address", "requiresSigning"],
+                        "oneOf": [{
+                            "properties": {
+                                "requiresSigning": { "enum": ["Yes"] },
+                                "signing": {
+                                    "$ref": "#/definitions/signatures",
+                                    "title": "Transferees' Signatures"
+                                }
+                            }
+                        }]
                     },
                     "minItems": 1,
                     "default": [{}]
