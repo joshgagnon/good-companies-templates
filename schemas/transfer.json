@@ -28,6 +28,7 @@
                 },
                 "transferors": {
                     "type": "object",
+                    "title": "Transferors",
                     "properties": {
                         "persons": { "$ref": "#/definitions/persons" },
                         "signing": {
@@ -39,6 +40,7 @@
                 },
                 "transferees": {
                     "type": "object",
+                    "title": "Transferees",
                     "properties": {
                         "persons": { "$ref": "#/definitions/persons" },
                         "requiresSigning": {
@@ -114,7 +116,6 @@
     "definitions": {
         "persons": {
             "type": "array",
-            "title": "Transferees",
             "items": {
                 "type": "object",
                 "properties": {
