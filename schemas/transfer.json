@@ -44,10 +44,6 @@
                                 "type": "string",
                                 "title": "Company Number"
                             },
-                            "behalfOf": {
-                                "type": "string",
-                                "title": "Signatory"
-                            },
                             "signing": {
                                 "$ref": "#/definitions/signatures",
                                 "title": "Transferors' Signatures"
@@ -82,10 +78,6 @@
                             "companyNumber": {
                                 "type": "string",
                                 "title": "Company Number"
-                            },
-                            "behalfOf": {
-                                "type": "string",
-                                "title": "Signatory"
                             },
                             "requiresSigning": {
                                 "title": "Transferees Require Signatures",
