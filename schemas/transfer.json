@@ -27,85 +27,40 @@
                     "type": "string"
                 },
                 "transferors": {
-                    "type": "array",
-                    "title": "Transferors",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "title": "Name"
-                            },
-                            "address": {
-                                "type": "string",
-                                "title": "Address"
-                            },
-                            "companyNumber": {
-                                "type": "string",
-                                "title": "Company Number"
-                            },
-                            "signing": {
-                                "$ref": "#/definitions/signatures",
-                                "title": "Transferors' Signatures"
-                            }
-                        },
-                        "required": ["name", "address", "signing"],
-                        "x-hints": {
-                            "form": {
-                                "sourceLocation": "company.shareholders",
-                                "source": "name",
-                                "addItem": "Add Shareholder"
-                            }
+                    "type": "object",
+                    "properties": {
+                        "persons": { "$ref": "#/definitions/persons" },
+                        "signing": {
+                            "$ref": "#/definitions/signatures",
+                            "title": "Transferors' Signatures"
                         }
                     },
-                    "minItems": 1,
-                    "default": [{}]
+                    "required": ["persons", "signing"]
                 },
                 "transferees": {
-                    "type": "array",
-                    "title": "Transferees",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "title": "Name"
-                            },
-                            "address": {
-                                "type": "string",
-                                "title": "Address"
-                            },
-                            "companyNumber": {
-                                "type": "string",
-                                "title": "Company Number"
-                            },
-                            "requiresSigning": {
-                                "title": "Transferees Require Signatures",
-                                "enum": ["No", "Yes"],
-                                "default": "No"
-                            }
-                        },
-                        "x-hints": {
-                            "form": {
-                                "sourceLocation": "company.shareholders",
-                                "source": "name",
-                                "addItem": "Add Shareholder",
-                                "selector": "requiresSigning"
-                            }
-                        },
-                        "required": ["name", "address", "requiresSigning"],
-                        "oneOf": [{
-                            "properties": {
-                                "requiresSigning": { "enum": ["Yes"] },
-                                "signing": {
-                                    "$ref": "#/definitions/signatures",
-                                    "title": "Transferees' Signatures"
-                                }
-                            }
-                        }]
+                    "type": "object",
+                    "properties": {
+                        "persons": { "$ref": "#/definitions/persons" },
+                        "requiresSigning": {
+                            "title": "Transferees Require Signatures",
+                            "enum": ["No", "Yes"],
+                            "default": "No"
+                        }
                     },
-                    "minItems": 1,
-                    "default": [{}]
+                    "required": ["persons", "requiresSigning"],
+                    "x-hints": {
+                        "form": { "selector": "requiresSigning" }
+                    },
+                    "oneOf": [{
+                        "properties": {
+                            "requiresSigning": { "enum": ["Yes"] },
+                            "signing": {
+                                "$ref": "#/definitions/signatures",
+                                "title": "Transferees' Signatures"
+                            }
+                        },
+                        "required": ["requiresSigning", "signing"]
+                    }]
                 },
                 "parcels": {
                     "type": "array",
@@ -154,5 +109,39 @@
         {"link": {"title": "Companies Act 1993", "location": "s 86"}, "text": "Transfer by operation of law"},
         {"link": {"title": "Property Law Act 2007", "location": "part 2 s 9(7)"}, "text": "Witnessing Requirements"},
         {"link": {"title": "Property Law Act 2007", "location": "part 2 s 9"}, "text": "Execution of Deeds"}
-    ]
+    ],
+
+    "definitions": {
+        "persons": {
+            "type": "array",
+            "title": "Transferees",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "address": {
+                        "type": "string",
+                        "title": "Address"
+                    },
+                    "companyNumber": {
+                        "type": "string",
+                        "title": "Company Number"
+                    }
+                },
+                "x-hints": {
+                    "form": {
+                        "sourceLocation": "company.shareholders",
+                        "source": "name",
+                        "addItem": "Add Shareholder"
+                    }
+                },
+                "required": ["name", "address"]
+            },
+            "minItems": 1,
+            "default": [{}]
+        }
+    }
 }
