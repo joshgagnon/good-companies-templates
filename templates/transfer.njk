@@ -67,7 +67,7 @@
             </table:table-cell>
 
             <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
-                {% for holder in transaction.transferors %}
+                {% for holder in transaction.transferors.persons %}
                     <text:p text:style-name="table_contents">
                         {{ holder.name }}
 
@@ -97,7 +97,7 @@
             </table:table-cell>
 
             <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
-                {% for holder in transaction.transferees %}
+                {% for holder in transaction.transferees.persons %}
                     <text:p text:style-name="table_contents">
                         {{ holder.name }}
 
@@ -159,57 +159,11 @@
                 </text:p>
             </table:table-cell>
         </table:table-row>
-
-        <!--
-        **  Signatures
-        -->
-        <table:table-row>
-            <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
-                <text:p text:style-name="table_contents">Signatures</text:p>
-            </table:table-cell>
-
-            <table:table-cell office:value-type="string" table:style-name="layout_table_cell">
-                {% for holding in transaction.transferors %}
-                    <text:p text:style-name="table_contents">
-                        Signed by
-
-                        {% if holding.behalfOf %}
-                            {{ holding.behalfOf }} on behalf of the
-                        {% else %}
-                            {{ holding.name }} as
-                        {% endif %}
-
-                        Transferor:
-                    </text:p>
-
-                    {{ components.table_signature_line() }}
-
-                    {{ components.blank_table_line() }}
-                {% endfor %}
-
-                {% for holding in transaction.transferees %}
-                    <text:p text:style-name="table_contents">
-                        Signed by
-
-                        {% if holding.behalfOf %}
-                            {{ holding.behalfOf }} on behalf of the
-                        {% else %}
-                            {{ holding.name }} as
-                        {% endif %}
-
-                        Transferee:
-                    </text:p>
-
-                    {{ components.table_signature_line() }}
-
-                    {% if not loop.last %}
-                        {{ components.blank_table_line() }}
-                    {% endif %}
-                {% endfor %}
-            </table:table-cell>
-        </table:table-row>
-
     </table:table>
 
+    <!--
+    **  Signatures
+    -->
+    {{ components.Signatures }}
 
 {% endblock %}
