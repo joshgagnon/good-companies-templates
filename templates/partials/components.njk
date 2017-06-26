@@ -220,16 +220,20 @@
     </table:table>
 {% endmacro %}
 
-{% macro signature_table(data, name_attribute=null) %}
+{% macro signature_table(data, title_text=null) %}
     {% set signaturesIndividuallyDated = (data.signingDate.signingOnSameDay == 'no') %}
     {% set requiresWitnessing = (data.requiresWitnessing == 'yes') %}
 
     <text:p text:style-name="text_normal">
         <text:span text:style-name="bold">
-            {% if requiresWitnessing %}
-                EXECUTED AND DELIVERED AS A DEED
+            {% if title_text %}
+                {{ title_text }}
             {% else %}
-                SIGNATURES
+                {% if requiresWitnessing %}
+                    EXECUTED AND DELIVERED AS A DEED
+                {% else %}
+                    SIGNATURES
+                {% endif %}
             {% endif %}
         </text:span>
     </text:p>

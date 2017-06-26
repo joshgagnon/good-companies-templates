@@ -164,6 +164,12 @@
     <!--
     **  Signatures
     -->
-    {{ components.Signatures }}
+    {{ components.blank_line() }}
+    {{ components.signature_table(transaction.transferors.signing, "Transferors' Signatures") }}
+    {{ components.blank_line() }}
+    
+    {% if transaction.transferees.requiresSigning == 'Yes' %}
+        {{ components.signature_table(transaction.transferees.signing, "Transferees' Signatures") }}
+    {% endif %}
 
 {% endblock %}
