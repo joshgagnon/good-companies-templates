@@ -69,7 +69,7 @@
         {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
             resolution of the Company’s board, by either being agreed to by all directors present or having a majority of the votes cast on it being in favour.
         {% else %}
-            written resolution of all the directors of the Company who, as at the date of this document, were entitled to receive notice of a meeting of the Company’s board. The/Each resolution is as valid and effective as if it had been passed at a meeting of the board duly convened and held.
+            written resolution of all the directors of the Company who, as at the date of this document, were entitled to receive notice of a meeting of the Company’s board. {{ helpers.pluralise(resolutions, 'The', 'Each') }} resolution is as valid and effective as if it had been passed at a meeting of the board duly convened and held.
         {% endif %}
     </text:p>
 
