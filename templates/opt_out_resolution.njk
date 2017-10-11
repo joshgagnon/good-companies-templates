@@ -54,7 +54,7 @@
             {% endfor %}
         {% else %}
             {% for resolution in resolutions.resolutions %}
-                {% if resolution.type == 'Opt Out of Preparation Requirements' %}
+                {% if (resolution.type == 'Opt Out of Preparation Requirements') or resolution.type == 'Opt Out of Preparation & Audit Requirements' %}
                     <text:list-item>
                         <text:p text:style-name="text_normal">That the Company opt out of compliance with sections 201 and section 202 of the Companies Act 1993, which require the Company to prepare financial statements, in accordance with section 207I of that Act. The shareholders confirm that:</text:p>
 
@@ -76,7 +76,7 @@
                     </text:list-item>
                 {% endif %}
 
-                {% if resolution.type == 'Opt Out of Audit Requirement' %}
+                {% if resolution.type == 'Opt Out of Preparation & Audit Requirements' %}
                     <text:list-item>
                         <text:p text:style-name="text_normal">That the Company opt out of compliance with section 207 of the Companies Act 1993, which requires the Company to audit its financial statements,  in accordance with section 207I of that Act.  The shareholders confirm that:</text:p>
 

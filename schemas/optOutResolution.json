@@ -108,7 +108,7 @@
                                         "enumeratedTitle": "Resolution {0}",
                                         "enum": [
                                             "Opt Out of Preparation Requirements",
-                                            "Opt Out of Audit Requirement",
+                                            "Opt Out of Preparation & Audit Requirements",
                                             "Opt Out of Annual Report Requirement"
                                         ]
                                     }
