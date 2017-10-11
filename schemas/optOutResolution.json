@@ -1,7 +1,7 @@
 {
     "description": "",
     "title": "Opt Out Resolution of Shareholders",
-    "formName": "opt_out_resolution_large_company",
+    "formName": "opt_out_resolution",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },
