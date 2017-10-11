@@ -28,7 +28,7 @@
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is a large company within the meaning of section 45 of the Financial Reporting Act 2013;</text:p>
                             </text:list-item>
-                            
+
                             {% if options.hasConstitution == 'yes' %}
                                 <text:list-item>
                                     <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207J of the Companies Act 1993 does not apply;</text:p>
@@ -38,7 +38,7 @@
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
                             </text:list-item>
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not required to register its financial statements under section 207E of the Companies Act 1993.</text:p>
                             </text:list-item>
@@ -74,11 +74,11 @@
                                     <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act 1993 does not apply;</text:p>
                                 </text:list-item>
                             {% endif %}
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
                             </text:list-item>
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a large company within the meaning of section 45 of the Financial Reporting Act 2013.</text:p>
                             </text:list-item>1
@@ -93,14 +93,14 @@
                         <text:list>
                             {% if options.hasConstitution == 'yes' %}
                                 <text:list-item>
-                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act Act does not apply;</text:p>
+                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act does not apply;</text:p>
                                 </text:list-item>
                             {% endif %}
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
                             </text:list-item>
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a large company within the meaning of section 45 of the Financial Reporting Act 2013.</text:p>
                             </text:list-item>
@@ -115,14 +115,14 @@
                         <text:list>
                             {% if options.hasConstitution == 'yes' %}
                                 <text:list-item>
-                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act Act does not apply;</text:p>
+                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act does not apply;</text:p>
                                 </text:list-item>
                             {% endif %}
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
                             </text:list-item>
-                            
+
                             <text:list-item>
                                 <text:p text:style-name="text_normal">the Company is not a large company within the meaning of section 45 of the Financial Reporting Act 2013.</text:p>
                             </text:list-item>
@@ -135,7 +135,7 @@
 
     <text:p text:style-name="text_normal">
         {{ helpers.pluralise(resolutions, 'The above resolution', 'Each of the above resolutions') }}
-        
+
         {% if options.resolutionType == 'resolution_at_meeting' %}
             was made within the opting period, as defined in section 207H of the Companies Act 1993, and approved by not less than 95% of the votes of those shareholders entitled to vote and voting on the question[Companies Act 1993, s 207I(3)]
         {% else %}
@@ -146,7 +146,7 @@
     </text:p>
 
     {{ components.notes(notes) }}
-	
+
     {% if options.resolutionType == 'resolution_at_meeting' %}
         <text:p text:style-name="text_normal">This minute is certified as true and correct by {{ options.chairperson.name }}, who chaired the board meeting.</text:p>
         <text:p text:style-name="text_normal">Signed by {{ options.chairperson.name }} as chairperson:</text:p>
