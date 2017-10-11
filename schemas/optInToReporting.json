@@ -41,7 +41,7 @@
     "required": ["dateOfNotice", "provisions", "notes", "signatories"],
     "type": "object",
     "x-ordering": [],
-    "x-icon": "fa fa-sign",
+    "x-icon": "fa fa-sign-in",
     "lawBrowserLinks": [
         {"link": {"title": "Financial Reporting Act 2013", "location": "s 6"}, "text": "Meaning of financial statements"},
         {"link": {"title": "Companies Act 1993", "location": "s 200, 201, 202"}, "text": "Companies required to prepare financial statements"},
