@@ -69,7 +69,7 @@
         {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
             resolution of the Company’s board, by either being agreed to by all directors present or having a majority of the votes cast on it being in favour.
         {% else %}
-            written resolution of all the directors of the Company who, as at the date of this document, were entitled to receive notice of a meeting of the Company’s board. The/Each resolution is as valid and effective as if it had been passed at a meeting of the board duly convened and held.
+            written resolution of all the directors of the Company who, as at the date of this document, were entitled to receive notice of a meeting of the Company’s board. {{ helpers.pluralise(resolutions, 'The', 'Each') }} resolution is as valid and effective as if it had been passed at a meeting of the board duly convened and held.
         {% endif %}
     </text:p>
 
@@ -84,7 +84,7 @@
         <text:p text:style-name="text_normal">A copy of this written resolution is to be entered in the minute book of board proceedings.</text:p>
         <text:p text:style-name="text_normal">Signed by all the directors of the Company:</text:p>
 
-        {{ components.signature_table(resolutionOptions.directors) }}
+        {{ components.basic_signature_table(resolutionOptions.directors, false, false) }}
     {% endif %}
 
 {% endblock %}
