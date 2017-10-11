@@ -19,6 +19,20 @@
             "enum": ["No", "Yes"],
             "default": "No"
         },
+        "hasConstitution": {
+            "title": "Company has Constitution",
+            "enum": ["yes", "no"],
+            "enumNames": ["Company has Constitution", "Company does not have Constitution"],
+            "x-hints": {
+                "form": {
+                    "conditionalDefault": {
+                        "conditional": "company.constitutionFiled",
+                        "trueValue": "yes",
+                        "falseValue": "no"
+                    }
+                }
+            }
+        },
         "director": {
             "type": "object",
             "properties": {

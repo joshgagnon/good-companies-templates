@@ -1,49 +1,22 @@
 {
     "description": "",
     "title": "Opt Out Resolution of Shareholders",
-    "formName": "opt_out_resolution_of_shareholders",
+    "formName": "opt_out_resolution_large_company",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
         "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
-        "resolutionOptions": {
+        "options": {
             "type": "object",
             "properties": {
-                "chairperson": {
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "title": "Chairperson Name",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["name"]
-                },
-                "dateOfShareholderMeeting": {
-                    "title": "Date of Shareholder Meeting",
-                    "type": "string",
-                    "x-hints" : {
-                        "form": { "inputComponent": "date" }
-                    }
+                "hasConstitution": { "$ref": "#/definitions/hasConstitution" },
+                "dateOfMeeting": {
+                    "$ref": "#/definitions/date",
+                    "title": "Date of Shareholder Meeting"
                 },
                 "dateOfMinute": {
-                    "title": "Date of Minute",
-                    "type": "string",
-                    "x-hints" : {
-                        "form": { "inputComponent": "date" }
-                    }
-                },
-                "dateOfWrittenResolution": {
-                    "title": "Date of Written Resolution",
-                    "type": "string",
-                    "x-hints" : {
-                        "form": { "inputComponent": "date" }
-                    }
-                },
-                "shareholders": {
-                    "$ref": "#/definitions/shareholdersList",
-                    "default": [{}],
-                    "minItems": 1
+                    "$ref": "#/definitions/date",
+                    "title": "Date of Minute"
                 },
                 "resolutionType": {
                     "title": "Resolution Type",
@@ -54,94 +27,58 @@
                     ]
                 }
             },
-            "required": ["resolutionType"],
-            "default": {
-                "resolutionType": "Opt Out Resolution at Shareholder Meeting"
-            },
+            "required": ["resolutionType", "dateOfMeeting", "dateOfMinute", "hasConstitution"],
+            "default": { "resolutionType": "resolution_at_meeting" },
             "x-hints": {
                 "form": { "selector": "resolutionType" }
             },
-            "oneOf": [
+            "oneOf":[
                 {
                     "properties": {
                         "resolutionType": {
-                            "enum": ["Opt Out Resolution at Shareholder Meeting"]
+                            "enum": ["resolution_at_meeting"]
                         },
-                        "chairperson": {
-                            "type": "object",
-
-                            "properties": {
-                                "name": {
-                                    "title": "Chairperson Name",
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["name"]
-                        },
-                        "dateOfShareholderMeeting": {
-                            "title": "Date of Shareholder Meeting",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                  "inputComponent": "date"
-                                }
-                            }
-                        },
-                        "dateOfMinute": {
-                            "title": "Date of Minute",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": { "inputComponent": "date" }
-                            }
-                        }
-                    },
-                    "required": [
-                        "dateOfMinute",
-                        "dateOfShareholderMeeting",
-                        "chairperson"
-                    ]
+                        "chairperson": { "$ref": "#/definitions/chairperson" }
+                    }
                 },
                 {
                     "properties": {
                         "resolutionType": {
-                            "enum": ["Written Opt Out Resolution in lieu of Shareholder Meeting"]
+                            "enum": ["written_resolution"]
                         },
-                        "dateOfMinute": {
-                            "title": "Date of Written Resolution",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": { "inputComponent": "date" }
-                            }
+                        "signatories": {
+                            "$ref": "#/definitions/signingByShareholdings",
+                            "title": "Shareholders"
                         },
-                        "shareholders": {
-                            "type": "array",
-                            "title": "Shareholders",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "title": "Shareholder name"
-                                    }
-                                },
-                                "x-hints": {
-                                    "form": { "addItem": "Add Shareholder" }
-                                },
-                                "required": ["name"]
-                            },
-                            "default": [{}],
-                            "minItems": 1
-                        }
-                    },
-                    "required": ["dateOfMinute"]
+                        "required": ["signatories"]
+                    }
                 }
             ]
+        },
+        "resolutions": {
+            "type": "array",
+            "title": "Resolutions",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "title": "Resolution Type",
+                        "enumeratedTitle": "Resolution {0}",
+                        "enum": [
+                            "Opt Out of Audit Requirement",
+                            "Opt Out of Annual Report Requirement"
+                        ]
+                    }
+                },
+                "required": ["individualResolutionType"]
+            },
+            "minItems": 1
         },
         "notes": { "$ref": "#/definitions/notes" }
     },
     "required": [
         "resolutions",
-        "resolutionOptions"
+        "options"
     ],
     "type": "object",
     "x-ordering": [],

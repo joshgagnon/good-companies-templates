@@ -12,38 +12,40 @@
     {{ components.blank_line() }}
 
     {% if options.resolutionType == 'resolution_at_meeting' %}
-        <text:p text:style-name="text_normal">This minute records that on [Date of Shareholder Meeting] the shareholders of the Company held a meeting, during which the following resolution(s) was/were passed:</text:p>
+        <text:p text:style-name="text_normal">This minute records that on {{ options.dateOfMeeting }} the shareholders of the Company held a meeting, during which the following resolution(s) was/were passed:</text:p>
     {% else %}
         <text:p text:style-name="text_normal">The shareholder(s) of the Company named below hereby make(s) the following written resolution(s):</text:p>
     {% endif %}
 
     {% call blocks.normal_list() %}
         {% for resolution in resolutions %}
-            {% if resolution.individualResolutionType == 'Opt Out of Audit Requirement' %}
+            {% if resolution.type == 'Opt Out of Audit Requirement' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the Company opt out of compliance with section 207 of the Companies Act 1993, which requires the Company to audit its financial statements, in accordance with section 207J of that Act.  The shareholders confirm that:</text:p>
 
                     <text:list>
                         <text:list-item>
-                            <text:p text:style-name="text_normal">the Company is a large company within the meaning of section 45 of the Financial Reporting Act 2013;</text:list-item>
+                            <text:p text:style-name="text_normal">the Company is a large company within the meaning of section 45 of the Financial Reporting Act 2013;</text:p>
                         </text:list-item>
                         
-                        <text:list-item>
-                            <text:p text:style-name="text_normal">(if Company has constitution)the constitution of the Company does not expressly provide that section 207J of the Companies Act 1993 does not apply;</text:list-item>
-                        </text:list-item>
+                        {% if options.hasConstitution == 'yes' %}
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207J of the Companies Act 1993 does not apply;</text:p>
+                            </text:list-item>
+                        {% endif %}
 
                         <text:list-item>
-                            <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:list-item>
+                            <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
                         </text:list-item>
                         
                         <text:list-item>
-                            <text:p text:style-name="text_normal">the Company is not required to register its financial statements under section 207E of the Companies Act 1993.</text:list-item>
+                            <text:p text:style-name="text_normal">the Company is not required to register its financial statements under section 207E of the Companies Act 1993.</text:p>
                         </text:list-item>
                     </text:list>
                 </text:list-item>
             {% endif %}
 
-            {% if resolution.individualResolutionType == 'Opt Out of Annual Report Requirement' %}
+            {% if resolution.type == 'Opt Out of Annual Report Requirement' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Check with thomas about what goes here</text:p>
                 </text:list-item>
@@ -61,16 +63,16 @@
         {% endif %}
 
         In accordance with section 199 of the Companies Act 1993, the shareholders are those that held voting shares as at the close of the first day of the accounting period. Joint holders of a parcel of shares have been counted as a single shareholder.
-    <text:p>
+    </text:p>
 
     {{ components.notes(notes) }}
 	
     {% if options.resolutionType == 'resolution_at_meeting' %}
-        <text:p text:style-name="text_normal">This minute is certified as true and correct by [Name of Person Who Chaired Meeting], who chaired the board meeting.</text:p>
+        <text:p text:style-name="text_normal">This minute is certified as true and correct by {{ options.chairperson.name }}, who chaired the board meeting.</text:p>
         <text:p text:style-name="text_normal">Signed by {{ options.chairperson.name }} as chairperson:</text:p>
 
         {{ components.signature_line() }}
     {% else %}
-        {{ components.signature_table(options.signatures) }}
+        {{ components.signature_table(options.signatories) }}
     {% endif %}
 {% endblock %}
