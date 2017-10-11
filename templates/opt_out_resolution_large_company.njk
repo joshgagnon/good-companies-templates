@@ -18,39 +18,109 @@
     {% endif %}
 
     {% call blocks.normal_list() %}
-        {% for resolution in resolutions %}
-            {% if resolution.type == 'Opt Out of Audit Requirement' %}
-                <text:list-item>
-                    <text:p text:style-name="text_normal">That the Company opt out of compliance with section 207 of the Companies Act 1993, which requires the Company to audit its financial statements, in accordance with section 207J of that Act.  The shareholders confirm that:</text:p>
+        {% if resolutions.isLargeCompany == 'yes' %}
+            {% for resolution in resolutions.resolutions %}
+                {% if resolution.type == 'Opt Out of Audit Requirement' %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">That the Company opt out of compliance with section 207 of the Companies Act 1993, which requires the Company to audit its financial statements, in accordance with section 207J of that Act.  The shareholders confirm that:</text:p>
 
-                    <text:list>
-                        <text:list-item>
-                            <text:p text:style-name="text_normal">the Company is a large company within the meaning of section 45 of the Financial Reporting Act 2013;</text:p>
-                        </text:list-item>
-                        
-                        {% if options.hasConstitution == 'yes' %}
+                        <text:list>
                             <text:list-item>
-                                <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207J of the Companies Act 1993 does not apply;</text:p>
+                                <text:p text:style-name="text_normal">the Company is a large company within the meaning of section 45 of the Financial Reporting Act 2013;</text:p>
                             </text:list-item>
-                        {% endif %}
+                            
+                            {% if options.hasConstitution == 'yes' %}
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207J of the Companies Act 1993 does not apply;</text:p>
+                                </text:list-item>
+                            {% endif %}
 
-                        <text:list-item>
-                            <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
-                        </text:list-item>
-                        
-                        <text:list-item>
-                            <text:p text:style-name="text_normal">the Company is not required to register its financial statements under section 207E of the Companies Act 1993.</text:p>
-                        </text:list-item>
-                    </text:list>
-                </text:list-item>
-            {% endif %}
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
+                            </text:list-item>
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not required to register its financial statements under section 207E of the Companies Act 1993.</text:p>
+                            </text:list-item>
+                        </text:list>
+                    </text:list-item>
+                {% endif %}
 
-            {% if resolution.type == 'Opt Out of Annual Report Requirement' %}
-                <text:list-item>
-                    <text:p text:style-name="text_normal">Check with thomas about what goes here</text:p>
-                </text:list-item>
-            {% endif %}
-        {% endfor %}
+                {% if resolution.type == 'Opt Out of Annual Report Requirement' %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">Check with thomas about what goes here</text:p>
+                    </text:list-item>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for resolution in resolutions.resolutions %}
+                {% if resolution.type == 'Opt Out of Preparation Requirements' %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">That the Company opt out of compliance with sections 201 and section 202 of the Companies Act 1993, which require the Company to prepare financial statements, in accordance with section 207I of that Act. The shareholders confirm that:</text:p>
+
+                        <text:list>
+                            {% if options.hasConstitution == 'yes' %}
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act 1993 does not apply;</text:p>
+                                </text:list-item>
+                            {% endif %}
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
+                            </text:list-item>
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a large company within the meaning of section 45 of the Financial Reporting Act 2013.</text:p>
+                            </text:list-item>1
+                        </text:list>
+                    </text:list-item>
+                {% endif %}
+
+                {% if resolution.type == 'Opt Out of Audit Requirement' %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">That the Company opt out of compliance with section 207 of the Companies Act 1993, which requires the Company to audit its financial statements,  in accordance with section 207I of that Act.  The shareholders confirm that:</text:p>
+
+                        <text:list>
+                            {% if options.hasConstitution == 'yes' %}
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act Act does not apply;</text:p>
+                                </text:list-item>
+                            {% endif %}
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
+                            </text:list-item>
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a large company within the meaning of section 45 of the Financial Reporting Act 2013.</text:p>
+                            </text:list-item>
+                        </text:list>
+                    </text:list-item>
+                {% endif %}
+
+                {% if resolution.type == 'Opt Out of Annual Report Requirement' %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">That the Company opt out of compliance with section 208 of the Companies Act 1993, which requires the preparation of an annual report, in accordance with section 207I of that Act.  The shareholders confirm that:</text:p>
+
+                        <text:list>
+                            {% if options.hasConstitution == 'yes' %}
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the constitution of the Company does not expressly provide that section 207I of the Companies Act Act does not apply;</text:p>
+                                </text:list-item>
+                            {% endif %}
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a public entity within the meaning of section 5 of the Public Audit Act 2001; and</text:p>
+                            </text:list-item>
+                            
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company is not a large company within the meaning of section 45 of the Financial Reporting Act 2013.</text:p>
+                            </text:list-item>
+                        </text:list>
+                    </text:list-item>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     {% endcall %}
 
     <text:p text:style-name="text_normal">

@@ -56,23 +56,70 @@
             ]
         },
         "resolutions": {
-            "type": "array",
-            "title": "Resolutions",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "title": "Resolution Type",
-                        "enumeratedTitle": "Resolution {0}",
-                        "enum": [
-                            "Opt Out of Audit Requirement",
-                            "Opt Out of Annual Report Requirement"
-                        ]
+            "type": "object",
+            "properties": {
+                "isLargeCompany": {
+                    "title": "Is large company",
+                    "enum": ["yes", "no"],
+                    "enumNames": ["Is large company", "Is not large company"]
+                }
+            },
+            "required": ["isLargeCompany"],
+            "default": { "isLargeCompany": "yes" },
+            "x-hints": {
+                "form": { "selector": "isLargeCompany" }
+            },
+            "oneOf":[
+                {
+                    "properties": {
+                        "isLargeCompany": { "enum": ["yes"] },
+                        "resolutions": {
+                            "title": "Resolutions",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "title": "Resolution Type",
+                                        "enumeratedTitle": "Resolution {0}",
+                                        "enum": [
+                                            "Opt Out of Audit Requirement",
+                                            "Opt Out of Annual Report Requirement"
+                                        ]
+                                    }
+                                },
+                                "required": ["individualResolutionType"]
+                            },
+                            "minItems": 1
+                        }
                     }
                 },
-                "required": ["individualResolutionType"]
-            },
-            "minItems": 1
+                {
+                    "properties": {
+                        "isLargeCompany": { "enum": ["no"] },
+                        "resolutions": {
+                            "title": "Resolutions",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "title": "Resolution Type",
+                                        "enumeratedTitle": "Resolution {0}",
+                                        "enum": [
+                                            "Opt Out of Preparation Requirements",
+                                            "Opt Out of Audit Requirement",
+                                            "Opt Out of Annual Report Requirement"
+                                        ]
+                                    }
+                                },
+                                "required": ["individualResolutionType"]
+                            },
+                            "minItems": 1
+                        }
+                    }
+                }
+            ]
         },
         "notes": { "$ref": "#/definitions/notes" }
     },
