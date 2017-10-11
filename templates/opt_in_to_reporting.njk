@@ -1,0 +1,55 @@
+{% extends 'layouts/default.njk' %}
+
+{% import 'partials/components.njk' as components %}
+{% import 'partials/helpers.njk' as helpers %}
+{% import 'partials/blocks.njk' as blocks %}
+
+{% block body %}
+    {{ components.title('Notice Opting In To Reporting Requirement') }}
+    {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
+    {{ components.date_subtitle(options.dateOfNotice) }}
+
+    {{ components.blank_line() }}
+
+    <text:p text:style-name="text_normal">The shareholder(s) named below hereby give(s) notice to the Company, under section 207K of the Companies Act 1993 (Act), that the following provision(s) of the Act will apply in relation to the current accounting period:</text:p>
+
+    {% call blocks.normal_list() %}
+        {% for resolution in resolutions.resolutions %}
+            {% if (resolution.type == 'Opt In To Preparation Requirement') or (resolution.type == 'Opt In To Preparation & Audit Requirement') %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">Section 201 or 202, as applicable, which requires the preparation of financial statements or group financial statements.</text:p>
+                </text:list-item>
+            {% endif %}
+
+            {% if resolution.type == 'Opt In To Preparation & Audit Requirement' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">Section 207, which requires the Company’s financial statements to be audited.</text:p>
+                </text:list-item>
+            {% endif %}
+
+            {% if resolution.type == 'Opt In To Annual Report Requirement' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">Section 208, which requires a Company to prepare an annual report. </text:p>
+                </text:list-item>
+            {% endif %}
+        {% endfor %}
+    {% endcall %}
+
+    {% call blocks.normal_list() %}
+        <text:list-item>
+            <text:p text:style-name="text_normal">hold(s) not less than 5% of the Company’s voting shares, as defined in section 198 of the Act;</text:p>
+        </text:list-item>
+
+        <text:list-item>
+            <text:p text:style-name="text_normal">confirm(s) that the Company is not a large company, within the meaning of section 45 of the Financial Reporting Act 2013; and</text:p>
+        </text:list-item>
+
+        <text:list-item>
+            <text:p text:style-name="text_normal">record(s) that the notice is given within the opting period, as defined in section 207H of the Act.</text:p>
+        </text:list-item>
+    {% endcall %}
+
+    {{ components.notes(notes) }}
+	
+    {{ components.signature_table(options.signatories) }}
+{% endblock %}
