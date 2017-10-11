@@ -8,7 +8,7 @@
         "company": { "$ref": "#/definitions/company" },
         "dateOfNotice": {
             "$ref": "#/definitions/date",
-            "title": "Date of Minute"
+            "title": "Date of Notice"
         },
         "provisions": {
             "title": "Provisions",
