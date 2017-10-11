@@ -133,7 +133,7 @@
     "required": ["company", "noticeOptions"],
     "type": "object",
     "x-ordering": [],
-    "x-icon": "`glyphicon glyphicon-calendar",
+    "x-icon": "glyphicon glyphicon-calendar",
     "lawBrowserLinks": [
         {"link": {"title": "Companies Act 1993", "location": "s 104"}, "text": "Exercise of shareholder powers"},
         {"link": {"title": "Companies Act 1993", "location": "s 120"}, "text": "Annual meeting of shareholders"},
