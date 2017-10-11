@@ -7,33 +7,35 @@
 {% block body %}
     {{ components.title('Notice Opting In To Reporting Requirement') }}
     {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
-    {{ components.date_subtitle(options.dateOfNotice) }}
+    {{ components.date_subtitle(dateOfNotice) }}
 
     {{ components.blank_line() }}
 
     <text:p text:style-name="text_normal">The shareholder(s) named below hereby give(s) notice to the Company, under section 207K of the Companies Act 1993 (Act), that the following provision(s) of the Act will apply in relation to the current accounting period:</text:p>
 
     {% call blocks.normal_list() %}
-        {% for resolution in resolutions.resolutions %}
-            {% if (resolution.type == 'Opt In To Preparation Requirement') or (resolution.type == 'Opt In To Preparation & Audit Requirement') %}
+        {% for provision in provisions %}
+            {% if (provision.type == 'Opt In To Preparation Requirement') or (provision.type == 'Opt In To Preparation & Audit Requirements') %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Section 201 or 202, as applicable, which requires the preparation of financial statements or group financial statements.</text:p>
                 </text:list-item>
             {% endif %}
 
-            {% if resolution.type == 'Opt In To Preparation & Audit Requirement' %}
+            {% if provision.type == 'Opt In To Preparation & Audit Requirements' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Section 207, which requires the Company’s financial statements to be audited.</text:p>
                 </text:list-item>
             {% endif %}
 
-            {% if resolution.type == 'Opt In To Annual Report Requirement' %}
+            {% if provision.type == 'Opt In To Annual Report Requirement' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Section 208, which requires a Company to prepare an annual report. </text:p>
                 </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}
+
+    <text:p text:style-name="text_normal">The shareholder(s) giving this notice:</text:p>
 
     {% call blocks.normal_list() %}
         <text:list-item>
@@ -51,5 +53,5 @@
 
     {{ components.notes(notes) }}
 	
-    {{ components.signature_table(options.signatories) }}
+    {{ components.signature_table(signatories) }}
 {% endblock %}

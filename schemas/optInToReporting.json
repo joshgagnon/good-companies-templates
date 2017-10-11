@@ -1,0 +1,53 @@
+{
+    "description": "",
+    "title": "Notice Opting In To Reporting Requirement",
+    "formName": "opt_in_to_reporting",
+    "properties": {
+        "filename": { "$ref": "#/definitions/filename" },
+        "fileType": { "$ref": "#/definitions/fileType" },
+        "company": { "$ref": "#/definitions/company" },
+        "dateOfNotice": {
+            "$ref": "#/definitions/date",
+            "title": "Date of Minute"
+        },
+        "provisions": {
+            "title": "Provisions",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "Opt In To Preparation Requirement",
+                            "Opt In To Preparation & Audit Requirements",
+                            "Opt In To Annual Report Requirement"
+                        ]
+                    }
+                },
+                "required": ["type"],
+                "default": { "type": ["Opt In To Preparation Requirement"] },
+                "x-hints": {
+                    "form": { "addItem": "Add Provision" }
+                }
+            },
+            "minItems": 1
+        },
+        "notes": { "$ref": "#/definitions/notes" },
+        "signatories": {
+            "$ref": "#/definitions/signingByShareholdings",
+            "title": "Shareholders"
+        }
+    },
+    "required": ["dateOfNotice", "provisions", "notes", "signatories"],
+    "type": "object",
+    "x-ordering": [],
+    "x-icon": "fa fa-sign",
+    "lawBrowserLinks": [
+        {"link": {"title": "Financial Reporting Act 2013", "location": "s 6"}, "text": "Meaning of financial statements"},
+        {"link": {"title": "Companies Act 1993", "location": "s 200, 201, 202"}, "text": "Companies required to prepare financial statements"},
+        {"link": {"title": "Companies Act 1993", "location": "s 206, 207"}, "text": "Companies required to audit financial statements"},
+        {"link": {"title": "Companies Act 1993", "location": "s 208, 209"}, "text": "Companies with annual reporting obligations"},
+        {"link": {"title": "Companies Act 1993", "location": "s 207K"}, "text": "Companies with fewer than 10 shareholders may opt in"},
+        {"link": {"title": "Companies Act 1993", "location": "s 207H"}, "text": "Meaning of opting period"}
+    ]
+}
