@@ -17,6 +17,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
+                        "enumeratedTitle": "Provision {0}",
                         "enum": [
                             "Opt In To Preparation Requirement",
                             "Opt In To Preparation & Audit Requirements",
