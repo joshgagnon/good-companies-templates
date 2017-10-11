@@ -57,7 +57,7 @@
         "resolutionOptions"
     ],
     "type": "object",
-    "x-icon": "certificate",
+    "x-icon": "glyphicon glyphicon-certificate",
     "x-ordering": [],
     "lawBrowserLinks": [
         {"link": {"title": "Companies Act 1993", "location": "s 394"}, "text": "Form of director's certificates"},
