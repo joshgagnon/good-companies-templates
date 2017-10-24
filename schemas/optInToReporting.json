@@ -25,7 +25,7 @@
                     }
                 },
                 "required": ["type"],
-                "default": { "type": ["Opt In To Preparation Requirement"] },
+                "default": { "type": "Opt In To Preparation Requirement" },
                 "x-hints": {
                     "form": { "addItem": "Add Provision" }
                 }
