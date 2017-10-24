@@ -89,7 +89,10 @@
                                     }
                                 },
                                 "required": ["type"],
-                                "default": { "type": "Opt Out of Audit Requirement" }
+                                "default": { "type": "Opt Out of Audit Requirement" },
+                                "x-hints": {
+                                    "form": { "addItem": "Add Resolution" }
+                                }
                             },
                             "minItems": 1
                         }
@@ -115,7 +118,10 @@
                                     }
                                 },
                                 "required": ["type"],
-                                "default": { "type": "Opt Out of Audit Requirement" }
+                                "default": { "type": "Opt Out of Audit Requirement" },
+                                "x-hints": {
+                                    "form": { "addItem": "Add Resolution" }
+                                }
                             },
                             "minItems": 1
                         }
