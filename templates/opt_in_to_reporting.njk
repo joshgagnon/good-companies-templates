@@ -5,6 +5,7 @@
 {% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
+    {{ components.logo(metadata) }}
     {{ components.title('Notice Opting In To Reporting Requirement') }}
     {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
     {{ components.date_subtitle(dateOfNotice) }}
@@ -52,6 +53,6 @@
     {% endcall %}
 
     {{ components.notes(notes) }}
-	
+
     {{ components.signature_table(signatories) }}
 {% endblock %}

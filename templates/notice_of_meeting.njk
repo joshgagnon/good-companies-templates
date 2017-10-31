@@ -4,7 +4,7 @@
 {% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
-
+    {{ components.logo(metadata) }}
     {{ components.title('Notice of ' + noticeOptions.meetingType) }}
     {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
     {{ components.date_subtitle(noticeOptions.dateOfNotice) }}
@@ -20,7 +20,7 @@
     </text:p>
 
     <text:p text:style-name="text_normal">
-        This is a notice that on {{ noticeOptions.meetingDateTime | timestamp_to_date }} at {{ noticeOptions.meetingDateTime | timestamp_to_time }}, 
+        This is a notice that on {{ noticeOptions.meetingDateTime | timestamp_to_date }} at {{ noticeOptions.meetingDateTime | timestamp_to_time }},
 
         {% if noticeOptions.meetingType == 'Board Meeting' %}
             a meeting of the board of directors
@@ -33,10 +33,10 @@
         of the Company will be held at {{ noticeOptions.locationOfMeeting }}.
     </text:p>
 
-    
+
     {% if noticeOptions.meetingType == 'Board Meeting' %}
         <text:p text:style-name="text_normal">The following matters will be discussed at the board meeting:</text:p>
-        
+
         {% call blocks.normal_list() %}
             {% for matter in noticeOptions.boardMeetingOptions.matters %}
                 <text:list-item>
@@ -46,9 +46,9 @@
         {% endcall %}
     {% else %}
         <text:p text:style-name="text_normal">The following items of business will be transacted at the meeting:</text:p>
-        
+
         {% call blocks.normal_list() %}
-            {% for item in noticeOptions.meetingOptions.itemsOfBusiness %} 
+            {% for item in noticeOptions.meetingOptions.itemsOfBusiness %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">{{ item.text }}</text:p>
                 </text:list-item>
@@ -57,7 +57,7 @@
 
         {% if  noticeOptions.meetingOptions.specialResolutions | length >= 1 %}
             <text:p text:style-name="text_normal">The following special resolutions will be submitted to the meeting: </text:p>
-            
+
             {% call blocks.normal_list() %}
                 {% for resolution in noticeOptions.meetingOptions.specialResolutions %}
                     <text:list-item>

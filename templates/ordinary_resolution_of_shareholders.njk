@@ -5,7 +5,7 @@
 {% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
-
+    {{ components.logo(metadata) }}
     {{ components.title('Ordinary Resolution of Shareholders') }}
     {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
     {{ components.date_subtitle(resolutionOptions.dateOfMinute) }}

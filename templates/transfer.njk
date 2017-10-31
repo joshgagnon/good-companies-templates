@@ -4,7 +4,7 @@
 {% import 'partials/helpers.njk' as helpers %}
 
 {% block body %}
-
+    {{ components.logo(metadata) }}
     {{ components.title('Share Transfer Form') }}
     {{ components.blank_line() }}
 
@@ -167,7 +167,7 @@
     {{ components.blank_line() }}
     {{ components.signature_table(transaction.transferors.signing, "Transferors' Signatures") }}
     {{ components.blank_line() }}
-    
+
     {% if transaction.transferees.requiresSigning == 'Yes' %}
         {{ components.signature_table(transaction.transferees.signing, "Transferees' Signatures") }}
     {% endif %}

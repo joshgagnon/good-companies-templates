@@ -4,7 +4,7 @@
 {% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
-
+    {{ components.logo(metadata) }}
     {{ components.title('Director’s Certificate') }}
     {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
     {{ components.date_subtitle(certificateOptions.dateOfCertificate) }}
@@ -16,7 +16,7 @@
     </text:p>
 
     {% call blocks.normal_list() %}
-        {% for certification in certifications %} 
+        {% for certification in certifications %}
             <text:list-item>
                 <text:p text:style-name="text_normal">{{ certification.text }}</text:p>
             </text:list-item>
@@ -24,7 +24,7 @@
     {% endcall %}
 
     {{ components.notes(notes) }}
-    
+
     {{ components.basic_signature_table(directors, (certificateOptions.requiresWitnessing == 'yes'), false) }}
 
 {% endblock %}

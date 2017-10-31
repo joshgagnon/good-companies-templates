@@ -5,7 +5,7 @@
 {% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
-
+    {{ components.logo(metadata) }}
     {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
         {% set documentDate = resolutionOptions.dateOfMinute %}
     {% else %}
