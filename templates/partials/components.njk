@@ -66,7 +66,11 @@
 
 {% macro logo(metadata) %}
     {% if metadata.useLogo %}
-    <draw:frame draw:name="Image1" draw:style-name="logo_style" draw:z-index="0" svg:height="3cm" svg:width="3cm" svg:y="0cm" text:anchor-type="paragraph">
+        <draw:frame draw:name="Frame1" draw:style-name="logo_pad" draw:z-index="1" svg:width="4cm" svg:x="0cm" svg:y="0cm" text:anchor-type="paragraph">
+            <draw:text-box fo:min-height="4cm">
+            </draw:text-box>
+        </draw:frame>
+    <draw:frame draw:name="Image1" draw:style-name="logo_style" draw:z-index="0" svg:height="4cm" svg:width="4cm" svg:y="0cm" text:anchor-type="paragraph">
         <draw:image xlink:actuate="onLoad" xlink:href="Pictures/logo.png" xlink:show="embed" xlink:type="simple"/>
     </draw:frame>
     {% endif %}
