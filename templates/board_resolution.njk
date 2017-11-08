@@ -64,6 +64,28 @@
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the transfer(s) of shares described in the attached share transfer forms be approved, and that the share transfer(s) set out in the forms be immediately entered in the Company's share register.</text:p>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == 'Enter Into Major Transaction' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That the transaction(s) contemplated by the attached document(s):</text:p>
+                    
+                    <text:list>
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">are, or may constitute, a major transaction for the purposes of section 129 of the Companies Act 1993; and</text:p>
+                        </text:list-item>
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">be entered into by the Company subject to the transaction(s) being approved by, or contingent upon approval by, special resolution of the Company's shareholders. Subject to receiving that special resolution, the board resolves that:</text:p>
+                            
+                            <text:list>
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the Company enter into, execute, deliver, and perform its obligations under the transaction(s), and all deeds, instruments, certificates, powers of attorney, agreements, undertakings, or other documentation, and any requests, notices, or communications, contemplated by, or considered necessary, desirable, advisable, expedient, or incidental under or in connection with, the transaction(s); and</text:p>
+                                </text:list-item>
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the transaction(s) are in the best interests of the Company.</text:p>
+                                </text:list-item>
+                            </text:list>
+                        </text:list-item>
+                    </text:list>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}
