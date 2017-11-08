@@ -98,7 +98,8 @@
                             "Change Address of Company Records",
                             "Change Company Name",
                             "Change Registered Office",
-                            "Records in Good Companies"
+                            "Records in Good Companies",
+                            "Approve Share Transfer"
                         ]
                     }
                 },
@@ -207,6 +208,11 @@
                                     "form": {"inputComponent": "workingDayNotice", "workingDayNotice": {"days": 10, "source": "effectiveDate"}}
                                 }
                             }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Approve Share Transfer"] }
                         }
                     }
                 ]

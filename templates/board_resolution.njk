@@ -60,6 +60,10 @@
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the Company not keep the records referred to in paragraphs (a) to  of subsection 189(1) of the Companies Act 1993 at its registered office and instead keep those records at {{ resolution.resolutionOptions.newAddress }} with effect from {{ resolution.resolutionOptions.effectiveDate }} Notice of the new place of the Company's records must be given to the Registrar of Companies by {{ resolution.resolutionOptions.dateOfNotice }}.</text:p>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == 'Approve Share Transfer' %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That the transfer(s) of shares described in the attached share transfer forms be approved, and that the share transfer(s) set out in the forms be immediately entered in the Company's share register.</text:p>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}
