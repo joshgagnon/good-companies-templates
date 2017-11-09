@@ -6,7 +6,7 @@
 
 {% block body %}
     {{ components.logo(metadata) }}
-    {{ components.title('Notice Opting In To Reporting Requirement') }}
+    {{ components.title('Notice Opting Into Reporting Requirement') }}
     {{ components.company_info_subtitle(company.companyName, company.companyNumber) }}
     {{ components.date_subtitle(dateOfNotice) }}
 
@@ -16,19 +16,19 @@
 
     {% call blocks.normal_list() %}
         {% for provision in provisions %}
-            {% if (provision.type == 'Opt In To Preparation Requirement') or (provision.type == 'Opt In To Preparation & Audit Requirements') %}
+            {% if (provision.type == 'Opt Into Preparation Requirement') or (provision.type == 'Opt Into Preparation & Audit Requirements') %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Section 201 or 202, as applicable, which requires the preparation of financial statements or group financial statements.</text:p>
                 </text:list-item>
             {% endif %}
 
-            {% if provision.type == 'Opt In To Preparation & Audit Requirements' %}
+            {% if provision.type == 'Opt Into Preparation & Audit Requirements' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Section 207, which requires the Company’s financial statements to be audited.</text:p>
                 </text:list-item>
             {% endif %}
 
-            {% if provision.type == 'Opt In To Annual Report Requirement' %}
+            {% if provision.type == 'Opt Into Annual Report Requirement' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">Section 208, which requires a Company to prepare an annual report. </text:p>
                 </text:list-item>

@@ -1,6 +1,6 @@
 {
     "description": "",
-    "title": "Notice Opting In To Reporting Requirement",
+    "title": "Notice Opting Into Reporting Requirement",
     "formName": "opt_in_to_reporting",
     "properties": {
         "filename": { "$ref": "#/definitions/filename" },
@@ -19,14 +19,14 @@
                     "type": {
                         "enumeratedTitle": "Provision {0}",
                         "enum": [
-                            "Opt In To Preparation Requirement",
-                            "Opt In To Preparation & Audit Requirements",
-                            "Opt In To Annual Report Requirement"
+                            "Opt Into Preparation Requirement",
+                            "Opt Into Preparation & Audit Requirements",
+                            "Opt Into Annual Report Requirement"
                         ]
                     }
                 },
                 "required": ["type"],
-                "default": { "type": "Opt In To Preparation Requirement" },
+                "default": { "type": "Opt Into Preparation Requirement" },
                 "x-hints": {
                     "form": { "addItem": "Add Provision" }
                 }
