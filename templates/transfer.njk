@@ -5,8 +5,18 @@
 
 {% block body %}
     {{ components.logo(metadata) }}
+
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     {{ components.title('Share Transfer Form') }}
     {{ components.blank_line() }}
+
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+        {{ components.blank_line() }}
+    {% endif %}
 
     <table:table table:name="Layout Table" table:style-name="layout_table">
         <table:table-column table:style-name="layout_table_column" />
