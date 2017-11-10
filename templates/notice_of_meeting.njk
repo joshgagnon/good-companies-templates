@@ -11,6 +11,10 @@
 
     {{ components.blank_line() }}
 
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     <text:p text:style-name="text_normal">
         {% if noticeOptions.meetingType == 'Board Meeting' %}
             To: {{  noticeOptions.boardMeetingOptions.recipients | join_and('name') }}

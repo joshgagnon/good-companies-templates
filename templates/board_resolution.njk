@@ -18,6 +18,10 @@
 
     {{ components.blank_line() }}
 
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     <text:p text:style-name="text_normal">
         {% if resolutionOptions.resolutionType == 'Resolution at Board Meeting' %}
             This minute records that on {{ resolutionOptions.dateOfBoardMeeting }} the directors of the Company held a board meeting, during which the following {{ helpers.pluralise(resolutions, 'resolution was passed', 'resolutions were passed') }}:

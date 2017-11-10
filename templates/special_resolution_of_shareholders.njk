@@ -12,6 +12,10 @@
 
     {{ components.blank_line() }}
 
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     <text:p text:style-name="text_normal">
         {% if resolutionOptions.resolutionType == 'Special Resolution at Shareholder Meeting' %}
             This minute records that on {{ resolutionOptions.dateOfShareholderMeeting }} the shareholders of the Company held a meeting, during which the following {{ helpers.pluralise(resolutions, 'resolution was', 'resolutions were') }} passed:

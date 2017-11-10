@@ -11,6 +11,10 @@
 
     {{ components.blank_line() }}
 
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     <text:p text:style-name="text_normal">
         I/we, the director/directors of the Company named below, hereby certify as follows:
     </text:p>

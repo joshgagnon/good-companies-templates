@@ -12,6 +12,10 @@
 
     {{ components.blank_line() }}
 
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     {% if options.resolutionType == 'resolution_at_meeting' %}
         <text:p text:style-name="text_normal">This minute records that on {{ options.dateOfMeeting }} the shareholders of the Company held a meeting, during which the following resolution(s) was/were passed:</text:p>
     {% else %}

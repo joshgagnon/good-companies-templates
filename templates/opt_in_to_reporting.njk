@@ -12,6 +12,10 @@
 
     {{ components.blank_line() }}
 
+    {% if metadata.useLogo %}
+        {{ components.blank_line() }}
+    {% endif %}
+
     <text:p text:style-name="text_normal">The shareholder(s) named below hereby give(s) notice to the Company, under section 207K of the Companies Act 1993 (Act), that the following provision(s) of the Act will apply in relation to the current accounting period:</text:p>
 
     {% call blocks.normal_list() %}
