@@ -3,8 +3,6 @@
     "title": "Share Transfer Form",
     "formName": "transfer",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "transaction": {
             "type": "object",
