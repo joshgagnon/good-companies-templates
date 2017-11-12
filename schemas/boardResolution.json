@@ -101,7 +101,8 @@
                             "Records in Good Companies",
                             "Approve Share Transfer",
                             "Enter Into Major Transaction",
-                            "No Annual Shareholders' Meeting"
+                            "No Annual Shareholders' Meeting",
+                            "Issue Bonus Shares"
                         ]
                     }
                 },
@@ -209,6 +210,33 @@
                                  "x-hints" : {
                                     "form": {"inputComponent": "workingDayNotice", "workingDayNotice": {"days": 10, "source": "effectiveDate"}}
                                 }
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Issue Bonus Shares"] },
+                            "issues": {
+                                "type": "array",
+                                "minItems": 1,
+                                "title": "Issues",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "shareholder": { "$ref": "#/definitions/shareholder" },
+                                        "number": {
+                                            "type": "number",
+                                            "title": "Number"
+                                        },
+                                        "date": {
+                                            "$ref": "#/definitions/date",
+                                            "title": "Date of Issue"
+                                        }
+                                    },
+                                    "required": ["shareholder", "number", "date"],
+                                    "x-hints": { "form": { "addItem": "Add Share Issue" } }
+                                },
+                                "default": [{}]
                             }
                         }
                     },
