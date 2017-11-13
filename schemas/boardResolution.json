@@ -85,7 +85,8 @@
                             "Approve Share Transfer",
                             "Enter Into Major Transaction",
                             "No Annual Shareholders' Meeting",
-                            "Issue Bonus Shares"
+                            "Issue Bonus Shares",
+                            "Credit Shares as Fully or Partly Paid"
                         ]
                     }
                 },
@@ -226,7 +227,19 @@
                     },
                     { "properties": { "individualResolutionType": { "enum": ["Approve Share Transfer"] } } },
                     { "properties": { "individualResolutionType": { "enum": ["Enter Into Major Transaction"] } } },
-                    { "properties": { "individualResolutionType": { "enum": ["No Annual Shareholders' Meeting"] } } }
+                    { "properties": { "individualResolutionType": { "enum": ["No Annual Shareholders' Meeting"] } } },
+                    {
+                        "properties": {
+                            "individualResolutionType":     { "enum": ["Credit Shares as Fully or Partly Paid"] },
+                            "shareholder":                  { "$ref": "#/definitions/shareholder" },
+                            "number":                       { "type": "number",                         "title": "Number" },
+                            "shareClass":                   { "type": "string",                         "title": "Share Class" },
+                            "date":                         { "$ref": "#/definitions/date",             "title": "Date of Issue" },
+                            "creditSharesAs":               { "enum": ["fully", "partially"], "enumNames": ["Fully Paid", "Partially Paid"], "title": "Credit Shares As" },
+                            "totalAmountCredited":          { "type": "string",                         "title": "Total Amount Credited" },
+                            "valueOfConsiderationCredited": { "type": "string",                         "title": "Value of Consideration Credited" }
+                        }
+                    }
                 ]
             },
             "default": [
