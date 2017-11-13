@@ -33,22 +33,12 @@
                             "enum": ["Resolution at Board Meeting"]
                         },
                         "dateOfMinute": {
-                            "title": "Date of Minute",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                    "inputComponent": "date"
-                                }
-                            }
+                            "$ref": "#/definitions/date",
+                            "title": "Date of Minute"
                         },
                         "dateOfBoardMeeting": {
-                            "title": "Date of Board Meeting",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                    "inputComponent": "date"
-                                }
-                            }
+                            "$ref": "#/definitions/date",
+                            "title": "Date of Board Meeting"
                         },
                         "chairperson": { "$ref": "#/definitions/chairperson" }
                     },
@@ -60,13 +50,8 @@
                             "enum": ["Written Resolution in lieu of Board Meeting"]
                         },
                         "dateOfResolution": {
-                            "title": "Date of Resolution",
-                            "type": "string",
-                            "x-hints" : {
-                                "form": {
-                                    "inputComponent": "date"
-                                }
-                            }
+                            "$ref": "#/definitions/date",
+                            "type": "string"
                         },
                         "directors": {
                             "$ref": "#/definitions/directorsList",
@@ -143,11 +128,8 @@
                                         "title": "New Company Name"
                                     },
                                     "effectiveDate": {
-                                        "title": "Effective Date",
-                                        "type": "string",
-                                        "x-hints" : {
-                                            "form": {"inputComponent": "date"}
-                                        }
+                                        "$ref": "#/definitions/date",
+                                        "title": "Effective Date"
                                     }
                                 },
                                 "required": ["newCompanyName", "effectiveDate"]
