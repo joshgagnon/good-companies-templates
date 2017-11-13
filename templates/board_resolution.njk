@@ -110,6 +110,22 @@
                         </text:list-item>
                     </text:list>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == "Issue Bonus Shares" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That:</text:p>
+                    
+                    <text:list>
+                        {% for issue in resolution.issues %}
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">{{ issue.number }} new {{ issue.shareClass }} shares to be issued to {{ issue.shareholder.name }} on {{ issue.date }};</text:p>
+                            </text:list-item>
+                        {% endfor %}
+
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the new shares are fully paid up from the reserves of the Company and are issued to all shareholders of the same class in proportion to the number of shares held by each shareholder.</text:p>
+                        </text:list-item>
+                    </text:list>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}
