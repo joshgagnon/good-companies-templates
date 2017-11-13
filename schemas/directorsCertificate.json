@@ -3,8 +3,6 @@
     "title": "Director's Certificate",
     "formName": "directors_certificate",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "certificateOptions": {
             "type": "object",

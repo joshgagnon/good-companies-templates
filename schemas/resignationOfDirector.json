@@ -3,8 +3,6 @@
     "title": "Resignation of Director",
     "formName": "resignation_of_director",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "addressForService": {
             "title": "Address for Service",

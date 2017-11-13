@@ -3,8 +3,6 @@
     "title": "Opt Out Resolution of Shareholders",
     "formName": "opt_out_resolution",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "options": {
             "type": "object",

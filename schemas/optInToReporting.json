@@ -3,8 +3,6 @@
     "title": "Notice Opting Into Reporting Requirement",
     "formName": "opt_in_to_reporting",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "dateOfNotice": {
             "$ref": "#/definitions/date",

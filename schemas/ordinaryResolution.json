@@ -3,8 +3,6 @@
     "title": "Ordinary Resolution of Shareholders",
     "formName": "ordinary_resolution_of_shareholders",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "resolutionOptions": {
             "type": "object",

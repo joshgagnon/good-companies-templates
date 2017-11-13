@@ -3,8 +3,6 @@
     "title": "Entitled Persons' Agreement",
     "formName": "entitled_persons_agreement",
     "properties": {
-        "filename": { "$ref": "#/definitions/filename" },
-        "fileType": { "$ref": "#/definitions/fileType" },
         "company": { "$ref": "#/definitions/company" },
         "agreementOptions": {
             "type": "object",
