@@ -194,7 +194,7 @@
                     <text:p text:style-name="text_normal">That new shares in the Company be issued in lieu of the dividend(s) proposed by the board on {{ resolution.dateOfProposal }}, as follows:</text:p>
 
                     <text:list>
-                        {% for issue in resolution.issues %}
+                        {% for issue in resolution.issuesInLieuOfDividends %}
                             <text:list-item>
                                 <text:p text:style-name="text_normal">{{ issue.number }} new {{ issue.shareClass.name }} shares will be issued to {{ issue.shareholder.name }} on {{ issue.date }}.</text:p>
                             </text:list-item>
@@ -205,7 +205,7 @@
                         </text:list-item>
 
                         <text:list-item>
-                            <text:p text:style-name="text_normal">If the consideration is other than cash, the reasonable present cash value of the consideration is [Cash Value].
+                            <text:p text:style-name="text_normal">If the consideration is other than cash, the reasonable present cash value of the consideration is {{ resolution.cashValue }}.
                                 In the board’s opinion, the present cash value of the consideration to be provided for the issue of the shares is not less than the amount to be
                                 credited for the issue of the shares.</text:p>
                         </text:list-item>

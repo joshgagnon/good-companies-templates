@@ -293,8 +293,9 @@
                         "properties": {
                             "individualResolutionType": { "enum": ["Issue Shares In Lieu of Dividends"] },
                             "dateOfProposal": { "$ref": "#/definitions/date", "title": "Date of Proposal" },
-                            "description": { "type": "string", "title": "Date of Proposal" },
-                            "issues": {
+                            "description": { "type": "string", "title": "Description of Consideration" },
+                            "cashValue": { "type": "string", "title": "Cash Value" },
+                            "issuesInLieuOfDividends": {
                                 "type": "array",
                                 "minItems": 1,
                                 "default": [{}],
