@@ -133,6 +133,32 @@
                         of the consideration credited is {{ resolution.valueOfConsiderationCredited }}. In the board’s opinion, the present cash value of the consideration is fair and reasonable to the
                         Company and to all existing shareholders, and not less than the amount to be credited in respect of the shares.</text:p>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == "Authorise Shareholder Discounts" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That:</text:p>
+
+                    <text:list>
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the following discounts in respect of goods sold or services provided by the Company be offered to shareholders:</text:p>
+
+                            <text:list>
+                                {% for discount in resolution.discounts %}
+                                    <text:list-item>
+                                        <text:p text:style-name="text_normal">A discount of {{ discount.description }} on {{ discount.goodsAndServices }} be offered to {{ discount.shareholder.name }} on {{ discount.date }}.</text:p>
+                                    </text:list-item>
+                                {% endfor %}
+                            </text:list>
+                        </text:list-item>
+
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the proposed shareholder discounts are fair and reasonable to the Company and to all shareholders; and</text:p>
+                        </text:list-item>
+
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the proposed shareholder discounts are to be available to all shareholders of the same class on the same terms.</text:p>
+                        </text:list-item>
+                    </text:list>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}

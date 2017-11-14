@@ -86,7 +86,8 @@
                             "Enter Into Major Transaction",
                             "No Annual Shareholders' Meeting",
                             "Issue Bonus Shares",
-                            "Credit Shares as Fully or Partly Paid"
+                            "Credit Shares as Fully or Partly Paid",
+                            "Authorise Shareholder Discounts"
                         ]
                     }
                 },
@@ -240,6 +241,28 @@
                             "valueOfConsiderationCredited": { "type": "string",                         "title": "Value of Consideration Credited" }
                         },
                         "required": ["shareholder", "number", "shareClass", "date", "creditSharesAs", "totalAmountCredited", "valueOfConsiderationCredited"]
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Authorise Shareholder Discounts"] },
+                            "discounts": {
+                                "type": "array",
+                                "minItems": 1,
+                                "title": "Discounts",
+                                "default": [{}],
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "shareholder":      { "$ref": "#/definitions/shareholder" },
+                                        "description":      { "type": "string",             "title": "Description of Discount" },
+                                        "goodsAndServices": { "type": "string",             "title": "Description of Goods/Services" },
+                                        "date":             { "$ref": "#/definitions/date", "title": "Effective Date" }
+                                    },
+                                    "required": ["shareholder", "description", "goodsAndServices", "date"],
+                                    "x-hints": { "form": { "addItem": "Add Discount" } }
+                                }
+                            }
+                        }
                     }
                 ]
             },
