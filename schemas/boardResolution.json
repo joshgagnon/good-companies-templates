@@ -232,8 +232,8 @@
                         "properties": {
                             "individualResolutionType":     { "enum": ["Credit Shares as Fully or Partly Paid"] },
                             "shareholder":                  { "$ref": "#/definitions/shareholder" },
-                            "number":                       { "type": "number",                         "title": "Number" },
-                            "shareClass":                   { "type": "string",                         "title": "Share Class" },
+                            "number":                       { "type": "number",                         "title": "Number of Shares" },
+                            "shareClass":                   { "$ref": "#/definitions/shareClass" },
                             "date":                         { "$ref": "#/definitions/date",             "title": "Date of Issue" },
                             "creditSharesAs":               { "enum": ["fully", "partially"],           "title": "Credit Shares As", "enumNames": ["Fully Paid", "Partially Paid"], "default": "fully" },
                             "totalAmountCredited":          { "type": "string",                         "title": "Total Amount Credited" },

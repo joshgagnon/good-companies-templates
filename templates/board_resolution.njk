@@ -128,7 +128,7 @@
                 </text:list-item>
             {% elif resolution.individualResolutionType == "Credit Shares as Fully or Partly Paid" %}
                 <text:list-item>
-                    <text:p text:style-name="text_normal">That the {{ resolution.number }} new {{ resolution.shareClass }} shares issued to {{ resolution.shareholder.name }} on {{ resolution.date }} 
+                    <text:p text:style-name="text_normal">That the {{ resolution.number }} new {{ resolution.shareClass.name }} shares issued to {{ resolution.shareholder.name }} on {{ resolution.date }} 
                         for consideration other than cash be credited as {{ resolution.creditSharesAs }} paid up to the value of {{ resolution.totalAmountCredited }}. The reasonable present cash value
                         of the consideration credited is {{ resolution.valueOfConsiderationCredited }}. In the board’s opinion, the present cash value of the consideration is fair and reasonable to the
                         Company and to all existing shareholders, and not less than the amount to be credited in respect of the shares.</text:p>

@@ -19,6 +19,22 @@
                 }
             }
         },
+        "shareClass": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Share Class",
+                    "type": "string"
+                }
+            },
+            "x-hints": {
+                "form": {
+                    "sourceLocation": "company.shareClasses",
+                    "source": "name"
+                }
+            },
+            "required": ["name"]
+        },
         "director": {
             "type": "object",
             "properties": {
