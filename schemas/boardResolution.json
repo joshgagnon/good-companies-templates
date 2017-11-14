@@ -88,7 +88,8 @@
                             "Issue Bonus Shares",
                             "Credit Shares as Fully or Partly Paid",
                             "Authorise Shareholder Discounts",
-                            "Authorise Remuneration or Benefits"
+                            "Authorise Remuneration or Benefits",
+                            "Issue Shares In Lieu of Dividends"
                         ]
                     }
                 },
@@ -284,6 +285,30 @@
                                     },
                                     "required": ["description"],
                                     "x-hints": { "form": { "addItem": "Add Remuneration or Other Benefit" } }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Issue Shares In Lieu of Dividends"] },
+                            "dateOfProposal": { "$ref": "#/definitions/date", "title": "Date of Proposal" },
+                            "description": { "type": "string", "title": "Date of Proposal" },
+                            "issues": {
+                                "type": "array",
+                                "minItems": 1,
+                                "default": [{}],
+                                "title": "Issues",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "number":      { "type": "number", "title": "Number of Shares" },
+                                        "shareClass":  { "$ref": "#/definitions/shareClass" },
+                                        "shareholder": { "$ref": "#/definitions/shareholder" },
+                                        "date":        { "$ref": "#/definitions/date" }
+                                    },
+                                    "required": ["number", "shareClass", "shareholder", "date"],
+                                    "x-hints": { "form": { "addItem": "Add Issue" } }
                                 }
                             }
                         }
