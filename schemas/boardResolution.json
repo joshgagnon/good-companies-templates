@@ -87,7 +87,8 @@
                             "No Annual Shareholders' Meeting",
                             "Issue Bonus Shares",
                             "Credit Shares as Fully or Partly Paid",
-                            "Authorise Shareholder Discounts"
+                            "Authorise Shareholder Discounts",
+                            "Authorise Remuneration or Benefits"
                         ]
                     }
                 },
@@ -260,6 +261,29 @@
                                     },
                                     "required": ["shareholder", "description", "goodsAndServices", "date"],
                                     "x-hints": { "form": { "addItem": "Add Discount" } }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Authorise Remuneration or Benefits"] },
+                            "director": { "$ref": "#/definitions/director" },
+                            "descriptions": {
+                                "type": "array",
+                                "minItems": 1,
+                                "default": [{}],
+                                "title": "Remunerations or Other Benefits",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "title": "Description"
+                                        }
+                                    },
+                                    "required": ["description"],
+                                    "x-hints": { "form": { "addItem": "Add Remuneration or Other Benefit" } }
                                 }
                             }
                         }

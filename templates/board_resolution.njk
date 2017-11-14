@@ -159,6 +159,36 @@
                         </text:list-item>
                     </text:list>
                 </text:list-item>
+            {% elif resolution.individualResolutionType == "Authorise Remuneration or Benefits" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That:</text:p>
+
+                    <text:list>
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the following remuneration or other benefits to be provided to {{ resolution.director.name }} be authorised for the purposes of section 161 of the Companies Act 1993:</text:p>
+
+                            <text:list>
+                                {% for description in resolution.descriptions %}
+                                    <text:list-item>
+                                        <text:p text:style-name="text_normal">{{ description.description }}</text:p>
+                                    </text:list-item>
+                                {% endfor %}
+                            </text:list>
+                        </text:list-item>
+                        
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the remuneration or other benefit(s) described above are fair to the Company;</text:p>
+                        </text:list-item>
+                        
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">particulars of the payment(s), benefit(s), loan(s), guarantee(s), or contract(s), as the case may be, be immediately entered in the interests register; and</text:p>
+                        </text:list-item>
+                        
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the remuneration or other benefit(s) be conditional on the board receiving the director certification required by section 161(4) of the Companies Act 1993.</text:p>
+                        </text:list-item>
+                    </text:list>
+                </text:list-item>
             {% endif %}
         {% endfor %}
     {% endcall %}
