@@ -235,10 +235,11 @@
                             "number":                       { "type": "number",                         "title": "Number" },
                             "shareClass":                   { "type": "string",                         "title": "Share Class" },
                             "date":                         { "$ref": "#/definitions/date",             "title": "Date of Issue" },
-                            "creditSharesAs":               { "enum": ["fully", "partially"], "enumNames": ["Fully Paid", "Partially Paid"], "title": "Credit Shares As" },
+                            "creditSharesAs":               { "enum": ["fully", "partially"],           "title": "Credit Shares As", "enumNames": ["Fully Paid", "Partially Paid"], "default": "fully" },
                             "totalAmountCredited":          { "type": "string",                         "title": "Total Amount Credited" },
                             "valueOfConsiderationCredited": { "type": "string",                         "title": "Value of Consideration Credited" }
-                        }
+                        },
+                        "required": ["shareholder", "number", "shareClass", "date", "creditSharesAs", "totalAmountCredited", "valueOfConsiderationCredited"]
                     }
                 ]
             },
@@ -254,15 +255,15 @@
     "x-ordering": [],
     "x-icon": "glyphicon glyphicon-th-large",
     "lawBrowserLinks": [
-        {"link": {"title": "Companies Act 1993", "location": "s 127"}, "text": "Meaning of board and board of directors"},
-        {"link": {"title": "Companies Act 1993", "location": "s 128"}, "text": "Board to manage company"},
-        {"link": {"title": "Companies Act 1993", "location": "s 130"}, "text": "Delegation of powers"},
-        {"link": {"title": "Companies Act 1993", "location": "s 160"}, "text": "Proceedings of the board"},
-        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 5"}, "text": "Voting at board meeting"},
-        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 6"}, "text": "Minutes of board meetings"},
-        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 7"}, "text": "Written Resolution in lieu of board meeting"},
+        {"link": {"title": "Companies Act 1993", "location": "s 127"},           "text": "Meaning of board and board of directors"},
+        {"link": {"title": "Companies Act 1993", "location": "s 128"},           "text": "Board to manage company"},
+        {"link": {"title": "Companies Act 1993", "location": "s 130"},           "text": "Delegation of powers"},
+        {"link": {"title": "Companies Act 1993", "location": "s 160"},           "text": "Proceedings of the board"},
+        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 5"},      "text": "Voting at board meeting"},
+        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 6"},      "text": "Minutes of board meetings"},
+        {"link": {"title": "Companies Act 1993", "location": "sch 3 cl 7"},      "text": "Written Resolution in lieu of board meeting"},
         {"link": {"title": "Companies Act 1993", "location": "s 186, 188, 192"}, "text": "Address requirements"},
-        {"link": {"title": "Companies Act 1993", "location": "s 187, 193"}, "text": "Change of address"}
+        {"link": {"title": "Companies Act 1993", "location": "s 187, 193"},      "text": "Change of address"}
     ],
     "definitions": {
         "changeOfAddress": {
