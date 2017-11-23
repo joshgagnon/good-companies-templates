@@ -77,19 +77,19 @@
                         "enum": [
                             "Custom",
                             "Agent for Company Changes",
+                            "Approve Share Transfer",
+                            "Authorise Shareholder Discounts",
+                            "Authorise Remuneration or Benefits",
                             "Change Address for Service",
                             "Change Address of Company Records",
                             "Change Company Name",
                             "Change Registered Office",
-                            "Records in Good Companies",
-                            "Approve Share Transfer",
-                            "Enter Into Major Transaction",
-                            "No Annual Shareholders' Meeting",
-                            "Issue Bonus Shares",
                             "Credit Shares as Fully or Partly Paid",
-                            "Authorise Shareholder Discounts",
-                            "Authorise Remuneration or Benefits",
-                            "Issue Shares In Lieu of Dividends"
+                            "Enter Into Major Transaction",
+                            "Issue Bonus Shares",
+                            "Issue Shares In Lieu of Dividends",
+                            "No Annual Shareholders' Meeting",
+                            "Records in Good Companies"
                         ]
                     }
                 },
