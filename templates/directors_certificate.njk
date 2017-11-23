@@ -1,6 +1,7 @@
 {% extends 'layouts/default.njk' %}
 
 {% import 'partials/components.njk' as components %}
+{% import 'partials/helpers.njk' as helpers %}
 {% import 'partials/blocks.njk' as blocks %}
 
 {% block body %}
@@ -16,7 +17,7 @@
     {% endif %}
 
     <text:p text:style-name="text_normal">
-        I/we, the director/directors of the Company named below, hereby certify as follows:
+        {{ helpers.pluralise(directors, 'I the director', 'We the directors') }} of the Company named below, hereby certify as follows:
     </text:p>
 
     {% call blocks.normal_list() %}
