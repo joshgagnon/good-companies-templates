@@ -93,10 +93,10 @@
                             "Custom",
                             "Adopt Constitution",
                             "Alter Constitution",
-                            "Revoke Constitution",
-                            "Approve Major Transaction",
                             "Approve Amalgamation",
-                            "Put Company into Liquidation"
+                            "Approve Major Transaction",
+                            "Put Company into Liquidation",
+                            "Revoke Constitution"
                         ]
                     }
                 },
