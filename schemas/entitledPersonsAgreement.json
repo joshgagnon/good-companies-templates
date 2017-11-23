@@ -46,14 +46,14 @@
                                     "power": {
                                         "title": "Power",
                                         "enum": [
-                                            "Dividends",
-                                            "Discount Schemes",
-                                            "Share Acquisitions",
-                                            "Share Redemptions",
-                                            "Financial Assistance",
                                             "Director Remuneration and Benefits",
+                                            "Discount Schemes",
+                                            "Dividends",
+                                            "Financial Assistance",
+                                            "Interested Directors",
+                                            "Share Acquisitions",
                                             "Share Issues",
-                                            "Interested Directors"
+                                            "Share Redemptions"
                                         ]
                                     }
                                 },
@@ -85,14 +85,14 @@
                                     "power": {
                                         "title": "Power",
                                         "enum": [
-                                            "Dividends",
-                                            "Discount Schemes",
-                                            "Share Acquisitions",
-                                            "Share Redemptions",
-                                            "Financial Assistance",
                                             "Director Remuneration and Benefits",
+                                            "Discount Schemes",
+                                            "Dividends",
+                                            "Financial Assistance",
+                                            "Interested Directors",
+                                            "Share Acquisitions",
                                             "Share Issues",
-                                            "Interested Directors"
+                                            "Share Redemptions"
                                         ]
                                     },
                                     "details": {
