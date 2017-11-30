@@ -87,6 +87,7 @@
                             "Credit Shares as Fully or Partly Paid",
                             "Enter Into Major Transaction",
                             "Issue Bonus Shares",
+                            "Issue New Shares (Except Bonus Shares)",
                             "Issue Shares In Lieu of Dividends",
                             "No Annual Shareholders' Meeting",
                             "Records in Good Companies"
@@ -310,6 +311,27 @@
                                     },
                                     "required": ["number", "shareClass", "shareholder", "date"],
                                     "x-hints": { "form": { "addItem": "Add Issue" } }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Issue New Shares (Except Bonus Shares)"] },
+                            "issuedFor": { "title": "Issued for", "enum": ["Cash", "Other"] },
+                            "newShareIssues": {
+                                "type": "array",
+                                "minItems": 1,
+                                "default": [{}],
+                                "title": "Issues",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "number":      { "type": "number", "title": "Number of Shares" },
+                                        "shareClass":  { "$ref": "#/definitions/shareClass" },
+                                        "shareholder": { "$ref": "#/definitions/shareholder" },
+                                        "date":        { "$ref": "#/definitions/date" }
+                                    }
                                 }
                             }
                         }
