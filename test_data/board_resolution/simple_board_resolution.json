@@ -8,57 +8,38 @@
         "chairperson": {
             "name": "Isobel TYLER"
         },
+        "dateOfBoardMeeting": "1 December 2017",
         "dateOfMinute": "1 December 2017",
-        "dateOfShareholderMeeting": "1 December 2017",
-        "resolutionType": "Ordinary Resolution at Shareholder Meeting",
-        "signatures": {
-            "requiresWitnessing": "no",
-            "signatories": [
-                {
-                    "_keyIndex": 11,
-                    "name": "Isobel TYLER",
-                    "signingMethod": {
-                        "capacity": {
-                            "capacityType": "No Capacity"
-                        },
-                        "parties": [
-                            {
-                                "_keyIndex": 12,
-                                "name": "Jeanette ROBERTS"
-                            }
-                        ],
-                        "signingMethod": "themself and others"
-                    }
-                },
-                {
-                    "_keyIndex": 13,
-                    "name": "Isobel TYLER",
-                    "signingMethod": {
-                        "capacity": {
-                            "capacityType": "No Capacity"
-                        },
-                        "parties": [],
-                        "signingMethod": "themself only"
-                    }
-                }
-            ],
-            "signingDate": {
-                "signingOnSameDay": "yes"
+        "directors": [
+            {
+                "_keyIndex": 21,
+                "name": "Isobel TYLER"
             }
-        }
+        ],
+        "resolutionType": "Resolution at Board Meeting"
     },
     "resolutions": [
         {
-            "_keyIndex": 14,
-            "director": {},
-            "directors": [
+            "_keyIndex": 22,
+            "creditSharesAs": "fully",
+            "discounts": [
                 {
-                    "_keyIndex": 15,
-                    "director": {}
+                    "_keyIndex": 24,
+                    "shareholder": {}
                 }
             ],
-            "resolutionType": "Custom",
-            "text": "test"
+            "individualResolutionType": "Custom",
+            "issues": [
+                {
+                    "_keyIndex": 23,
+                    "shareholder": {}
+                }
+            ],
+            "resolutionOptions": {
+                "text": "test"
+            },
+            "shareClass": {},
+            "shareholder": {}
         }
     ]
 }
