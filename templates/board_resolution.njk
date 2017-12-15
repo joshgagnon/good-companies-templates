@@ -71,7 +71,7 @@
             {% elif resolution.individualResolutionType == 'Enter Into Major Transaction' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the transaction(s) contemplated by the attached document(s):</text:p>
-                    
+
                     <text:list>
                         <text:list-item>
                             <text:p text:style-name="text_normal">are, or may constitute, a major transaction for the purposes of section 129 of the Companies Act 1993; and</text:p>
@@ -79,7 +79,7 @@
 
                         <text:list-item>
                             <text:p text:style-name="text_normal">be entered into by the Company subject to the transaction(s) being approved by, or contingent upon approval by, special resolution of the Company's shareholders. Subject to receiving that special resolution, the board resolves that:</text:p>
-                            
+
                             <text:list>
                                 <text:list-item>
                                     <text:p text:style-name="text_normal">the Company enter into, execute, deliver, and perform its obligations under the transaction(s), and all deeds, instruments, certificates, powers of attorney, agreements, undertakings, or other documentation, and any requests, notices, or communications, contemplated by, or considered necessary, desirable, advisable, expedient, or incidental under or in connection with, the transaction(s); and</text:p>
@@ -113,7 +113,7 @@
             {% elif resolution.individualResolutionType == "Issue Bonus Shares" %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That:</text:p>
-                    
+
                     <text:list>
                         {% for issue in resolution.issues %}
                             <text:list-item>
@@ -128,7 +128,7 @@
                 </text:list-item>
             {% elif resolution.individualResolutionType == "Credit Shares as Fully or Partly Paid" %}
                 <text:list-item>
-                    <text:p text:style-name="text_normal">That the {{ resolution.number }} new {{ resolution.shareClass.name }} shares issued to {{ resolution.shareholder.name }} on {{ resolution.date }} 
+                    <text:p text:style-name="text_normal">That the {{ resolution.number }} new {{ resolution.shareClass.name }} shares issued to {{ resolution.shareholder.name }} on {{ resolution.date }}
                         for consideration other than cash be credited as {{ resolution.creditSharesAs }} paid up to the value of {{ resolution.totalAmountCredited }}. The reasonable present cash value
                         of the consideration credited is {{ resolution.valueOfConsiderationCredited }}. In the board’s opinion, the present cash value of the consideration is fair and reasonable to the
                         Company and to all existing shareholders, and not less than the amount to be credited in respect of the shares.</text:p>

@@ -6,9 +6,6 @@
     "type": "git",
     "url": "https://github.com/joshgagnon/good-companies-templates.git"
   },
-  "scripts": {
-    "test": "./node_modules/.bin/mocha"
-  },
   "private": true,
   "author": "Paddy Moran",
   "homepage": "https://github.com/joshgagnon/good-companies-templates",

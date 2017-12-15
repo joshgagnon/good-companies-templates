@@ -1,0 +1,64 @@
+{
+    "company": {
+        "companyName": "TYLER PRICE ACCOUNTANTS LIMITED",
+        "companyNumber": "2466419"
+    },
+    "notes": [],
+    "resolutionOptions": {
+        "chairperson": {
+            "name": "Isobel TYLER"
+        },
+        "dateOfMinute": "1 December 2017",
+        "dateOfShareholderMeeting": "1 December 2017",
+        "resolutionType": "Ordinary Resolution at Shareholder Meeting",
+        "signatures": {
+            "requiresWitnessing": "no",
+            "signatories": [
+                {
+                    "_keyIndex": 11,
+                    "name": "Isobel TYLER",
+                    "signingMethod": {
+                        "capacity": {
+                            "capacityType": "No Capacity"
+                        },
+                        "parties": [
+                            {
+                                "_keyIndex": 12,
+                                "name": "Jeanette ROBERTS"
+                            }
+                        ],
+                        "signingMethod": "themself and others"
+                    }
+                },
+                {
+                    "_keyIndex": 13,
+                    "name": "Isobel TYLER",
+                    "signingMethod": {
+                        "capacity": {
+                            "capacityType": "No Capacity"
+                        },
+                        "parties": [],
+                        "signingMethod": "themself only"
+                    }
+                }
+            ],
+            "signingDate": {
+                "signingOnSameDay": "yes"
+            }
+        }
+    },
+    "resolutions": [
+        {
+            "_keyIndex": 14,
+            "director": {},
+            "directors": [
+                {
+                    "_keyIndex": 15,
+                    "director": {}
+                }
+            ],
+            "resolutionType": "Custom",
+            "text": "test"
+        }
+    ]
+}
