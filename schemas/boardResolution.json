@@ -331,5 +331,25 @@
             }
         },
         "required": ["resolutionOptions"]
+    },
+    "wizard":{
+        "steps": [
+            {
+                "title": "Company Information",
+                "items": ["company"]
+            },
+            {
+                "title": "Resolutions",
+                "items": ["resolutionOptions"]
+            },
+            {
+                "title": "Resolutions",
+                "items": ["resolutions"]
+            },
+            {
+                "title": "Notes",
+                "items": ["notes"]
+            }
+        ]
     }
 }
