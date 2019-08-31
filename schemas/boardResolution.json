@@ -226,7 +226,12 @@
                             }
                         }
                     },
-                    { "properties": { "individualResolutionType": { "enum": ["Approve Share Transfer"] } } },
+                    { "properties": {
+                            "individualResolutionType": { "enum": ["Approve Share Transfer"] },
+                            "dateOfTransferForm":   { "$ref": "#/definitions/date",  "title": "Date of Transfer Form" }
+                        },
+                        "required": ["dateOfTransferForm"]
+                    },
                     { "properties": { "individualResolutionType": { "enum": ["Enter Into Major Transaction"] } } },
                     { "properties": { "individualResolutionType": { "enum": ["No Annual Shareholders' Meeting"] } } },
                     {

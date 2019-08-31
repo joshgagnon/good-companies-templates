@@ -67,7 +67,9 @@
                 </text:list-item>
             {% elif resolution.individualResolutionType == 'Approve Share Transfer' %}
                 <text:list-item>
-                    <text:p text:style-name="text_normal">That the transfer(s) of shares described in the attached share transfer forms be approved, and that the share transfer(s) set out in the forms be immediately entered in the Company's share register.</text:p>
+
+                    <text:p text:style-name="text_normal">That the share transfer described in the share transfer form, dated {{ resolution.dateOfTransferForm}}, be approved, and that the share transfer set out in the form be immediately entered in the Company's share register.</text:p>
+
                 </text:list-item>
             {% elif resolution.individualResolutionType == 'Enter Into Major Transaction' %}
                 <text:list-item>
