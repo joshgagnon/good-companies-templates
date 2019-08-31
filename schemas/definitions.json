@@ -322,8 +322,87 @@
                 }
             }
         },
-
         "signatures": {
+            "type": "object",
+            "properties": {
+
+                "signingDate": {
+                    "type": "object",
+                    "properties": {
+                        "date": {
+                            "$ref": "#/definitions/date",
+                            "title": "Signing Date"
+                        }
+                    },
+                    "required": ["date"]
+                },
+
+
+                "signatories": {
+                    "title": "Signatories",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "Signatory Name"
+                            },
+                            "signingMethod": {
+                                "type": "object",
+                                "properties": {
+                                    "signingMethod": {
+                                        "title": "Signing For",
+                                        "enum": ["themself only", "themself and others", "others only"],
+                                        "enumNames": [
+                                            "Signing for themself only",
+                                            "Signing for themself and others",
+                                            "Signing on behalf of others only"
+                                        ]
+                                    }
+                                },
+                                "oneOf": [
+                                    {"$ref": "#/definitions/signingMethodOptions/themselfOnly"},
+                                    {"$ref": "#/definitions/signingMethodOptions/themselfAndOthers"},
+                                    {"$ref": "#/definitions/signingMethodOptions/othersOnly"}
+                                ],
+                                "x-hints": {
+                                    "form": {"selector": "signingMethod" }
+                                },
+                                "required": ["signingMethod"]
+                            }
+                        },
+                        "default": {
+                            "signingMethod": {"signingMethod": "themself only"}
+                        },
+                        "required": ["name", "party", "capacity", "signingMethod"],
+                        "x-hints": {
+                            "$ref": "#/definitions/signingPartiesXHints",
+                            "form": {
+                                "addItem": "Add Signatory"
+                            }
+                        }
+                    },
+                    "minItems": 1,
+                    "default": [{
+                        "signingMethod": {
+                            "signingMethod": "themself only",
+                            "parties": [{}],
+                            "capacity": {
+                                "capacityType": "No Capacity"
+                            }
+                        }
+                    }]
+                }
+            },
+            "required": ["signingToday"],
+            "default": {
+                "requiresWitnessing": "no",
+                "signingToday": "yes",
+                "signingOnSameDay": { "signingOnSameDay": "yes" }
+            }
+        },
+        "signaturesWithWitness": {
             "type": "object",
             "title": "Signatures",
             "properties": {
@@ -420,7 +499,7 @@
                     }]
                 }
             },
-            "required": ["requiresWitnessing", "signingToday"],
+            "required": ["signingToday"],
             "default": {
                 "requiresWitnessing": "no",
                 "signingToday": "yes",

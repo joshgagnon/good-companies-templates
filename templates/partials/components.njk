@@ -243,8 +243,8 @@
 {% endmacro %}
 
 {% macro signature_table(data, title_text=null) %}
-    {% set signaturesIndividuallyDated = (data.signingDate.signingOnSameDay == 'no') %}
-    {% set requiresWitnessing = (data.requiresWitnessing == 'yes') %}
+    {% set signaturesIndividuallyDated = false %}
+    {% set requiresWitnessing = false %}
 
     <text:p text:style-name="text_normal">
         <text:span text:style-name="bold">

@@ -1,0 +1,63 @@
+{
+    "company": {
+        "companyName": "AIR ASSIST LIMITED",
+        "companyNumber": "1592661"
+    },
+    "notes": [],
+    "resolutionOptions": {
+        "chairperson": {},
+        "dateOfMinute": "21 August 2019",
+        "resolutionType": "Written Resolution in lieu of Shareholder Meeting",
+        "signatures": {
+            "signatories": [
+                {
+                    "_keyIndex": 17,
+                    "name": "Howard Ross GILL",
+                    "signingMethod": {
+                        "capacity": {
+                            "capacityType": "No Capacity"
+                        },
+                        "parties": [
+                            {
+                                "_keyIndex": 18,
+                                "name": "Tony Wayne PORTLAND"
+                            }
+                        ],
+                        "signingMethod": "themself and others"
+                    }
+                },
+                {
+                    "_keyIndex": 19,
+                    "name": "Tony Wayne PORTLAND",
+                    "signingMethod": {
+                        "capacity": {
+                            "capacityType": "No Capacity"
+                        },
+                        "parties": [],
+                        "signingMethod": "themself only"
+                    }
+                }
+            ],
+            "signingDate": {
+                "date": "7 August 2019"
+            }
+        }
+    },
+    "resolutions": [
+        {
+            "_keyIndex": 20,
+            "date": "1 August 2019",
+            "director": {
+                "name": "asdf"
+            },
+            "directors": [
+                {
+                    "_keyIndex": 21,
+                    "director": {}
+                }
+            ],
+            "resolutionType": "Appoint Director",
+            "text": ""
+        }
+    ]
+}
