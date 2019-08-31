@@ -71,6 +71,43 @@
                     <text:p text:style-name="text_normal">That the share transfer described in the share transfer form, dated {{ resolution.dateOfTransferForm}}, be approved, and that the share transfer set out in the form be immediately entered in the Company's share register.</text:p>
 
                 </text:list-item>
+            {% elif resolution.individualResolutionType == 'Reject Share Transfer' %}
+                <text:list-item>
+
+                    <text:p text:style-name="text_normal">That the share transfer described in the share transfer form, dated {{ resolution.dateOfTransferForm}}, be approved, and that the share transfer set out in the form be immediately entered in the Company's share register.</text:p>
+
+                    <text:p text:style-name="text_normal">That the share transfers described in the share transfer form(s), dated {{ resolution.dateOfTransferForm }}, received on {{ resolution.dateOfReceipt }}, and concerning the shares held by {{ resolution.shareholders|join_and('name') }}, be rejected.  The board confirms, for the purposes of section 84(4) of the Companies Act 1993, as follows:</text:p>
+                    <text:list>
+
+                    <text:list-item>
+                    <text:p text:style-name="text_normal">The share transfers are being rejected because:</text:p>
+                    </text:list-item>
+
+                    {% if resolution.primaryReason.reason == 'Non-Payment' %}
+                        <text:list-item>
+                        <text:p text:style-name="text_normal">The total amount owing to the Company is {{resolution.primaryReason.amount|currency}}; and</text:p>
+                        </text:list-item>
+                    {% endif %}
+
+                      {% for reason in resolution.otherReasons %}
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">{{ reason.text }}</text:p>
+                            </text:list-item>
+                        {% endfor %}
+
+                        <text:list-item>
+                        <text:p text:style-name="text_normal">The Companies Act 1993 or the Company's constitution (if it has one) expressly permits the board to refuse or delay registration of the share transfer(s) for the reasons set out above; and</text:p>
+                        </text:list-item>
+                        <text:list-item>
+                        <text:p text:style-name="text_normal">Notice of this resolution will be sent to the transferor and transferee within five working days of this resolution being passed.</text:p>
+                        </text:list-item>
+
+                    </text:list>
+
+                </text:list-item>
+
+
+
             {% elif resolution.individualResolutionType == 'Enter Into Major Transaction' %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the transaction(s) contemplated by the attached document(s):</text:p>

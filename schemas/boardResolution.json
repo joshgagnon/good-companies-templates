@@ -83,6 +83,7 @@
                             "Change Registered Office",
                             "Records in Good Companies",
                             "Approve Share Transfer",
+                            "Reject Share Transfer",
                             "Enter Into Major Transaction",
                             "No Annual Shareholders' Meeting",
                             "Issue Bonus Shares",
@@ -231,6 +232,63 @@
                             "dateOfTransferForm":   { "$ref": "#/definitions/date",  "title": "Date of Transfer Form" }
                         },
                         "required": ["dateOfTransferForm"]
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Reject Share Transfer"] },
+                            "dateOfTransferForm":   { "$ref": "#/definitions/date",  "title": "Date of Transfer Form To Reject" },
+                            "dateOfReceipt":   { "$ref": "#/definitions/date",  "title": "Date of Receipt" },
+                            "shareholders":   { "$ref": "#/definitions/shareholdersList",  "title": "Shareholders",  "default": [{}] },
+
+                            "primaryReason": {
+                                "type": "object",
+                                "properties": {
+                                    "reason": {
+                                        "title": "Reason",
+                                        "enum": [
+                                            "Non-Payment",
+                                            "Custom"
+                                        ]
+                                    }
+                                },
+                                "oneOf": [{
+                                    "properties": {
+                                        "reason": { "enum": ["Non-Payment"] },
+                                        "amount": { "type": "number", "title": "Amount owed to the Company" }
+                                    },
+                                    "required": ["reason", "amount"]
+                                }],
+                                "default": {"reason": "Non-Payment"},
+                                "required": ["reason"],
+                                "x-hints": {
+                                    "form": { "selector": "reason" }
+                                }
+                            },
+
+                            "otherReasons": {
+                                "type": "array",
+                                "title": "Additional Reasons",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "text": {
+                                            "type": "string",
+                                            "title": "Description",
+                                            "x-hints": {
+                                                "form": {"inputComponent": "textarea"}
+                                            }
+                                        }
+                                    },
+                                    "x-hints": {
+                                        "form": {
+                                            "addItem": "Add Reason"
+                                        }
+                                    }
+                                },
+                                "minItems": 0
+                            }
+                        },
+                        "required": ["dateOfTransferForm", "dateOfReceipt", "shareholders"]
                     },
                     { "properties": { "individualResolutionType": { "enum": ["Enter Into Major Transaction"] } } },
                     { "properties": { "individualResolutionType": { "enum": ["No Annual Shareholders' Meeting"] } } },

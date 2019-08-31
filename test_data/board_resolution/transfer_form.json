@@ -1,0 +1,44 @@
+{
+        "company": {
+            "companyName": "AIR ASSIST LIMITED",
+            "companyNumber": "1592661"
+        },
+        "notes": [],
+        "resolutionOptions": {
+            "chairperson": {
+                "name": "asdf"
+            },
+            "dateOfBoardMeeting": "23 August 2019",
+            "dateOfMinute": "22 August 2019",
+            "directors": [
+                {
+                    "_keyIndex": 29,
+                    "name": "Tony Wayne PORTLAND"
+                }
+            ],
+            "resolutionType": "Resolution at Board Meeting"
+        },
+        "resolutions": [
+            {
+                "_keyIndex": 30,
+                "creditSharesAs": "fully",
+                "dateOfTransferForm": "7 August 2019",
+                "discounts": [
+                    {
+                        "_keyIndex": 32,
+                        "shareholder": {}
+                    }
+                ],
+                "individualResolutionType": "Approve Share Transfer",
+                "issues": [
+                    {
+                        "_keyIndex": 31,
+                        "shareholder": {}
+                    }
+                ],
+                "resolutionOptions": {},
+                "shareClass": {},
+                "shareholder": {}
+            }
+        ]
+    }

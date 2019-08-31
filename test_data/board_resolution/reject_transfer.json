@@ -1,0 +1,65 @@
+{
+        "company": {
+            "companyName": "AIR ASSIST LIMITED",
+            "companyNumber": "1592661"
+        },
+        "notes": [],
+        "resolutionOptions": {
+            "chairperson": {
+                "name": "Tony Wayne PORTLAND"
+            },
+            "dateOfBoardMeeting": "8 August 2019",
+            "dateOfMinute": "14 August 2019",
+            "directors": [
+                {
+                    "_keyIndex": 11,
+                    "name": "Tony Wayne PORTLAND"
+                }
+            ],
+            "resolutionType": "Resolution at Board Meeting"
+        },
+        "resolutions": [
+            {
+                "_keyIndex": 12,
+                "creditSharesAs": "fully",
+                "dateOfReceipt": "24 August 2019",
+                "dateOfTransferForm": "24 August 2019",
+                "discounts": [
+                    {
+                        "_keyIndex": 15,
+                        "shareholder": {}
+                    }
+                ],
+                "individualResolutionType": "Reject Share Transfer",
+                "issues": [
+                    {
+                        "_keyIndex": 13,
+                        "shareholder": {}
+                    }
+                ],
+                "otherReasons": [
+                    {
+                        "_keyIndex": 16,
+                        "text": "another reason"
+                    }
+                ],
+                "primaryReason": {
+                    "amount": 344353,
+                    "reason": "Non-Payment"
+                },
+                "resolutionOptions": {},
+                "shareClass": {},
+                "shareholder": {},
+                "shareholders": [
+                    {
+                        "_keyIndex": 14,
+                        "name": "Tony Wayne PORTLAND"
+                    },
+                    {
+                        "_keyIndex": 17,
+                        "name": "Howard Ross GILL"
+                    }
+                ]
+            }
+        ]
+}
