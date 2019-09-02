@@ -281,8 +281,62 @@
                 </text:list>
 
                 </text:list-item>
-            {% endif %}
 
+
+
+            {% elif resolution.individualResolutionType == "Issue Shares In Lieu of Dividends" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That new shares in the Company be issued in lieu of the dividend(s) proposed by the board on {{ resolution.dateOfProposal }}, as follows:</text:p>
+
+                    <text:list>
+
+                    {% for parcelToIssue in resolution.parcelsToIssue %}
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">{{ parcelToIssue.amount }} new {{ parcelToIssue.shareClass }} shares will be issued to {{ parcelToIssue.shareholders|join_and('name') }} on {{ parcelToIssue.date }}.</text:p>
+                        </text:list-item>
+                    {% endfor %}
+
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">The shares will be issued for the following consideration: {{ resolution.issueMethod.consideration }}</text:p>
+                    </text:list-item>
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">If the consideration is other than cash, the reasonable present cash value of the consideration is {{ resolution.issueMethod.cashValue | currency }}.  In the board’s opinion, the present cash value of the consideration to be provided for the issue of the shares is not less than the amount to be credited for the issue of the shares.</text:p>
+                    </text:list-item>
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">The terms on which the shares will be issued are set out in the Company’s constitution and/or the attached document(s), as applicable.</text:p>
+                    </text:list-item>
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">In the board’s opinion, the consideration for and terms of the issue are fair and reasonable to the Company and to all existing shareholders.</text:p>
+                    </text:list-item>
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">The board confirms that:</text:p>
+
+                        <text:list>
+
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the right to receive shares, wholly or partly, in lieu of the proposed dividend or proposed future dividends has been offered to all shareholders of the same class on the same terms; </text:p>
+                                </text:list-item>
+
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">if all shareholders elected to receive the shares in lieu of the proposed dividend, relative voting or distribution rights, or both, would be maintained; </text:p>
+                                </text:list-item>
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the shareholders to whom the offere has been made have been afforded a reasonable opportunity of accepting it; and</text:p>
+                                </text:list-item>
+                                <text:list-item>
+                                    <text:p text:style-name="text_normal">the shares issued to each shareholder are issued on the same terms and subject to the same rights as the shares issued to all shareholders in that class who agree to receive the shares.</text:p>
+                                </text:list-item>
+
+
+                        </text:list>
+                    </text:list-item>
+                </text:list>
+
+                </text:list-item>
+            {% endif %}
 
 
         {% endfor %}

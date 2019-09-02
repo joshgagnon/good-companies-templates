@@ -90,7 +90,8 @@
                             "Credit Shares as Fully or Partly Paid",
                             "Authorise Shareholder Discounts",
                             "Authorise Dividends",
-                            "Issue New Shares (Except Bonus Shares)"
+                            "Issue New Shares (Except Bonus Shares)",
+                            "Issue Shares In Lieu of Dividends"
                         ]
                     }
                 },
@@ -408,7 +409,7 @@
                                         "type": { "enum": ["Other"] },
                                         "consideration": {
                                             "type": "string",
-                                            "title": "Description of Dividend",
+                                            "title": "Description of Consideration",
                                             "x-hints": {
                                                 "form": {"inputComponent": "textarea"}
                                             }
@@ -417,8 +418,57 @@
                                     },
                                     "required": ["type", "consideration", "cashValue"]
                                 }],
-                                "default": {"reason": "Cash"},
+                                "default": {"type": "Cash"},
                                 "required": ["type"],
+                                "x-hints": {
+                                    "form": { "selector": "type" }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Issue Shares In Lieu of Dividends"] },
+                            "dateOfProposal": { "$ref": "#/definitions/date", "title": "Date of Proposal" },
+                            "parcelsToIssue": {
+                                "type": "array",
+                                "title": "Shares To Issue",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "shareClass": {
+                                            "type": "string",
+                                            "title": "Share Class"
+                                        },
+                                        "amount": {
+                                            "type": "number",
+                                            "title": "Number of Shares"
+                                        },
+                                        "date": { "$ref": "#/definitions/date", "title": "Date of Issue" },
+                                        "shareholders":   { "$ref": "#/definitions/shareholdersList",  "title": "Shareholders",  "default": [{}] }
+                                    },
+                                    "x-hints": {
+                                        "form": {
+                                            "addItem": "Add Share Parcel"
+                                        }
+                                    },
+                                    "required": ["shareClass", "amount", "date", "shareholders"]
+                                },
+                                "minItems": 1,
+                                "default": [{}]
+                            },
+                            "issueMethod": {
+                                "type": "object",
+                                "properties": {
+                                    "consideration": {
+                                        "type": "string",
+                                        "title": "Description of Consideration",
+                                        "x-hints": {
+                                            "form": {"inputComponent": "textarea"}
+                                        }
+                                    },
+                                    "cashValue": { "type": "number", "title": "Cash Value" }
+                                },
                                 "x-hints": {
                                     "form": { "selector": "type" }
                                 }
