@@ -316,26 +316,65 @@
 
                         <text:list>
 
-                                <text:list-item>
-                                    <text:p text:style-name="text_normal">the right to receive shares, wholly or partly, in lieu of the proposed dividend or proposed future dividends has been offered to all shareholders of the same class on the same terms; </text:p>
-                                </text:list-item>
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the right to receive shares, wholly or partly, in lieu of the proposed dividend or proposed future dividends has been offered to all shareholders of the same class on the same terms; </text:p>
+                            </text:list-item>
 
-                                <text:list-item>
-                                    <text:p text:style-name="text_normal">if all shareholders elected to receive the shares in lieu of the proposed dividend, relative voting or distribution rights, or both, would be maintained; </text:p>
-                                </text:list-item>
-                                <text:list-item>
-                                    <text:p text:style-name="text_normal">the shareholders to whom the offere has been made have been afforded a reasonable opportunity of accepting it; and</text:p>
-                                </text:list-item>
-                                <text:list-item>
-                                    <text:p text:style-name="text_normal">the shares issued to each shareholder are issued on the same terms and subject to the same rights as the shares issued to all shareholders in that class who agree to receive the shares.</text:p>
-                                </text:list-item>
-
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">if all shareholders elected to receive the shares in lieu of the proposed dividend, relative voting or distribution rights, or both, would be maintained; </text:p>
+                            </text:list-item>
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the shareholders to whom the offere has been made have been afforded a reasonable opportunity of accepting it; and</text:p>
+                            </text:list-item>
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the shares issued to each shareholder are issued on the same terms and subject to the same rights as the shares issued to all shareholders in that class who agree to receive the shares.</text:p>
+                            </text:list-item>
 
                         </text:list>
                     </text:list-item>
                 </text:list>
 
                 </text:list-item>
+
+
+            {% elif resolution.individualResolutionType == "Authorise Remuneration or Benefits" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That</text:p>
+
+                    <text:list>
+
+                        <text:list-item>
+                        <text:p text:style-name="text_normal">the following remuneration or other benefits to be provided to {{ resolution.resolutionOptions.recipientDirector }} be authorised for the purposes of section 161 of the Companies Act 1993:</text:p>
+
+                        <text:list>
+
+                        {% for describedRemuneration in resolution.resolutionOptions.describedRemunerations %}
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">{{ describedRemuneration.text }}.</text:p>
+                            </text:list-item>
+                        {% endfor %}
+
+                        </text:list>
+
+                    </text:list-item>
+
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">the remuneration or other benefit(s) described above are fair to the Company;</text:p>
+                    </text:list-item>
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">particulars of the payment(s), benefit(s), loan(s), guarantee(s), or contract(s), as the case may be, be immediately entered in the interests register; and</text:p>
+                    </text:list-item>
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">the remuneration or other benefit(s) be conditional on the board receiving the director certification required by section 161(4) of the Companies Act 1993.</text:p>
+                    </text:list-item>
+
+
+                              </text:list>
+                </text:list-item>
+
             {% endif %}
 
 

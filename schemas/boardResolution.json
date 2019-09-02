@@ -91,7 +91,8 @@
                             "Authorise Shareholder Discounts",
                             "Authorise Dividends",
                             "Issue New Shares (Except Bonus Shares)",
-                            "Issue Shares In Lieu of Dividends"
+                            "Issue Shares In Lieu of Dividends",
+                            "Authorise Remuneration or Benefits"
                         ]
                     }
                 },
@@ -472,6 +473,45 @@
                                 "x-hints": {
                                     "form": { "selector": "type" }
                                 }
+                            }
+                        }
+                    },
+
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Authorise Remuneration or Benefits"] },
+                            "resolutionOptions": {
+                                "type": "object",
+                                "properties": {
+                                    "recipientDirector": {
+                                        "$ref": "#/definitions/director",
+                                        "title" : "Director"
+                                    },
+                                    "describedRemunerations": {
+                                        "type": "array",
+                                        "title": "Described Remuneration or Other Benefit",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "text": {
+                                                    "type": "string",
+                                                    "title": "Description",
+                                                    "x-hints": {
+                                                        "form": {"inputComponent": "textarea"}
+                                                    }
+                                                }
+                                            },
+                                            "x-hints": {
+                                                "form": {
+                                                    "addItem": "Add Described Remuneration or Other Benefit"
+                                                }
+                                            }
+                                        },
+                                        "minItems": 1
+                                    }
+
+                                },
+                                "required": ["recipientDirector", "describedRemunerations"]
                             }
                         }
                     }
