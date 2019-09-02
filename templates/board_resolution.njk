@@ -132,6 +132,7 @@
                         </text:list-item>
                     </text:list>
                 </text:list-item>
+
             {% elif resolution.individualResolutionType == "No Annual Shareholders' Meeting" %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the board of the Company not call, and the Company not hold, an annual meeting of shareholders because, for the purposes of section 120(5) of the Companies Act 1993, such a meeting is not necessary. The board confirms that:</text:p>
@@ -150,6 +151,7 @@
                         </text:list-item>
                     </text:list>
                 </text:list-item>
+
             {% elif resolution.individualResolutionType == "Issue Bonus Shares" %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That:</text:p>
@@ -166,6 +168,7 @@
                         </text:list-item>
                     </text:list>
                 </text:list-item>
+
             {% elif resolution.individualResolutionType == "Credit Shares as Fully or Partly Paid" %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That the {{ resolution.number }} new {{ resolution.shareClass.name }} shares issued to {{ resolution.shareholder.name }} on {{ resolution.date }}
@@ -173,6 +176,47 @@
                         of the consideration credited is {{ resolution.valueOfConsiderationCredited }}. In the board’s opinion, the present cash value of the consideration is fair and reasonable to the
                         Company and to all existing shareholders, and not less than the amount to be credited in respect of the shares.</text:p>
                 </text:list-item>
+
+            {% elif resolution.individualResolutionType == "Authorise Dividends" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That:</text:p>
+
+                    <text:list>
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the following dividends to shareholders be authorised:</text:p>
+
+                            <text:list>
+                                {% for dividend in resolution.dividends %}
+                                    <text:list-item>
+                                        <text:p text:style-name="text_normal">A dividend of {{ dividend.description }} will be made to {{ dividend.shareholders|join_and('name') }} on {{ dividend.date }}.</text:p>
+                                    </text:list-item>
+                                {% endfor %}
+                            </text:list>
+                        </text:list-item>
+
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the board is satisfied on reasonable grounds that the Company will, immediately after making the dividend(s) referred to above, satisfy the solvency test as defined in section 4 of the Companies Act 1993 and amended by section 52(4) of that Act; and</text:p>
+                        </text:list-item>
+
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">the dividends:</text:p>
+
+                            <text:list>
+                                    <text:list-item>
+                                        <text:p text:style-name="text_normal">are in respect of all the shares in the relevant share class and are of the same value per share for all shares in that class; or</text:p>
+
+                                    </text:list-item>
+                                      <text:list-item>
+                                         <text:p text:style-name="text_normal">in respect of a share of that class are in proportion to the amount paid to the Company in satisfaction of a liability of the shareholder under the constitution of the Company or under the terms of issue of the share, or are required, for a portfolio tax rate entity, as a result of section HL 7 of the Income Tax Act 2004.</text:p>
+                                    </text:list-item>
+                            </text:list>
+
+                        </text:list-item>
+                    </text:list>
+                </text:list-item>
+
+
+
             {% elif resolution.individualResolutionType == "Authorise Shareholder Discounts" %}
                 <text:list-item>
                     <text:p text:style-name="text_normal">That:</text:p>
@@ -200,6 +244,8 @@
                     </text:list>
                 </text:list-item>
             {% endif %}
+
+
         {% endfor %}
     {% endcall %}
 

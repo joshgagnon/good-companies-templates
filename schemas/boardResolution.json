@@ -88,7 +88,8 @@
                             "No Annual Shareholders' Meeting",
                             "Issue Bonus Shares",
                             "Credit Shares as Fully or Partly Paid",
-                            "Authorise Shareholder Discounts"
+                            "Authorise Shareholder Discounts",
+                            "Authorise Dividends"
                         ]
                     }
                 },
@@ -326,7 +327,35 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Authorise Dividends"] },
+                            "dividends": {
+                                "type": "array",
+                                "minItems": 1,
+                                "title": "Dividends",
+                                "default": [{}],
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "description":      {
+                                            "type": "string",
+                                            "title": "Description of Dividend",
+                                            "x-hints": {
+                                                "form": {"inputComponent": "textarea"}
+                                            }
+                                        },
+                                        "shareholders":   { "$ref": "#/definitions/shareholdersList",  "title": "Shareholders",  "default": [{}] },
+                                        "date": { "$ref": "#/definitions/date", "title": "Effective Date" }
+                                    },
+                                    "required": ["description", "date"],
+                                    "x-hints": { "form": { "addItem": "Add Dividend" } }
+                                }
+                            }
+                        }
                     }
+
                 ]
             },
             "default": [
