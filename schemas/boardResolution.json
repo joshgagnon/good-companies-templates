@@ -89,7 +89,8 @@
                             "Issue Bonus Shares",
                             "Credit Shares as Fully or Partly Paid",
                             "Authorise Shareholder Discounts",
-                            "Authorise Dividends"
+                            "Authorise Dividends",
+                            "Issue New Shares (Except Bonus Shares)"
                         ]
                     }
                 },
@@ -354,8 +355,76 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "properties": {
+                            "individualResolutionType": { "enum": ["Issue New Shares (Except Bonus Shares)"] },
+                            "parcelsToIssue": {
+                                "type": "array",
+                                "title": "Shares To Issue",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "shareClass": {
+                                            "type": "string",
+                                            "title": "Share Class"
+                                        },
+                                        "amount": {
+                                            "type": "number",
+                                            "title": "Number of Shares"
+                                        },
+                                        "date": { "$ref": "#/definitions/date", "title": "Date of Issue" },
+                                        "newShareholders":   { "$ref": "#/definitions/shareholdersList",  "title": "Shareholders",  "default": [{}] }
+                                    },
+                                    "x-hints": {
+                                        "form": {
+                                            "addItem": "Add Share Parcel"
+                                        }
+                                    },
+                                    "required": ["shareClass", "amount", "date", "newShareholders"]
+                                },
+                                "minItems": 1,
+                                "default": [{}]
+                            },
+                            "issueMethod": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "title": "The shares will be issued for",
+                                        "enum": [
+                                            "Cash",
+                                            "Other"
+                                        ]
+                                    }
+                                },
+                                "oneOf": [{
+                                    "properties": {
+                                        "type": { "enum": ["Cash"] },
+                                        "issuePricePerShare": { "type": "number", "title": "Issue price per share" }
+                                    },
+                                    "required": ["type", "issuePricePerShare"]
+                                },{
+                                    "properties": {
+                                        "type": { "enum": ["Other"] },
+                                        "consideration": {
+                                            "type": "string",
+                                            "title": "Description of Dividend",
+                                            "x-hints": {
+                                                "form": {"inputComponent": "textarea"}
+                                            }
+                                        },
+                                        "cashValue": { "type": "number", "title": "Cash Value" }
+                                    },
+                                    "required": ["type", "consideration", "cashValue"]
+                                }],
+                                "default": {"reason": "Cash"},
+                                "required": ["type"],
+                                "x-hints": {
+                                    "form": { "selector": "type" }
+                                }
+                            }
+                        }
                     }
-
                 ]
             },
             "default": [

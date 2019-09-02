@@ -243,7 +243,46 @@
                         </text:list-item>
                     </text:list>
                 </text:list-item>
+
+
+
+
+            {% elif resolution.individualResolutionType == "Issue New Shares (Except Bonus Shares)" %}
+                <text:list-item>
+                    <text:p text:style-name="text_normal">That new shares in the Company be issued as follows:</text:p>
+
+                    <text:list>
+
+                    {% for parcelToIssue in resolution.parcelsToIssue %}
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">{{ parcelToIssue.amount }} new {{ parcelToIssue.shareClass }} shares will be issued to {{ parcelToIssue.newShareholders|join_and('name') }} on {{ parcelToIssue.date }}.</text:p>
+                        </text:list-item>
+                    {% endfor %}
+
+                    {% if resolution.issueMethod.type == "Cash" %}
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">The shares will be issued for {{ resolution.issueMethod.issuePricePerShare | currency }} per share.</text:p>
+                        </text:list-item>
+                    {% else %}
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">The shares will be issued for the following consideration: {{ resolution.issueMethod.consideration }}</text:p>
+                        </text:list-item>
+                        <text:list-item>
+                            <text:p text:style-name="text_normal">If the consideration is other than cash, the reasonable present cash value of the consideration is {{ resolution.issueMethod.cashValue | currency }}.  In the board’s opinion, the present cash value of the consideration to be provided for the issue of the shares is not less than the amount to be credited for the issue of the shares.</text:p>
+                        </text:list-item>
+                    {% endif %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">The terms on which the shares will be issued are set out in the Company’s constitution and/or the attached document(s), as applicable.</text:p>
+                    </text:list-item>
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">In the board’s opinion, the consideration for and terms of the issue are fair and reasonable to the Company and to all existing shareholders.</text:p>
+                    </text:list-item>
+
+                </text:list>
+
+                </text:list-item>
             {% endif %}
+
 
 
         {% endfor %}

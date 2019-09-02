@@ -1,0 +1,85 @@
+{
+        "company": {
+            "companyName": "BOLLORE LOGISTICS NEW ZEALAND LIMITED",
+            "companyNumber": "614119"
+        },
+        "notes": [],
+        "resolutionOptions": {
+            "chairperson": {
+                "name": "Cyril Didier Marie DUMON"
+            },
+            "dateOfBoardMeeting": "1 September 2019",
+            "dateOfMinute": "1 September 2019",
+            "directors": [
+                {
+                    "_keyIndex": 21,
+                    "name": "Cyril Didier Marie DUMON"
+                },
+                {
+                    "_keyIndex": 22,
+                    "name": "Stephane ARMAND"
+                }
+            ],
+            "resolutionType": "Resolution at Board Meeting"
+        },
+        "resolutions": [
+            {
+                "_keyIndex": 23,
+                "creditSharesAs": "fully",
+                "discounts": [
+                    {
+                        "_keyIndex": 26,
+                        "shareholder": {}
+                    }
+                ],
+                "dividends": [
+                    {
+                        "_keyIndex": 27,
+                        "shareholders": [
+                            {
+                                "_keyIndex": 28
+                            }
+                        ]
+                    }
+                ],
+                "individualResolutionType": "Issue New Shares (Except Bonus Shares)",
+                "issues": [
+                    {
+                        "_keyIndex": 24,
+                        "shareholder": {}
+                    }
+                ],
+                "issueMethod": {
+                    "cashValue": 2000,
+                    "consideration": "testing",
+                    "type": "Other"
+                },
+                "otherReasons": [],
+                "parcelsToIssue": [
+                    {
+                        "_keyIndex": 29,
+                        "amount": 12,
+                        "date": "10 September 2019",
+                        "newShareholders": [
+                            {
+                                "_keyIndex": 30,
+                                "name": "Bollore Logistics"
+                            }
+                        ],
+                        "shareClass": "A"
+                    }
+                ],
+                "primaryReason": {
+                    "reason": "Non-Payment"
+                },
+                "resolutionOptions": {},
+                "shareClass": {},
+                "shareholder": {},
+                "shareholders": [
+                    {
+                        "_keyIndex": 25
+                    }
+                ]
+            }
+        ]
+    }
