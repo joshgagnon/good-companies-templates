@@ -20,33 +20,76 @@
             },
             "required": ["dateOfCertificate", "requiresWitnessing"]
         },
+
         "directors": {
-            "$ref": "#/definitions/directorsList",
+            "$ref": "#/definitions/signingByDirectors",
             "minItems": 1
         },
+
+
         "certifications": {
             "type": "array",
             "title": "Certifications",
             "items": {
                 "type": "object",
                 "properties": {
-                    "text": {
-                        "type": "string",
-                        "title": "Description",
-                        "x-hints": {
-                            "form": {
-                                "inputComponent": "textarea"
+                    "certificationType": {
+                        "title": "Certification Type",
+                        "enumeratedTitle": "Certification {0}",
+                        "enum": [
+                            "Custom",
+                            "Certificate of Solvency After Distribution"
+                        ]
+                    }
+                },
+                "required": ["certificationType"],
+                "x-hints": {
+                    "form": {
+                        "addItem": "Add Certification",
+                        "selector": "certificationType"
+                    }
+                },
+                "oneOf": [
+                    {
+                        "properties": {
+                            "certificationType": { "enum": ["Custom"] },
+                            "certificationOptions": {
+                                "type": "object",
+                                "properties": {
+                                    "text": {
+                                        "type": "string",
+                                        "title": "Description",
+                                        "x-hints": {
+                                            "form": {"inputComponent": "textarea"}
+                                        }
+                                    }
+                                },
+                                "required": ["text"]
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "certificationType": { "enum": ["Certificate of Solvency After Distribution"] },
+                            "certificationOptions": {
+                                "type": "object",
+                                "properties": {
+                                    "documentName": {
+                                        "type": "string",
+                                        "title": "Distribution Document Name"
+                                    },
+                                    "documentDate": {
+                                        "$ref": "#/definitions/date",
+                                        "title": "Distribution Document Date"
+                                    }
+                                },
+                                "required": ["documentName", "documentDate"]
                             }
                         }
                     }
-                },
-                "x-hints": {
-                    "form": {
-                        "addItem": "Add Certification"
-                    }
-                }
+                ]
             },
-            "default": [{}],
+            "default": [{"certificationType": "Custom"}],
             "minItems": 1
         },
         "notes": { "$ref": "#/definitions/notes" }

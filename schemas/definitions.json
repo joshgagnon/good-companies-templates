@@ -519,7 +519,19 @@
                 }
             }
         },
-
+        "signingByDirectors": {
+            "$ref": "#/definitions/signatures",
+            "properties": {
+                "signatories": {
+                    "title": "Directors",
+                    "x-hints": {
+                        "form": {
+                            "defaultSource": "company.directorSignatureList"
+                        }
+                    }
+                }
+            }
+        },
         "signingPartiesXHints": { },
 
         "shareholdersSourceLocationXHints": {

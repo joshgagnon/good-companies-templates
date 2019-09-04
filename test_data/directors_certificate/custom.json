@@ -1,0 +1,42 @@
+{
+   "company":{
+      "companyName":"1071 HINEMOA HOLDINGS NO2 LIMITED",
+      "companyNumber":"2110168"
+   },
+   "certificateOptions":{
+      "dateOfCertificate":"1 September 2019",
+      "requiresWitnessing":"No"
+   },
+   "directors":{
+      "signingDate":{
+         "date":"1 September 2019"
+      },
+      "signatories":[
+         {
+            "_keyIndex":8,
+            "name":"Austin NICHOLAS MAXWELL",
+            "signingMethod":{
+               "signingMethod":"themself only",
+               "capacity":{
+                  "capacityType":"No Capacity"
+               },
+               "parties":[
+
+               ]
+            }
+         }
+      ]
+   },
+   "certifications":[
+      {
+         "_keyIndex":9,
+         "certificationType":"Custom",
+         "certificationOptions":{
+            "text":"test"
+         }
+      }
+   ],
+   "notes":[
+
+   ]
+}

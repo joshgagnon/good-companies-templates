@@ -19,16 +19,64 @@
         I/we, the director/directors of the Company named below, hereby certify as follows:
     </text:p>
 
+
     {% call blocks.normal_list() %}
         {% for certification in certifications %}
-            <text:list-item>
-                <text:p text:style-name="text_normal">{{ certification.text }}</text:p>
-            </text:list-item>
+            {% if certification.certificationType == 'Custom' %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">{{ certification.certificationOptions.text }}</text:p>
+                    </text:list-item>
+
+            {% endif %}
+            {% if certification.certificationType == "Certificate of Solvency After Distribution" %}
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">That, in their opinion, the Company will, immediately after making the distribution referred to in the {{certificationOptions.documentName }}, dated {{ certificationOptions.documentDate }}, satisfy the solvency test as required by the Companies Act 1993.  The director(s) believe that, immediately after making the distribution:</text:p>
+
+                        <text:list>
+
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">the Company will be able to pay its debts as they become due in the normal course of business; and (b) the value of the Company's assets is greater than the value of its liabilities, including contingent liabilities.
+                                </text:p>
+
+                            </text:list-item>
+
+                        </text:list>
+                    </text:list-item>
+
+                    <text:list-item>
+                        <text:p text:style-name="text_normal">That, where relevant, the director(s) has/have:</text:p>
+
+                        <text:list>
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">had regard to the most recent financial statements of the Company prepared under the Companies Act 1993 or any other enactment (if any);</text:p>
+                          <text:list>
+
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">had regard to the accounting records of the Company; </text:p>
+                            </text:list-item>
+                             <text:list-item>
+                                <text:p text:style-name="text_normal">had regard to all other circumstances that the directors know or ought to know affect, or may affect, the value of the Company's assets and the value of the Company's liabilities, including its contingent liabilities; </text:p>
+                            </text:list-item>
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">relied on valuations of assets or estimates of liabilities that are reasonable in the circumstances; and</text:p>
+                            </text:list-item>
+                            <text:list-item>
+                                <text:p text:style-name="text_normal">in the case of contingent liabilities, taken account of the likelihood of the contingency occurring, and any claim the Company is entitled to make and can reasonably expect to be met to reduce or extinguish the contingent liability.</text:p>
+                            </text:list-item>
+                        </text:list>
+                                 </text:list-item>
+                        </text:list>
+                    </text:list-item>
+            {% endif %}
+
+
+
         {% endfor %}
     {% endcall %}
 
     {{ components.notes(notes) }}
 
-    {{ components.basic_signature_table(directors, (certificateOptions.requiresWitnessing == 'yes'), false) }}
+
+    {{ components.basic_signature_table(directors.signatories, (certificateOptions.requiresWitnessing == 'yes'), false) }}
 
 {% endblock %}
