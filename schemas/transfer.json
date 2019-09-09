@@ -20,12 +20,14 @@
                         }
                     }
                 },
-                "requiresWitnessing": { "$ref": "#/definitions/requiresWitnessing" },
 
                 "consideration": {
                     "title": "Consideration",
                     "type": "string"
                 },
+
+                "requiresWitnessing": { "$ref": "#/definitions/requiresWitnessing" },
+
                 "transferors": {
                     "type": "object",
                     "title": "Transferors",
