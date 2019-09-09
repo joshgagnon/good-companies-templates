@@ -175,11 +175,11 @@
     **  Signatures
     -->
     {{ components.blank_line() }}
-    {{ components.signature_table(transaction.transferors.signing, "Transferors' Signatures") }}
+    {{ components.signature_table(transaction.transferors.signing, "Transferors' Signatures", transaction.requiresWitnessing == "Yes") }}
     {{ components.blank_line() }}
 
     {% if transaction.transferees.requiresSigning == 'Yes' %}
-        {{ components.signature_table(transaction.transferees.signing, "Transferees' Signatures") }}
+        {{ components.signature_table(transaction.transferees.signing, "Transferees' Signatures", transaction.requiresWitnessing == "Yes") }}
     {% endif %}
 
 {% endblock %}

@@ -1,0 +1,84 @@
+{
+    "company": {
+        "companyName": "1071 HINEMOA HOLDINGS NO2 LIMITED",
+        "companyNumber": "2110168"
+    },
+    "transaction": {
+        "consideration": "166",
+        "effectiveDateString": "10 September 2019",
+        "parcels": [
+            {
+                "_keyIndex": 21,
+                "amount": 10,
+                "shareClass": "A"
+            }
+        ],
+        "referenceToAgreement": "2",
+        "requiresWitnessing": "Yes",
+        "transferees": {
+            "persons": [
+                {
+                    "_keyIndex": 18,
+                    "address": "40b Kulim Ave, Tauranga New Zealand1",
+                    "companyNumber": "",
+                    "name": "Nicholas Maxwell AUSTIN"
+                }
+            ],
+            "requiresSigning": "Yes",
+            "signing": {
+                "signatories": [
+                    {
+                        "_keyIndex": 19,
+                        "name": "Nicholas Maxwell AUSTIN",
+                        "signingMethod": {
+                            "capacity": {
+                                "capacityType": "No Capacity"
+                            },
+                            "parties": [
+                                {
+                                    "_keyIndex": 20
+                                }
+                            ],
+                            "signingMethod": "themself only"
+                        }
+                    }
+                ],
+                "signingDate": {
+                    "date": "10 September 2019"
+                }
+            }
+        },
+        "transferors": {
+            "persons": [
+                {
+                    "_keyIndex": 18,
+                    "address": "40b Kulim Ave, Tauranga, New Zealand",
+                    "companyNumber": "",
+                    "name": "Austin NICHOLAS MAXWELL"
+                }
+            ],
+            "signing": {
+                "signatories": [
+                    {
+                        "_keyIndex": 16,
+                        "name": "Austin NICHOLAS MAXWELL",
+                        "signingMethod": {
+                            "capacity": {
+                                "capacityType": "No Capacity"
+                            },
+                            "parties": [
+                                {
+                                    "_keyIndex": 17
+                                }
+                            ],
+                            "signingMethod": "themself only"
+                        }
+                    }
+                ],
+                "signingDate": {
+                    "date": "18 September 2019"
+                }
+            }
+        }
+    }
+}

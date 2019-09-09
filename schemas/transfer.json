@@ -20,6 +20,8 @@
                         }
                     }
                 },
+                "requiresWitnessing": { "$ref": "#/definitions/requiresWitnessing" },
+
                 "consideration": {
                     "title": "Consideration",
                     "type": "string"
